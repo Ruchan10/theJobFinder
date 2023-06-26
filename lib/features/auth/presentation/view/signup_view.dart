@@ -192,7 +192,6 @@ class _SignupViewState extends ConsumerState<SignupView> {
                                 email: _emailController.text,
                                 password: _passwordController.text,
                               );
-
                               ref
                                   .read(authViewModelProvider.notifier)
                                   .registerStudent(student);
@@ -201,7 +200,7 @@ class _SignupViewState extends ConsumerState<SignupView> {
                                 showSnackBar(
                                   message: authState.error.toString(),
                                   context: context,
-                                  // color: Colors.red,
+                                  color: Colors.red,
                                 );
                               } else {
                                 showSnackBar(
