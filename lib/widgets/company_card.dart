@@ -95,57 +95,59 @@ Widget getCompanyCardSmall(BuildContext context, double width, double height,
     ),
     child: Padding(
       padding: const EdgeInsets.all(6),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                child: Row(
-                  children: [
-                    SizedBox(width: width * .03),
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.apple_outlined),
-                    ),
-                    Text(
-                      name,
-                      style: const TextStyle(fontSize: 30),
-                    ),
-                  ],
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SizedBox(
+                  child: Row(
+                    children: [
+                      SizedBox(width: width * .03),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.apple_outlined),
+                      ),
+                      Text(
+                        name,
+                        style: const TextStyle(fontSize: 30),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: height * .07,
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.bookmark),
-                    ),
-                    SizedBox(width: width * .03),
-                  ],
+                SizedBox(
+                  height: height * .07,
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.bookmark),
+                      ),
+                      SizedBox(width: width * .03),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-          Container(
-            alignment: Alignment.topLeft,
-            child: Text(
-              "   $job",
-              style: const TextStyle(fontSize: 20),
+              ],
             ),
-          ),
-          Row(
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.location_on),
+            Container(
+              alignment: Alignment.topLeft,
+              child: Text(
+                "   $job",
+                style: const TextStyle(fontSize: 20),
               ),
-              Text(location),
-            ],
-          ),
-        ],
+            ),
+            Row(
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.location_on),
+                ),
+                Text(location),
+              ],
+            ),
+          ],
+        ),
       ),
     ),
   );

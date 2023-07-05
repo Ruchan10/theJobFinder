@@ -146,8 +146,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                         child: ElevatedButton(
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              bool isLogin = await ref
-                                  .read(authViewModelProvider.notifier)
+                              bool isLogin = await ref.read(authViewModelProvider.notifier)
                                   .loginStudent(
                                     context,
                                     _emailController.text,

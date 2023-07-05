@@ -18,9 +18,9 @@ class _SignupViewState extends ConsumerState<SignupView> {
   final _gap = const SizedBox(height: 8);
 
   final _key = GlobalKey<FormState>();
-  final _emailController = TextEditingController(text: 'ruchan@gmail.com');
-  final _passwordController = TextEditingController(text: 'rk');
-  final _cpasswordController = TextEditingController(text: 'rk');
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _cpasswordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final authState = ref.watch(authViewModelProvider);
@@ -182,6 +182,7 @@ class _SignupViewState extends ConsumerState<SignupView> {
                       height: height * .05,
                       width: 300,
                       child: ElevatedButton(
+                        key: const Key('registerButton'),
                         onPressed: () {
                           String pass = _passwordController.text;
                           String cpass = _cpasswordController.text;

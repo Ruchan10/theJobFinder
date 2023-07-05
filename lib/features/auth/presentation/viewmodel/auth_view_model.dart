@@ -1,11 +1,12 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:the_job_finder/config/router/app_route.dart';
-import 'package:the_job_finder/core/common/snackbar/my_snackbar.dart';
 import 'package:the_job_finder/features/auth/domain/entity/student_hive_entity.dart';
 import 'package:the_job_finder/features/auth/domain/use_case/auth_usecase.dart';
 import 'package:the_job_finder/features/auth/presentation/state/auth_state.dart';
+
+import '../../../../config/router/app_route.dart';
+import '../../../../core/common/snackbar/my_snackbar.dart';
+
 final authViewModelProvider =
     StateNotifierProvider<AuthViewModel, AuthState>((ref) {
   return AuthViewModel(
@@ -47,7 +48,11 @@ class AuthViewModel extends StateNotifier<AuthState> {
       },
       (success) {
         state = state.copyWith(isLoading: false, error: null);
-        Navigator.popAndPushNamed(context, AppRoute.dashboardRoute);
+        showSnackBar(
+            message: 'Login Successful',
+            context: context,
+            color: Colors.red);
+        Navigator.popAndPushNamed(context, '/dashboardRoute');
       },
     );
 
