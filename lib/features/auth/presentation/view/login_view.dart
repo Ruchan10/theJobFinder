@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/common/snackbar/my_snackbar.dart';
 import '../viewmodel/auth_view_model.dart';
 
 class LoginView extends ConsumerStatefulWidget {
@@ -13,15 +12,16 @@ class LoginView extends ConsumerStatefulWidget {
 
 class _LoginViewState extends ConsumerState<LoginView> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final _emailController = TextEditingController(text: "ruchan0@gmail.com");
+  final _passwordController = TextEditingController(text: "rk");
   final _gap = const SizedBox(height: 8);
   bool isObscure = true;
-
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    print("INSIDE LOGIN PAGE");
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -146,13 +146,13 @@ class _LoginViewState extends ConsumerState<LoginView> {
                         child: ElevatedButton(
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              bool isLogin = await ref.read(authViewModelProvider.notifier)
+                              bool isLogin = await ref
+                                  .read(authViewModelProvider.notifier)
                                   .loginStudent(
                                     context,
                                     _emailController.text,
                                     _passwordController.text,
                                   );
-                              
                             }
                           },
                           style: ElevatedButton.styleFrom(

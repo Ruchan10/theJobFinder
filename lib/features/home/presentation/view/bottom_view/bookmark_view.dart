@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:the_job_finder/widgets/pillButtons.dart';
+import 'package:the_job_finder/widgets/company_card.dart';
 
-import '../widgets/company_card.dart';
-
-class searchView extends StatefulWidget {
-  const searchView({super.key});
+class bookmarkView extends StatefulWidget {
+  const bookmarkView({super.key});
 
   @override
-  State<searchView> createState() => _searchViewState();
+  State<bookmarkView> createState() => _bookmarkViewState();
 }
 
-class _searchViewState extends State<searchView> {
+class _bookmarkViewState extends State<bookmarkView> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -22,7 +20,6 @@ class _searchViewState extends State<searchView> {
           child: Column(
             children: [
               SizedBox(
-                // height: height * .15,
                 child: Column(
                   children: [
                     Row(
@@ -35,7 +32,7 @@ class _searchViewState extends State<searchView> {
                         ),
                         const Spacer(),
                         const Text(
-                          "Search",
+                          "Bookmark",
                           style: TextStyle(
                             fontSize: 26,
                           ),
@@ -84,64 +81,17 @@ class _searchViewState extends State<searchView> {
                   ],
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      setState(() {});
-                    },
-                    icon: const Icon(Icons.filter_list_sharp),
-                  ),
-                  SizedBox(width: width * .04),
-                  getPillBtn("All",
-                      color: const Color.fromARGB(255, 184, 245, 187)),
-                  SizedBox(width: width * .04),
-                  getPillBtn("Part Time"),
-                  SizedBox(width: width * .04),
-                  getPillBtn("10-50k"),
-                ],
-              ),
               SizedBox(height: height * 0.02),
               Positioned(
                 child: SizedBox(
-                  height: height * .65,
+                  height: height * .702,
                   child: Column(
                     children: [
                       getCompanyCard(
                           context,
-                          width,
-                          height,
                           "Apple",
                           "Software Engineer",
                           "1 Infinite Loop, Cupertino, California",
-                          "Full Time"),
-                      SizedBox(height: height * 0.01),
-                      getCompanyCard(
-                          context,
-                          width,
-                          height,
-                          "Google",
-                          "Manager",
-                          "Mountain View, CA 94043, USA",
-                          "Full Time"),
-                      SizedBox(height: height * 0.01),
-                      getCompanyCard(
-                          context,
-                          width,
-                          height,
-                          "Facebook",
-                          "C.F.O",
-                          "Menlo Park, California, United States",
-                          "Full Time"),
-                      SizedBox(height: height * 0.01),
-                      getCompanyCard(
-                          context,
-                          width,
-                          height,
-                          "Reddit",
-                          "C.E.O",
-                          "San Francisco, California, United States",
                           "Full Time"),
                     ],
                   ),

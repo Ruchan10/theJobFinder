@@ -1,62 +1,153 @@
-import 'package:flutter/material.dart';
-
-class testView extends StatefulWidget {
-  const testView({super.key});
-
-  @override
-  State<testView> createState() => _testViewState();
-}
-
-class _testViewState extends State<testView> {
-  @override
-  Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
-    return Scaffold(
-        body: SafeArea(
-      child: Column(children: [
-        SizedBox(height: height * .2),
-        Stack(
-          children: <Widget>[
-            SizedBox(height: height * .1),
-            Positioned(
-              top: -10.0,
-              right: 0.0,
-              child: ClipRect(
-                child: Container(
-                  width: 100,
-                  height: 100,
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color.fromARGB(255, 0, 0, 0),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              child: Container(
-                width: double.infinity,
-                height: height * .1,
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  color: Color.fromARGB(255, 47, 255, 54),
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  ),
-                ),
-                child: IconButton(
-                  onPressed: () {
-                    setState(() {});
-                  },
-                  icon: const Icon(Icons.location_on),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ]),
-    ));
-  }
-}
+// return Scaffold(
+//       body: SafeArea(
+//         child: Column(
+//           // mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+            
+//             Row(
+//               children: [
+//                 const Text(
+//                   'Company Logo   ',
+//                   style: TextStyle(
+//                     color: Colors.black,
+//                     fontSize: 15,
+//                     fontFamily: 'Inter',
+//                     fontWeight: FontWeight.w400,
+//                     letterSpacing: 1.50,
+//                   ),
+//                 ),
+//                 SizedBox(
+//                     width: 150,
+//                     height: 39,
+//                     child: TextFormField(
+//                       decoration: const InputDecoration(
+//                         contentPadding: EdgeInsets.only(
+//                             top: 20), // add padding to adjust text
+//                         isDense: true,
+//                         border: OutlineInputBorder(
+//                           borderRadius: BorderRadius.all(
+//                             Radius.circular(20),
+//                           ),
+//                         ),
+//                         labelText: "Upload Here",
+//                         prefixIcon: Padding(
+//                           padding: EdgeInsets.only(
+//                               top: 1), // add padding to adjust icon
+//                           child: Icon(Icons.edit_document),
+//                         ),
+//                       ),
+//                     )),
+//                 Container(
+//                   width: 25,
+//                   height: 18,
+//                   padding: const EdgeInsets.symmetric(
+//                       horizontal: 3.12, vertical: 2.25),
+//                   clipBehavior: Clip.antiAlias,
+//                   decoration: const BoxDecoration(),
+//                   child: const Row(
+//                     mainAxisSize: MainAxisSize.min,
+//                     mainAxisAlignment: MainAxisAlignment.center,
+//                     crossAxisAlignment: CrossAxisAlignment.center,
+//                     children: [],
+//                   ),
+//                 )
+//               ],
+//             ),
+//             SizedBox(
+//               height: 45,
+//               width: 356,
+//               child: TextFormField(
+//                 controller: title,
+//                 decoration: const InputDecoration(
+//                   contentPadding:
+//                       EdgeInsets.all(20), // add padding to adjust text
+//                   isDense: true,
+//                   border: OutlineInputBorder(
+//                     borderRadius: BorderRadius.all(
+//                       Radius.circular(20),
+//                     ),
+//                   ),
+//                   labelText: "Enter job title",
+//                 ),
+//               ),
+//             ),
+//             SizedBox(
+//               height: 45,
+//               width: 356,
+//               child: TextFormField(
+//                 controller: company,
+//                 decoration: const InputDecoration(
+//                   contentPadding:
+//                       EdgeInsets.all(20), // add padding to adjust text
+//                   isDense: true,
+//                   border: OutlineInputBorder(
+//                     borderRadius: BorderRadius.all(
+//                       Radius.circular(20),
+//                     ),
+//                   ),
+//                   labelText: "Enter company name",
+//                 ),
+//               ),
+//             ),
+//             SizedBox(
+//               height: 45,
+//               width: 356,
+//               child: TextFormField(
+//                 controller: desc,
+//                 decoration: const InputDecoration(
+//                   contentPadding:
+//                       EdgeInsets.all(20), // add padding to adjust text
+//                   isDense: true,
+//                   border: OutlineInputBorder(
+//                     borderRadius: BorderRadius.all(
+//                       Radius.circular(20),
+//                     ),
+//                   ),
+//                   labelText: "Enter job description",
+//                 ),
+//               ),
+//             ),
+//             SizedBox(
+//               height: 45,
+//               width: 356,
+//               child: TextFormField(
+//                 controller: location,
+//                 decoration: const InputDecoration(
+//                   contentPadding:
+//                       EdgeInsets.all(20), // add padding to adjust text
+//                   isDense: true,
+//                   border: OutlineInputBorder(
+//                     borderRadius: BorderRadius.all(
+//                       Radius.circular(20),
+//                     ),
+//                   ),
+//                   labelText: "Enter job location",
+//                 ),
+//               ),
+//             ),
+//             SizedBox(
+//               width: 300,
+//               child: ElevatedButton(
+//                 onPressed: () async {},
+//                 style: ElevatedButton.styleFrom(
+//                   foregroundColor: Colors.white,
+//                   backgroundColor: Colors.green,
+//                   shadowColor: Colors.red,
+//                   elevation: 5,
+//                   shape: RoundedRectangleBorder(
+//                     borderRadius: BorderRadius.circular(32.0),
+//                   ),
+//                   side: BorderSide(color: Colors.green.shade600, width: 1),
+//                   textStyle: const TextStyle(
+//                     color: Colors.black,
+//                     fontSize: 20,
+//                     fontStyle: FontStyle.italic,
+//                   ),
+//                 ),
+//                 child: const Text("Add Job"),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );

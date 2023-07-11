@@ -55,6 +55,8 @@ dependencies:
   freezed: ^2.3.5
   equatable: ^2.0.5
   jwt_decoder: ^2.0.1
+  bubble: ^1.1.9+1
+  
 
 dev_dependencies:
   flutter_test:

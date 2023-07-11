@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:the_job_finder/view/bookmark_view.dart';
-import 'package:the_job_finder/view/home_view.dart';
-import 'package:the_job_finder/view/profile_view.dart';
-import 'package:the_job_finder/view/search_view.dart';
+import 'package:the_job_finder/features/bookmark/presentation/view/add_bookmark_view.dart';
+import 'package:the_job_finder/features/home/presentation/view/bottom_view/search_view.dart';
+
+import 'bottom_view/home_view.dart';
+import 'bottom_view/profile_view.dart';
 
 class dashBoardView extends StatefulWidget {
   const dashBoardView({super.key});
@@ -15,8 +16,8 @@ class _dashBoardViewState extends State<dashBoardView> {
   int _selectedIndex = 0;
   List lstBottomScreen = [
     const homeView(),
-    const bookmarkView(),
-    const searchView(),
+    const AddBookmarkView(),
+    const SearchView(),
     const profileView(),
   ];
   @override
