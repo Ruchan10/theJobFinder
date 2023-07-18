@@ -19,17 +19,19 @@ class AppRoute {
   static const String searchRoute = '/searchRoute';
   static const String signupRoute = '/signupRoute';
   static const String jobRoute = '/jobRoute';
+  static const String testRoute = '/testRoute';
 
   static getAppRoutes() {
     return {
-      bookmarkRoute: (context) => const bookmarkView(),
+      bookmarkRoute: (context) => const BookmarkView(),
       dashboardRoute: (context) => const dashBoardView(),
       loginRoute: (context) => const LoginView(),
       jobRoute: (context) => const AddJobView(),
       homeRoute: (context) => const homeView(),
-      profileRoute: (context) => const profileView(),
+      profileRoute: (context) => const ProfileView(),
       searchRoute: (context) => const SearchView(),
       signupRoute: (context) => const SignupView(),
+      testRoute: (context) => const AddJobView(),
     };
   }
 }

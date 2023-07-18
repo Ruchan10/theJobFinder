@@ -9,10 +9,10 @@ class JobWidget extends StatelessWidget {
   final List<JobEntity> jobList;
 
   const JobWidget({
-    super.key,
+    Key? key,
     required this.ref,
     required this.jobList,
-  });
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +22,23 @@ class JobWidget extends StatelessWidget {
       itemCount: jobList.length,
       // physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1, childAspectRatio: 2.1),
+        crossAxisCount: 1,
+        childAspectRatio: 2.1,
+      ),
       itemBuilder: (context, index) {
-        return getCompanyCard(
-          context,
-          jobList[index].company,
-          jobList[index].title,
-          jobList[index].location,
-          jobList[index].desc,
+        return Column(
+          children: [
+            getCompanyCard(
+              context:context,
+              name:jobList[index].company,
+              job:jobList[index].title,
+              location:jobList[index].location,
+              time:jobList[index].desc,
+              ref:ref,
+              list:jobList,index:index,
+            ),
+            const SizedBox(height: 7),
+          ],
         );
       },
     );

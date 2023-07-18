@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:the_job_finder/features/bookmark/domain/entity/bookmark_entity.dart';
 
+import '../../../../core/common/snackbar/my_snackbar.dart';
 import '../../domain/entity/job_entity.dart';
 import '../../domain/use_case/job_use_case.dart';
 import '../state/job_state.dart';
@@ -30,11 +33,31 @@ class JobViewModel extends StateNotifier<JobState> {
   getAllJobs() async {
     state = state.copyWith(isLoading: true);
     var data = await jobUseCase.getAllJobs();
-    print("INSIDE JOB VIEW MODEL");
-    print(data);
+
     data.fold(
       (l) => state = state.copyWith(isLoading: false, error: l.error),
-      (r) => state = state.copyWith(isLoading: false, jobs: r, error: null),
+      (r) => state = state.copyWith(isLoading: false, jobs: r),
+    );
+  }
+
+  Future<void> removeBookmark(BuildContext context, BookmarkEntity job) async {
+    state.copyWith(isLoading: true);
+    var data = await jobUseCase.removeBookmark(job.bookmarkId!);
+
+    data.fold(
+      (l) {
+        showSnackBar(message: l.error, context: context, color: Colors.red);
+
+        state = state.copyWith(isLoading: false, error: l.error);
+      },
+      (r) {
+        state.jobs.remove(job);
+        state = state.copyWith(isLoading: false, error: null);
+        showSnackBar(
+          message: 'Bookmark Removed',
+          context: context,
+        );
+      },
     );
   }
 }

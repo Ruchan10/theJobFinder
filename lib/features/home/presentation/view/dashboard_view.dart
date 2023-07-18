@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:the_job_finder/features/bookmark/presentation/view/add_bookmark_view.dart';
+import 'package:the_job_finder/features/home/presentation/view/bottom_view/bookmark_view.dart';
 import 'package:the_job_finder/features/home/presentation/view/bottom_view/search_view.dart';
 
 import 'bottom_view/home_view.dart';
@@ -16,10 +16,11 @@ class _dashBoardViewState extends State<dashBoardView> {
   int _selectedIndex = 0;
   List lstBottomScreen = [
     const homeView(),
-    const AddBookmarkView(),
+    const BookmarkView(),
     const SearchView(),
-    const profileView(),
+    const ProfileView(),
   ];
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-Widget getCompanyCard(BuildContext context, String name, String job,
-    String location, String time) {
+import '../features/bookmark/domain/entity/bookmark_entity.dart';
+import '../features/search/presentation/viewmodel/job_view_model.dart';
+
+Widget getCompanyCard(
+    {required BuildContext context,
+    required String name,
+    required String job,
+    required String location,
+    required String time,
+    required WidgetRef ref,
+    required int index,
+    required list,
+    Icon icon = const Icon(Icons.bookmark_outline)}) {
   return Expanded(
     child: Container(
       decoration: BoxDecoration(
@@ -33,15 +45,14 @@ Widget getCompanyCard(BuildContext context, String name, String job,
                     ],
                   ),
                 ),
-                SizedBox(
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.bookmark),
-                      ),
-                    ],
-                  ),
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    ref
+                        .read(jobViewModelProvider.notifier)
+                        .removeBookmark(context, list[index]);
+                  },
+                  icon: icon,
                 ),
               ],
             ),

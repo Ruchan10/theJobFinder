@@ -8,7 +8,8 @@ class AddBookmarkView extends ConsumerStatefulWidget {
   const AddBookmarkView({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _AddBookmarkViewState();
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _AddBookmarkViewState();
 }
 
 class _AddBookmarkViewState extends ConsumerState<AddBookmarkView> {
@@ -17,6 +18,8 @@ class _AddBookmarkViewState extends ConsumerState<AddBookmarkView> {
   @override
   Widget build(BuildContext context) {
     var bookmarkState = ref.watch(bookmarkViewModelProvider);
+    print("BOOKMARK STATE");
+    print(bookmarkState.bookmarks);
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(8.0),

@@ -28,10 +28,8 @@ class JobRemoteRepositoryImpl implements IJobRepository {
   }
 
 
-
-  // @override
-  // Future<Either<Failure, List<AuthEntity>>> getAllStudentsByJob(
-  //     String jobId) {
-  //   return jobRemoteDataSource.getAllStudentsByJob(jobId);
-  // }
+  @override
+  Future<Either<Failure, bool>> removeBookmark(String id) {
+    return jobRemoteDataSource.removeBookmark(id);
+  }
 }

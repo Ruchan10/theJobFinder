@@ -10,6 +10,8 @@ class LoadBookmark extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("LIST BOOKMARKS");
+    print(lstBookmark);
     return ListView.builder(
       itemCount: lstBookmark.length,
       itemBuilder: ((context, index) => ListTile(

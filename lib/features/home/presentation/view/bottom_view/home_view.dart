@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:the_job_finder/widgets/company_card.dart';
 import 'package:the_job_finder/widgets/pill_btns_icons.dart';
 
+import '../../../../../core/common/provider/internet_connectivity.dart';
+
 class homeView extends StatefulWidget {
   const homeView({super.key});
 
@@ -14,6 +16,7 @@ class _homeViewState extends State<homeView> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(

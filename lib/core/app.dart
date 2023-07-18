@@ -10,7 +10,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Student App',
       // theme: AppTheme.getApplicationTheme(),
-      initialRoute: AppRoute.loginRoute,
+      initialRoute: AppRoute.testRoute,
       routes: AppRoute.getAppRoutes(),
     );
   }

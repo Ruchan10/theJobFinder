@@ -1,4 +1,3 @@
-
 // Dependency Injection using Riverpod
 import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -8,7 +7,8 @@ import '../../../../core/network/hive_service.dart';
 import '../../domain/entity/bookmark_entity.dart';
 import '../model/bookmark_hive_model.dart';
 
-final bookmarkLocalDataSourceProvider = Provider<BookmarkLocalDataSource>((ref) {
+final bookmarkLocalDataSourceProvider =
+    Provider<BookmarkLocalDataSource>((ref) {
   return BookmarkLocalDataSource(
       hiveService: ref.read(hiveServiceProvider),
       bookmarkHiveModel: ref.read(bookmarkHiveModelProvider));
@@ -41,7 +41,7 @@ class BookmarkLocalDataSource {
       // Get all bookmarkes from Hive
       final bookmarks = await hiveService.getAllBookmarks();
       // Convert Hive Object to Entity
-      final bookmarkEntities = bookmarkHiveModel.toEntityList(bookmarks);
+      final bookmarkEntities = BookmarkHiveModel.toEntityList(bookmarks);
       return Right(bookmarkEntities);
     } catch (e) {
       return Left(Failure(error: e.toString()));

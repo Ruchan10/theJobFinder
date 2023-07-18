@@ -10,17 +10,25 @@ import '../../config/constants/hive_table_constant.dart';
 final hiveServiceProvider = Provider<HiveService>((ref) => HiveService());
 
 class HiveService {
+  // get hiveService => null;
+
   Future<void> init() async {
     var directory = await getApplicationDocumentsDirectory();
     Hive.init(directory.path);
 
     // Register Adapters
     Hive.registerAdapter(StudentHiveModelAdapter());
+    Hive.registerAdapter(BookmarkHiveModelAdapter());
+    Hive.registerAdapter(JobHiveModelAdapter());
+
+    // Add dummy data
+    await addDummyBookmark();
+    await addDummyJob();
   }
 
   // Bookmark Dummy Data
-  Future<void> addDummybatch() async {
-    // check of batch box is empty
+  Future<void> addDummyBookmark() async {
+    // check of bookmark box is empty
     var box =
         await Hive.openBox<BookmarkHiveModel>(HiveTableConstant.bookmarkBox);
     if (box.isEmpty) {
@@ -42,9 +50,39 @@ class HiveService {
 
       List<BookmarkHiveModel> bookmarks = [b1, b2, b0];
 
-      // Insert batch with key
+      // Insert bookmark with key
       for (var bookmark in bookmarks) {
         await addBookmark(bookmark);
+      }
+    }
+  }
+
+  // Job Dummy Data
+  Future<void> addDummyJob() async {
+    // check of bookmark box is empty
+    var box = await Hive.openBox<JobHiveModel>(HiveTableConstant.jobBox);
+    if (box.isEmpty) {
+      final j1 = JobHiveModel(
+          title: 'job0',
+          company: 'Apple',
+          desc: 'Full Time',
+          location: 'Apple Park');
+      final j0 = JobHiveModel(
+          title: 'job1',
+          company: 'Microsoft',
+          desc: 'Part Time',
+          location: 'Micro Park');
+      final j2 = JobHiveModel(
+          title: 'job2',
+          company: 'Tesla',
+          desc: 'Full Time',
+          location: 'Tesla Park');
+
+      List<JobHiveModel> jobs = [j1, j2, j0];
+
+      // Insert bookmark with key
+      for (var job in jobs) {
+        await addJob(job);
       }
     }
   }
@@ -95,9 +133,20 @@ class HiveService {
     await Hive.deleteFromDisk();
   }
 
-  addBookmark(BookmarkHiveModel hiveBookmark) {}
+// Bookmark queries
+  Future<void> addBookmark(BookmarkHiveModel bookmark) async {
+    var box =
+        await Hive.openBox<BookmarkHiveModel>(HiveTableConstant.bookmarkBox);
+    await box.put(bookmark.bookmarkId, bookmark);
+  }
 
-  getAllBookmarks() {}
+  Future<List<BookmarkHiveModel>> getAllBookmarks() async {
+    var box =
+        await Hive.openBox<BookmarkHiveModel>(HiveTableConstant.bookmarkBox);
+    var bookmarks = box.values.toList();
+    box.close();
+    return bookmarks;
+  }
 
 // Job Queries
   Future<void> addJob(JobHiveModel job) async {

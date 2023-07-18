@@ -18,114 +18,115 @@ class _SearchViewState extends ConsumerState<SearchView> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     var jobState = ref.watch(jobViewModelProvider);
-    print("JOB STATE:- ");
-    print(jobState.jobs);
 
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            SizedBox(
-              // height: height * .15,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          setState(() {});
-                        },
-                        icon: const Icon(Icons.arrow_back),
-                      ),
-                      const Spacer(),
-                      const Text(
-                        "Search",
-                        style: TextStyle(
-                          fontSize: 26,
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              SizedBox(
+                // height: height * .15,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            setState(() {});
+                          },
+                          icon: const Icon(Icons.arrow_back),
                         ),
-                      ),
-                      const Spacer(),
-                      IconButton(
-                        onPressed: () {
-                          setState(() {});
-                        },
-                        icon: const Icon(Icons.notifications_outlined),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          setState(() {});
-                        },
-                        icon: const Icon(Icons.settings_outlined),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: height * 0.03),
-                  SizedBox(
-                    width: width * .7,
-                    child: const TextField(
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        contentPadding: EdgeInsets.only(
-                            top: 20), // add padding to adjust text
+                        const Spacer(),
+                        const Text(
+                          "Search",
+                          style: TextStyle(
+                            fontSize: 26,
+                          ),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                          onPressed: () {
+                            setState(() {});
+                          },
+                          icon: const Icon(Icons.notifications_outlined),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            setState(() {});
+                          },
+                          icon: const Icon(Icons.settings_outlined),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: height * 0.03),
+                    SizedBox(
+                      width: width * .7,
+                      child: const TextField(
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: EdgeInsets.only(
+                              top: 20), // add padding to adjust text
 
-                        labelText: "Search",
-                        prefixIcon: Padding(
-                          padding:
-                              EdgeInsets.all(1), // add padding to adjust icon
-                          child: Icon(Icons.search),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(width: 1, color: Colors.black),
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(50),
+                          labelText: "Search",
+                          prefixIcon: Padding(
+                            padding:
+                                EdgeInsets.all(1), // add padding to adjust icon
+                            child: Icon(Icons.search),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                                BorderSide(width: 1, color: Colors.black),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(50),
+                            ),
                           ),
                         ),
                       ),
                     ),
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      setState(() {});
+                    },
+                    icon: const Icon(Icons.filter_list_sharp),
                   ),
+                  SizedBox(width: width * .04),
+                  getPillBtn("All",
+                      color: const Color.fromARGB(255, 184, 245, 187)),
+                  SizedBox(width: width * .04),
+                  getPillBtn("Part Time"),
+                  SizedBox(width: width * .04),
+                  getPillBtn("10-50k"),
                 ],
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    setState(() {});
-                  },
-                  icon: const Icon(Icons.filter_list_sharp),
-                ),
-                SizedBox(width: width * .04),
-                getPillBtn("All",
-                    color: const Color.fromARGB(255, 184, 245, 187)),
-                SizedBox(width: width * .04),
-                getPillBtn("Part Time"),
-                SizedBox(width: width * .04),
-                getPillBtn("10-50k"),
-              ],
-            ),
-            SizedBox(height: height * 0.02),
-            // Column(
-            //   children: [
-            //     if (jobState.isLoading) ...{
-            //       const Center(child: CircularProgressIndicator()),
-            //     } else if (jobState.error != null) ...{
-            //       Text(jobState.error.toString()),
-            //     } else if (jobState.jobs.isEmpty) ...{
-            //       const Center(child: Text('No Jobs')),
-            //     } else ...{
-            //       Flexible(
-            //         child: JobWidget(ref: ref, jobList: jobState.jobs),
-            //       ),
-            //     }
-            //   ],
-            // ),
-            Flexible(
-              child: JobWidget(ref: ref, jobList: jobState.jobs),
-            ),
-          ],
+              SizedBox(height: height * 0.02),
+              // Column(
+              //   children: [
+              //     if (jobState.isLoading) ...{
+              //       const Center(child: CircularProgressIndicator()),
+              //     } else if (jobState.error != null) ...{
+              //       Text(jobState.error.toString()),
+              //     } else if (jobState.jobs.isEmpty) ...{
+              //       const Center(child: Text('No Jobs')),
+              //     } else ...{
+              //       Flexible(
+              //         child: JobWidget(ref: ref, jobList: jobState.jobs),
+              //       ),
+              //     }
+              //   ],
+              // ),
+              Flexible(
+                child: JobWidget(ref: ref, jobList: jobState.jobs),
+              ),
+            ],
+          ),
         ),
       ),
     );

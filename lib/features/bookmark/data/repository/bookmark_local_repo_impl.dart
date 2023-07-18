@@ -29,10 +29,4 @@ class BookmarkLocalRepositoryImpl implements IBookmarkRepository {
     return bookmarkLocalDataSource.getAllBookmarks();
   }
 
-  // @override
-  // Future<Either<Failure, List<AuthEntity>>> getAllUsersByBookmark(
-  //     String bookmarkId) {
-  //   // TODO: implement getAllUsersByBookmark
-  //   throw UnimplementedError();
-  // }
 }

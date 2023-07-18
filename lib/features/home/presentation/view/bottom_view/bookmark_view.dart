@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:the_job_finder/widgets/company_card.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class bookmarkView extends StatefulWidget {
-  const bookmarkView({super.key});
+import '../../../../bookmark/presentation/viewmodel/bookmark_view_model.dart';
+import '../../../../bookmark/presentation/widget/bookmark_widget.dart';
+
+class BookmarkView extends ConsumerStatefulWidget {
+  const BookmarkView({super.key});
 
   @override
-  State<bookmarkView> createState() => _bookmarkViewState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _BookmarkViewState();
 }
 
-class _bookmarkViewState extends State<bookmarkView> {
+class _BookmarkViewState extends ConsumerState<BookmarkView> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    var bookmarkState = ref.watch(bookmarkViewModelProvider);
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -82,35 +87,9 @@ class _bookmarkViewState extends State<bookmarkView> {
                 ),
               ),
               SizedBox(height: height * 0.02),
-              Positioned(
-                child: SizedBox(
-                  height: height * .702,
-                  child: Column(
-                    children: [
-                      getCompanyCard(
-                          context,
-                          "Apple",
-                          "Software Engineer",
-                          "1 Infinite Loop, Cupertino, California",
-                          "Full Time"),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: height * .04),
-              Positioned(
-                child: Container(
-                  width: double.infinity,
-                  height: height * .08,
-                  alignment: Alignment.bottomCenter,
-                  decoration: const BoxDecoration(
-                    color: Color.fromARGB(255, 143, 243, 146),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                  ),
-                ),
+              Flexible(
+                child: BookmarkWidget(
+                    ref: ref, bookmarkList: bookmarkState.bookmarks),
               ),
             ],
           ),

@@ -23,7 +23,9 @@ class JobUseCase {
   Future<Either<Failure, bool>> addJob(JobEntity job) {
     return jobRepository.addJob(job);
   }
-
+  Future<Either<Failure, bool>> removeBookmark(String id) async {
+    return jobRepository.removeBookmark(id);
+  }
   // Future<Either<Failure, List<AuthEntity>>> getAllStudentsByJob(String jobId) {
   //   return jobRepository.getAllStudentsByJob(jobId);
   // }

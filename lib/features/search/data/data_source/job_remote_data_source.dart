@@ -85,43 +85,43 @@ class JobRemoteDataSource {
     }
   }
 
-  // Get all students by jobId
-  // Future<Either<Failure, List<AuthEntity>>> getAllStudentsByJob(
-  //     String jobId) async {
-  //   try {
-  //     // get token
-  //     String? token;
-  //     await userSharedPrefs
-  //         .getUserToken()
-  //         .then((value) => value.fold((l) => null, (r) => token = r!));
+  Future<Either<Failure, bool>> removeBookmark(String jobId) async {
+    try {
+      // Get the token from shared prefs
+      String? token;
+      var data = await userSharedPrefs.getUserToken();
+      data.fold(
+        (l) => token = null,
+        (r) => token = r!,
+      );
 
-  //     var response = await dio.get(ApiEndpoints.getStudentsByJob + jobId,
-  //         options: Options(
-  //           headers: {
-  //             'Authorization': 'Bearer $token',
-  //           },
-  //         ));
-  //     if (response.statusCode == 201) {
-  //       GetAllStudentsByJobDTO getAllStudentDTO =
-  //           GetAllStudentsByJobDTO.fromJson(response.data);
-
-  //       return Right(authApiModel.listFromJson(getAllStudentDTO.data));
-  //     } else {
-  //       return Left(
-  //         Failure(
-  //           error: response.statusMessage.toString(),
-  //           statusCode: response.statusCode.toString(),
-  //         ),
-  //       );
-  //     }
-  //   } on DioException catch (e) {
-  //     return Left(
-  //       Failure(
-  //         error: e.error.toString(),
-  //       ),
-  //     );
-  //   }
-  // }
+      Response response = await dio.post(
+        ApiEndpoints.removeBookmark + jobId,
+        options: Options(
+          headers: {
+            'Authorization': '$token',
+          },
+        ),
+      );
+      if (response.statusCode == 200) {
+        return const Right(true);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          error: e.error.toString(),
+          statusCode: e.response?.statusCode.toString() ?? '0',
+        ),
+      );
+    }
+  }
 }
 
 

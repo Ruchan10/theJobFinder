@@ -13,16 +13,16 @@ class ApiEndpoints {
 
   // ====================== Job Routes ======================
   static const String getAllJobs = "jobs/";
-  static const String getJobById = "jobs/id";
-  static const String getJobByTitle = "jobs/getJob";
+  static const String getJobById = "jobs/id/";
+  static const String getJobByTitle = "jobs/getJob/";
   static const String createJob = "jobs/";
   static const String updateJob = "jobs/";
   static const String deleteJob = "jobs/";
-  static const String addBookmark = "jobs/addBookmark";
-  static const String removeBookmark = "jobs/removeBookmark";
-  static const String getBookmark = "jobs/getBookmarked";
+  static const String addBookmark = "jobs/addBookmark/";
+  static const String removeBookmark = "jobs/removeBookmark/";
+  static const String getBookmark = "jobs/getBookmarked/";
 
   // ====================== User Routes ======================
-  static const String getUserDetails = "users/profile";
-  static const String deleteUser = "users/profile";
+  static const String getUserDetails = "users/profile/";
+  static const String deleteUser = "users/profile/";
 }

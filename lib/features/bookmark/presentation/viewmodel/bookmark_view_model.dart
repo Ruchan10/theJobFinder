@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../config/router/app_route.dart';
 import '../../domain/entity/bookmark_entity.dart';
 import '../../domain/use_case/bookmark_use_case.dart';
 import '../state/bookmark_state.dart';

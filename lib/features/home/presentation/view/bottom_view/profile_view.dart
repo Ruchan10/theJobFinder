@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:the_job_finder/widgets/settings_btn.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class profileView extends StatefulWidget {
-  const profileView({super.key});
+import '../../../../../core/common/provider/internet_connectivity.dart';
+import '../../../../../widgets/settings_btn.dart';
+
+class ProfileView extends ConsumerStatefulWidget {
+  const ProfileView({super.key});
 
   @override
-  State<profileView> createState() => _profileViewState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _ProfileViewState();
 }
 
-class _profileViewState extends State<profileView> {
-  var gap0 = const SizedBox(width: 70);
-  var setH = const SizedBox(height: 15);
+class _ProfileViewState extends ConsumerState<ProfileView> {
+  late double screenWidth;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    screenWidth = MediaQuery.of(context).size.width;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final internetStatus = ref.watch(connectivityStatusProvider);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -20,11 +31,14 @@ class _profileViewState extends State<profileView> {
             children: [
               Container(
                 alignment: Alignment.topLeft,
-                child: const Icon(Icons.arrow_back),
+                // padding: const EdgeInsets.all(16.0),
+                child: const Icon(Icons.arrow_back, color: Colors.green),
               ),
               Container(
                 alignment: Alignment.center,
-                child: const Icon(Icons.circle_outlined, size: 150),
+                padding: const EdgeInsets.all(16.0),
+                child: const Icon(Icons.circle_outlined,
+                    size: 150, color: Color.fromARGB(255, 167, 239, 170)),
               ),
               const Text(
                 "User Name",
@@ -33,34 +47,35 @@ class _profileViewState extends State<profileView> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               getSettingsBtn(
-                "Edit Profile",
-                const Icon(Icons.person_2_outlined, size: 30),
+                text: "Edit Profile",
+                icon: const Icon(Icons.person_2_outlined,
+                    size: 40, color: Colors.purple),
               ),
-              setH,
+              const SizedBox(height: 15),
               getSettingsBtn(
-                "Applications",
-                const Icon(Icons.dashboard_customize_outlined, size: 30),
+                text: "Applications",
+                icon: const Icon(Icons.dashboard_customize_outlined,
+                    size: 40, color: Colors.green),
               ),
-              setH,
+              const SizedBox(height: 15),
               getSettingsBtn(
-                "Notifications",
-                const Icon(Icons.notifications, size: 30),
+                text: "Notifications",
+                icon: const Icon(Icons.notifications,
+                    size: 40, color: Colors.brown),
               ),
-              setH,
+              const SizedBox(height: 15),
               getSettingsBtn(
-                "Delete Account",
-                const Icon(Icons.delete, size: 30),
+                text: "Delete Account",
+                icon: const Icon(Icons.delete, size: 40, color: Colors.red),
               ),
-              setH,
+              const SizedBox(height: 15),
               getSettingsBtn(
-                "Share App",
-                const Icon(Icons.share, size: 30),
+                text: "Share App",
+                icon: const Icon(Icons.share, size: 40, color: Colors.yellow),
               ),
-              setH,
+              const SizedBox(height: 15),
               Row(
                 children: [
                   const SizedBox(width: 70),
@@ -73,32 +88,28 @@ class _profileViewState extends State<profileView> {
                   ),
                   Container(
                     height: 70,
-                    width: 110,
+                    width: screenWidth * 0.3,
+                    margin: const EdgeInsets.symmetric(horizontal: 16.0),
                     decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 1,
-                      ),
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(10),
-                      ),
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.edit_document),
-                        Text("Upload Here"),
+                        Icon(Icons.edit_document, color: Colors.white),
+                        Text("Upload Here",
+                            style: TextStyle(color: Colors.white)),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
-              setH,
-              setH,
+              const SizedBox(height: 15),
+              const SizedBox(height: 15),
               getSettingsBtn(
-                "Log Out",
-                const Icon(Icons.logout, size: 30),
+                text: "Log Out",
+                icon: const Icon(Icons.logout, size: 50, color: Colors.red),
               ),
             ],
           ),

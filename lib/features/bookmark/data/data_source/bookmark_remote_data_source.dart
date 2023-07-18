@@ -57,30 +57,26 @@ class BookmarkRemoteDataSource {
 
   Future<Either<Failure, List<BookmarkEntity>>> getAllBookmarks() async {
     try {
-      // Get the token from shared prefs
-      String? token;
-      var data = await userSharedPrefs.getUserToken();
-      data.fold(
-        (l) => token = null,
-        (r) => token = r!,
-      );
-      var response = await dio.get(
+      final tokenOption = await userSharedPrefs.getUserToken();
+      final token = tokenOption.getOrElse(() => null);
+
+      final response = await dio.get(
         ApiEndpoints.getBookmark,
         options: Options(
           headers: {
-            // CHANGE THE TOKEN LATER
             'Authorization': '$token',
           },
         ),
       );
+
       if (response.statusCode == 200) {
-        GetAllBookmarkDTO bookmarkAddDTO =
-            GetAllBookmarkDTO.fromJson(response.data);
-        return Right(bookmarkApiModel.toEntityList(bookmarkAddDTO.data));
+        final bookmarkAddDTO = GetAllBookmarkDTO.fromJson(response.data);
+        final entities = bookmarkApiModel.toEntityList(bookmarkAddDTO.data);
+        return Right(entities);
       } else {
         return Left(
           Failure(
-            error: response.statusMessage.toString(),
+            error: 'Failed to retrieve bookmarks. ${response.statusCode}',
             statusCode: response.statusCode.toString(),
           ),
         );
@@ -88,7 +84,7 @@ class BookmarkRemoteDataSource {
     } on DioException catch (e) {
       return Left(
         Failure(
-          error: e.error.toString(),
+          error: 'Failed to retrieve bookmarks. ${e.error.toString()}',
         ),
       );
     }

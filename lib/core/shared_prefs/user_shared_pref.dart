@@ -30,4 +30,15 @@ class UserSharedPrefs {
       return left(Failure(error: e.toString()));
     }
   }
+
+  // Delete token
+  Future<Either<Failure, bool>> deleteUserToken() async {
+    try {
+      _sharedPreferences = await SharedPreferences.getInstance();
+      await _sharedPreferences.remove('token');
+      return right(true);
+    } catch (e) {
+      return left(Failure(error: e.toString()));
+    }
+  }
 }

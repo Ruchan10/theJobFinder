@@ -46,8 +46,9 @@ class BookmarkHiveModel {
       );
 
   // Convert Hive List to Entity List
-  List<BookmarkEntity> toEntityList(List<BookmarkHiveModel> models) =>
+  static List<BookmarkEntity> toEntityList(List<BookmarkHiveModel> models) =>
       models.map((model) => model.toEntity()).toList();
+      
   // Convert Entity to Hive Object
   BookmarkHiveModel toHiveModel(BookmarkEntity entity) => BookmarkHiveModel(
         // bookmarkId: entity.bookmarkId,
