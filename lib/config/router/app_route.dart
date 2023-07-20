@@ -26,12 +26,12 @@ class AppRoute {
       bookmarkRoute: (context) => const BookmarkView(),
       dashboardRoute: (context) => const dashBoardView(),
       loginRoute: (context) => const LoginView(),
-      jobRoute: (context) => const AddJobView(),
+      jobRoute: (context) => const SearchView(),
       homeRoute: (context) => const homeView(),
       profileRoute: (context) => const ProfileView(),
       searchRoute: (context) => const SearchView(),
       signupRoute: (context) => const SignupView(),
-      testRoute: (context) => const AddJobView(),
+      testRoute: (context) => const TestView(),
     };
   }
 }

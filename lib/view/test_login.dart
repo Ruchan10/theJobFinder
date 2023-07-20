@@ -1,90 +1,60 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:the_job_finder/view/test_view.dart';
 
-class AddJobView extends ConsumerStatefulWidget {
-  const AddJobView({super.key});
+import '../features/home/presentation/view/bottom_view/bookmark_view.dart';
+import '../features/home/presentation/view/bottom_view/home_view.dart';
+import '../features/home/presentation/view/bottom_view/profile_view.dart';
+import '../features/home/presentation/view/bottom_view/search_view.dart';
+
+class TestView extends StatefulWidget {
+  const TestView({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _AddJobViewState();
+  State<TestView> createState() => _TestViewState();
 }
 
-class _AddJobViewState extends ConsumerState<AddJobView> {
-  TextEditingController title = TextEditingController();
-  TextEditingController desc = TextEditingController();
-  TextEditingController company = TextEditingController();
-  TextEditingController location = TextEditingController();
+class _TestViewState extends State<TestView> {
+  int bottomNavIndex = 0; //default index of a first screen
+  final iconList = <IconData>[
+    Icons.home,
+    Icons.bookmark,
+    Icons.search,
+    Icons.person,
+  ];
+  void onTabTapped(int index) {
+    setState(() {
+      bottomNavIndex = index;
+    });
+  }
+
+  List lstBottomScreen = [
+    const homeView(),
+    const BookmarkView(),
+    const SearchView(),
+    const ProfileView(),
+  ];
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     return Scaffold(
-        extendBody: true,
-        backgroundColor: Colors.green,
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                SizedBox(
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {
-                              setState(() {});
-                            },
-                            icon: const Icon(Icons.arrow_back),
-                          ),
-                          const Spacer(),
-                          const Text(
-                            "Add Job",
-                            style: TextStyle(
-                              fontSize: 26,
-                            ),
-                          ),
-                          const Spacer(),
-                          IconButton(
-                            onPressed: () {
-                              setState(() {});
-                            },
-                            icon: const Icon(Icons.notifications_outlined),
-                          ),
-                          IconButton(
-                            onPressed: () {
-                              setState(() {});
-                            },
-                            icon: const Icon(Icons.settings_outlined),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: height * 0.03),
-                    ],
-                  ),
-                ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: 131,
-                      height: 39,
-                      child: Text(
-                        'Add Job',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 35,
-                          fontFamily: 'IM FELL English',
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-        bottomNavigationBar: const BottomNavBarCurvedFb1());
+      body: lstBottomScreen[bottomNavIndex],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: const Color.fromARGB(255, 106, 180, 108),
+        elevation: 12,
+        child: const Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: AnimatedBottomNavigationBar(
+        activeColor: Colors.green,
+        icons: iconList,
+        backgroundColor: const Color.fromARGB(255, 180, 239, 181),
+        splashColor: const Color.fromARGB(255, 0, 116, 8),
+        splashSpeedInMilliseconds: 600,
+        activeIndex: bottomNavIndex,
+        gapLocation: GapLocation.center,
+        notchSmoothness: NotchSmoothness.softEdge,
+        onTap: onTabTapped,
+      ),
+    );
   }
 }
