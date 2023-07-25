@@ -74,7 +74,7 @@ class _AddJobViewState extends ConsumerState<AddJobView> {
             } else if (jobState.error != null) ...{
               Text(jobState.error.toString()),
             } else if (jobState.jobs.isEmpty) ...{
-              const Center(child: Text('No Jobes')),
+              const Center(child: Text('No Jobs')),
             } else ...{
               Flexible(
                 child: JobWidget(ref: ref, jobList: jobState.jobs),

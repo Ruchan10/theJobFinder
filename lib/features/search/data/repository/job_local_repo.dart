@@ -34,6 +34,12 @@ class JobLocalRepositoryImpl implements IJobRepository {
     // TODO: implement removeBookmark
     throw UnimplementedError();
   }
+  
+  @override
+  Future<Either<Failure, bool>> addBookmark(String id) {
+    // TODO: implement addBookmark
+    throw UnimplementedError();
+  }
 
 
 }

@@ -60,4 +60,25 @@ class JobViewModel extends StateNotifier<JobState> {
       },
     );
   }
+
+  Future<void> addBookmark(BuildContext context, JobEntity job) async {
+    state.copyWith(isLoading: true);
+    var data = await jobUseCase.addBookmark(job.jobId!);
+
+    data.fold(
+      (l) {
+        showSnackBar(message: l.error, context: context, color: Colors.red);
+
+        state = state.copyWith(isLoading: false, error: l.error);
+      },
+      (r) {
+        state.jobs.remove(job);
+        state = state.copyWith(isLoading: false, error: null);
+        showSnackBar(
+          message: 'Bookmark Added',
+          context: context,
+        );
+      },
+    );
+  }
 }

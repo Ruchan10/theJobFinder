@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../features/bookmark/domain/entity/bookmark_entity.dart';
 import '../features/search/presentation/viewmodel/job_view_model.dart';
+
+bool isBookmarkIcon(IconData? icon) {
+  return icon == Icons.bookmark || icon == Icons.bookmark_outline;
+}
 
 Widget getCompanyCard(
     {required BuildContext context,
@@ -47,10 +50,18 @@ Widget getCompanyCard(
                 ),
                 IconButton(
                   onPressed: () {
-                    Navigator.pop(context);
-                    ref
-                        .read(jobViewModelProvider.notifier)
-                        .removeBookmark(context, list[index]);
+                    if (isBookmarkIcon(icon.icon)) {
+                      print(list[index].jobId);
+                      ref
+                          .read(jobViewModelProvider.notifier)
+                          .addBookmark(context, list[index]);
+                    } else {
+                      print("SHould be remove?");
+
+//  ref
+                      // .read(jobViewModelProvider.notifier)
+                      // .removeBookmark(context, list[index]);
+                    }
                   },
                   icon: icon,
                 ),

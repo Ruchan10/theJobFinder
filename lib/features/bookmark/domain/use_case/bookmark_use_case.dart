@@ -23,7 +23,9 @@ class BookmarkUseCase {
   Future<Either<Failure, bool>> addBookmark(BookmarkEntity bookmark) {
     return bookmarkRepository.addBookmark(bookmark);
   }
-
+  // Future<Either<Failure, bool>> removeBookmark(BookmarkEntity bookmark) {
+  //   return bookmarkRepository.removeBookmark(bookmark);
+  // }
   // Future<Either<Failure, List<AuthEntity>>> getAllStudentsByBookmark(String bookmarkId) {
   //   return bookmarkRepository.getAllStudentsByBookmark(bookmarkId);
   // }
