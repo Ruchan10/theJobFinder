@@ -31,7 +31,7 @@ class AppRoute {
       profileRoute: (context) => const ProfileView(),
       searchRoute: (context) => const SearchView(),
       signupRoute: (context) => const SignupView(),
-      testRoute: (context) => const TestView(),
+      // testRoute: (context) => const TestView(),
     };
   }
 }

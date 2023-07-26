@@ -1,3 +1,4 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:the_job_finder/features/home/presentation/view/bottom_view/search_view.dart';
 
@@ -13,7 +14,19 @@ class dashBoardView extends StatefulWidget {
 }
 
 class _dashBoardViewState extends State<dashBoardView> {
-  int _selectedIndex = 0;
+  int bottomNavIndex = 0; //default index of a first screen
+  final iconList = <IconData>[
+    Icons.home,
+    Icons.bookmark,
+    Icons.search,
+    Icons.person,
+  ];
+  void onTabTapped(int index) {
+    setState(() {
+      bottomNavIndex = index;
+    });
+  }
+
   List lstBottomScreen = [
     const homeView(),
     const BookmarkView(),
@@ -24,32 +37,25 @@ class _dashBoardViewState extends State<dashBoardView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: lstBottomScreen[_selectedIndex],
+      body: lstBottomScreen[bottomNavIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: const Color.fromARGB(255, 106, 180, 108),
-        elevation: 12,
+        elevation: 1,
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          selectedItemColor: const Color.fromARGB(255, 101, 180, 103),
-          unselectedItemColor: Colors.black,
-          type: BottomNavigationBarType.fixed,
-          items: const [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person), label: 'Bookmarks'),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-          ],
-          currentIndex: _selectedIndex,
-          onTap: (index) {
-            setState(() {
-              _selectedIndex = index;
-            });
-          }),
+      bottomNavigationBar: AnimatedBottomNavigationBar(
+        activeColor: Colors.green,
+        icons: iconList,
+        backgroundColor: const Color.fromARGB(255, 180, 239, 181),
+        splashColor: const Color.fromARGB(255, 0, 116, 8),
+        splashSpeedInMilliseconds: 600,
+        activeIndex: bottomNavIndex,
+        gapLocation: GapLocation.center,
+        notchSmoothness: NotchSmoothness.softEdge,
+        onTap: onTabTapped,
+      ),
     );
   }
 }

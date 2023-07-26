@@ -1,60 +1,73 @@
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../features/home/presentation/view/bottom_view/bookmark_view.dart';
-import '../features/home/presentation/view/bottom_view/home_view.dart';
-import '../features/home/presentation/view/bottom_view/profile_view.dart';
-import '../features/home/presentation/view/bottom_view/search_view.dart';
+class PasswordInput extends StatefulWidget {
+  final String hintText;
+  final TextEditingController textEditingController;
 
-class TestView extends StatefulWidget {
-  const TestView({super.key});
+  const PasswordInput(
+      {required this.textEditingController, required this.hintText, Key? key})
+      : super(key: key);
 
   @override
-  State<TestView> createState() => _TestViewState();
+  State<PasswordInput> createState() => _PasswordInputState();
 }
 
-class _TestViewState extends State<TestView> {
-  int bottomNavIndex = 0; //default index of a first screen
-  final iconList = <IconData>[
-    Icons.home,
-    Icons.bookmark,
-    Icons.search,
-    Icons.person,
-  ];
-  void onTabTapped(int index) {
-    setState(() {
-      bottomNavIndex = index;
-    });
-  }
-
-  List lstBottomScreen = [
-    const homeView(),
-    const BookmarkView(),
-    const SearchView(),
-    const ProfileView(),
-  ];
+class _PasswordInputState extends State<PasswordInput> {
+  bool pwdVisibility = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: lstBottomScreen[bottomNavIndex],
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: const Color.fromARGB(255, 106, 180, 108),
-        elevation: 12,
-        child: const Icon(Icons.add),
+    return TextFormField(
+      controller: widget.textEditingController,
+      obscureText: !pwdVisibility,
+      decoration: InputDecoration(
+        hintText: widget.hintText,
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.grey,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(25.0),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.red,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(25.0),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.red,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(25.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.grey,
+            width: 1,
+          ),
+          borderRadius: BorderRadius.circular(25.0),
+        ),
+        suffixIcon: InkWell(
+          onTap: () => setState(
+            () => pwdVisibility = !pwdVisibility,
+          ),
+          child: Icon(
+            pwdVisibility
+                ? Icons.visibility_outlined
+                : Icons.visibility_off_outlined,
+            color: Colors.grey.shade400,
+            size: 18,
+          ),
+        ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: AnimatedBottomNavigationBar(
-        activeColor: Colors.green,
-        icons: iconList,
-        backgroundColor: const Color.fromARGB(255, 180, 239, 181),
-        splashColor: const Color.fromARGB(255, 0, 116, 8),
-        splashSpeedInMilliseconds: 600,
-        activeIndex: bottomNavIndex,
-        gapLocation: GapLocation.center,
-        notchSmoothness: NotchSmoothness.softEdge,
-        onTap: onTabTapped,
-      ),
+      validator: (val) {
+        if (val!.isEmpty) {
+          return 'Required';
+        }
+        return null;
+      },
     );
   }
 }

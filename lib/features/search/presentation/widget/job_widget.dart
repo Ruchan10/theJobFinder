@@ -4,7 +4,6 @@ import 'package:the_job_finder/widgets/company_card.dart';
 
 import '../../../../core/shared_prefs/user_shared_pref.dart';
 import '../../domain/entity/job_entity.dart';
-import '../viewmodel/job_view_model.dart';
 
 // final userSharedPrefsProvider = Provider<UserSharedPrefs>((ref) {
 //   return UserSharedPrefs();
@@ -36,7 +35,6 @@ class JobWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final currentUserIdAsyncValue = ref.watch(currentUserIdProvider);
     print("currentUserId");
     print(currentUserIdAsyncValue);
@@ -68,8 +66,10 @@ class JobWidget extends StatelessWidget {
                   ref: ref,
                   list: jobList,
                   index: index,
-                  bookmarked: isBookmarked,fromBookmark:false,
+                  bookmarked: isBookmarked,
+                  fromBookmark: false,
                 ),
+                const SizedBox(height: 7),
               ],
             );
           },
