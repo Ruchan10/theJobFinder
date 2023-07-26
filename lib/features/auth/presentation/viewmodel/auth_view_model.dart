@@ -38,6 +38,8 @@ class AuthViewModel extends StateNotifier<AuthState> {
       BuildContext context, String username, String password) async {
     state = state.copyWith(isLoading: true);
     var data = await _authUseCase.loginStudent(username, password);
+    print("DATA");
+    print(data);
     data.fold(
       (failure) {
         state = state.copyWith(isLoading: false, error: failure.error);
@@ -49,10 +51,8 @@ class AuthViewModel extends StateNotifier<AuthState> {
       (success) {
         state = state.copyWith(isLoading: false, error: null);
         showSnackBar(
-            message: 'Login Successful',
-            context: context,
-            color: Colors.red);
-        Navigator.popAndPushNamed(context, '/dashboardRoute');
+            message: 'Login Successful', context: context, color: Colors.red);
+        Navigator.popAndPushNamed(context, AppRoute.dashboardRoute);
       },
     );
 

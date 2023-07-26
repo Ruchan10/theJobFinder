@@ -21,7 +21,10 @@ class BookmarkRemoteRepositoryImpl implements IBookmarkRepository {
   Future<Either<Failure, bool>> addBookmark(BookmarkEntity bookmark) {
     return bookmarkRemoteDataSource.addBookmark(bookmark);
   }
-
+  @override
+  Future<Either<Failure, bool>> removeBookmark(String id) {
+    return bookmarkRemoteDataSource.removeBookmark(id);
+  }
   @override
   Future<Either<Failure, List<BookmarkEntity>>> getAllBookmarks() {
     return bookmarkRemoteDataSource.getAllBookmarks();

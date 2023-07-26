@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:the_job_finder/features/bookmark/domain/entity/bookmark_entity.dart';
 
 import '../../../../core/common/snackbar/my_snackbar.dart';
 import '../../domain/entity/job_entity.dart';
@@ -40,9 +39,9 @@ class JobViewModel extends StateNotifier<JobState> {
     );
   }
 
-  Future<void> removeBookmark(BuildContext context, BookmarkEntity job) async {
+  Future<void> removeBookmark(BuildContext context, JobEntity job) async {
     state.copyWith(isLoading: true);
-    var data = await jobUseCase.removeBookmark(job.bookmarkId!);
+    var data = await jobUseCase.removeBookmark(job.jobId!);
 
     data.fold(
       (l) {
@@ -51,7 +50,7 @@ class JobViewModel extends StateNotifier<JobState> {
         state = state.copyWith(isLoading: false, error: l.error);
       },
       (r) {
-        state.jobs.remove(job);
+        // state.jobs.remove(job);
         state = state.copyWith(isLoading: false, error: null);
         showSnackBar(
           message: 'Bookmark Removed',
@@ -72,7 +71,7 @@ class JobViewModel extends StateNotifier<JobState> {
         state = state.copyWith(isLoading: false, error: l.error);
       },
       (r) {
-        state.jobs.remove(job);
+        // state.jobs.remove(job);
         state = state.copyWith(isLoading: false, error: null);
         showSnackBar(
           message: 'Bookmark Added',

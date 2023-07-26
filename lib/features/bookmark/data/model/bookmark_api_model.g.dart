@@ -13,6 +13,16 @@ BookmarkApiModel _$BookmarkApiModelFromJson(Map<String, dynamic> json) =>
       desc: json['desc'] as String,
       company: json['company'] as String,
       location: json['location'] as String,
+      logo: json['logo'] as String,
+      postedBy: json['postedBy'] as String,
+      bookmarkedBy: (json['bookmarkedBy'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+      appliedBy:
+          (json['appliedBy'] as List<dynamic>).map((e) => e as String).toList(),
+      acceptedUser: (json['acceptedUser'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$BookmarkApiModelToJson(BookmarkApiModel instance) =>
@@ -22,4 +32,9 @@ Map<String, dynamic> _$BookmarkApiModelToJson(BookmarkApiModel instance) =>
       'desc': instance.desc,
       'company': instance.company,
       'location': instance.location,
+      'logo': instance.logo,
+      'postedBy': instance.postedBy,
+      'bookmarkedBy': instance.bookmarkedBy,
+      'appliedBy': instance.appliedBy,
+      'acceptedUser': instance.acceptedUser,
     };

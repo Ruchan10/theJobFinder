@@ -23,10 +23,29 @@ class BookmarkHiveModel {
   final String company;
   @HiveField(4)
   final String location;
-
+  @HiveField(5)
+  final String logo;
+  @HiveField(6)
+  final String postedBy;
+  @HiveField(7)
+  final List<String> appliedBy;
+  @HiveField(8)
+  final List<String> bookmarkedBy;
+  @HiveField(9)
+  final List<String> acceptedUser;
   // empty constructor
   BookmarkHiveModel.empty()
-      : this(bookmarkId: '', title: '', desc: '', location: '', company: '');
+      : this(
+            bookmarkId: '',
+            title: '',
+            desc: '',
+            location: '',
+            company: '',
+            logo: '',
+            postedBy: '',
+            appliedBy: [],
+            bookmarkedBy: [],
+            acceptedUser: []);
 
   BookmarkHiveModel({
     String? bookmarkId,
@@ -34,6 +53,11 @@ class BookmarkHiveModel {
     required this.desc,
     required this.company,
     required this.location,
+    required this.logo,
+    required this.postedBy,
+    required this.appliedBy,
+    required this.bookmarkedBy,
+    required this.acceptedUser,
   }) : bookmarkId = bookmarkId ?? const Uuid().v4();
 
   // Convert Hive Object to Entity
@@ -43,12 +67,17 @@ class BookmarkHiveModel {
         desc: desc,
         location: location,
         company: company,
+        logo: logo,
+        postedBy: postedBy,
+        appliedBy: appliedBy,
+        acceptedUser: acceptedUser,
+        bookmarkedBy: bookmarkedBy,
       );
 
   // Convert Hive List to Entity List
   static List<BookmarkEntity> toEntityList(List<BookmarkHiveModel> models) =>
       models.map((model) => model.toEntity()).toList();
-      
+
   // Convert Entity to Hive Object
   BookmarkHiveModel toHiveModel(BookmarkEntity entity) => BookmarkHiveModel(
         // bookmarkId: entity.bookmarkId,
@@ -56,6 +85,11 @@ class BookmarkHiveModel {
         desc: entity.desc,
         company: entity.company,
         location: entity.location,
+        logo: entity.logo,
+        postedBy: entity.postedBy,
+        appliedBy: entity.appliedBy,
+        acceptedUser: entity.acceptedUser,
+        bookmarkedBy: entity.bookmarkedBy,
       );
 
   List<BookmarkHiveModel> toHiveModelList(List<BookmarkEntity> entities) =>
@@ -63,6 +97,6 @@ class BookmarkHiveModel {
 
   @override
   String toString() {
-    return 'bookmarkId: $bookmarkId,  title: $title, desc:$desc, company:$company, location:$location';
+    return 'bookmarkId: $bookmarkId,  title: $title, desc:$desc, company:$company, location:$location,postedBy:$postedBy,appliedBy:$appliedBy,acceptedUser:$acceptedUser,bookmarkedBy:$bookmarkedBy';
   }
 }

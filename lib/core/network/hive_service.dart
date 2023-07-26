@@ -32,28 +32,28 @@ class HiveService {
     var box =
         await Hive.openBox<BookmarkHiveModel>(HiveTableConstant.bookmarkBox);
     if (box.isEmpty) {
-      final b1 = BookmarkHiveModel(
-          title: 'Test0',
-          company: 'Apple',
-          desc: 'Testing...',
-          location: 'Apple Park');
-      final b0 = BookmarkHiveModel(
-          title: 'Test1',
-          company: 'Microsoft',
-          desc: 'Testing0...',
-          location: 'Micro Park');
-      final b2 = BookmarkHiveModel(
-          title: 'Test2',
-          company: 'Tesla',
-          desc: 'Testing1....',
-          location: 'Tesla Park');
+      // final b1 = BookmarkHiveModel(
+      //     title: 'Test0',
+      //     company: 'Apple',
+      //     desc: 'Testing...',
+      //     location: 'Apple Park');
+      // final b0 = BookmarkHiveModel(
+      //     title: 'Test1',
+      //     company: 'Microsoft',
+      //     desc: 'Testing0...',
+      //     location: 'Micro Park');
+      // final b2 = BookmarkHiveModel(
+      //     title: 'Test2',
+      //     company: 'Tesla',
+      //     desc: 'Testing1....',
+      //     location: 'Tesla Park');
 
-      List<BookmarkHiveModel> bookmarks = [b1, b2, b0];
+      // List<BookmarkHiveModel> bookmarks = [b1, b2, b0];
 
       // Insert bookmark with key
-      for (var bookmark in bookmarks) {
-        await addBookmark(bookmark);
-      }
+      // for (var bookmark in bookmarks) {
+      //   await addBookmark(bookmark);
+      // }
     }
   }
 
@@ -62,28 +62,28 @@ class HiveService {
     // check of bookmark box is empty
     var box = await Hive.openBox<JobHiveModel>(HiveTableConstant.jobBox);
     if (box.isEmpty) {
-      final j1 = JobHiveModel(
-          title: 'job0',
-          company: 'Apple',
-          desc: 'Full Time',
-          location: 'Apple Park');
-      final j0 = JobHiveModel(
-          title: 'job1',
-          company: 'Microsoft',
-          desc: 'Part Time',
-          location: 'Micro Park');
-      final j2 = JobHiveModel(
-          title: 'job2',
-          company: 'Tesla',
-          desc: 'Full Time',
-          location: 'Tesla Park');
+      // final j1 = JobHiveModel(
+      //     title: 'job0',
+      //     company: 'Apple',
+      //     desc: 'Full Time',
+      //     location: 'Apple Park');
+      // final j0 = JobHiveModel(
+      //     title: 'job1',
+      //     company: 'Microsoft',
+      //     desc: 'Part Time',
+      //     location: 'Micro Park');
+      // final j2 = JobHiveModel(
+      //     title: 'job2',
+      //     company: 'Tesla',
+      //     desc: 'Full Time',
+      //     location: 'Tesla Park');
 
-      List<JobHiveModel> jobs = [j1, j2, j0];
+      // List<JobHiveModel> jobs = [j1, j2, j0];
 
       // Insert bookmark with key
-      for (var job in jobs) {
-        await addJob(job);
-      }
+      // for (var job in jobs) {
+      //   await addJob(job);
+      // }
     }
   }
 

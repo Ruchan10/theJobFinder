@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../bookmark/presentation/viewmodel/bookmark_view_model.dart';
 import '../../../../bookmark/presentation/widget/bookmark_widget.dart';
+import '../../../../search/presentation/viewmodel/job_view_model.dart';
+import '../../../../search/presentation/widget/job_widget.dart';
 
 class BookmarkView extends ConsumerStatefulWidget {
   const BookmarkView({super.key});

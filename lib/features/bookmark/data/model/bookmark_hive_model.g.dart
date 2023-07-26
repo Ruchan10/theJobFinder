@@ -22,13 +22,18 @@ class BookmarkHiveModelAdapter extends TypeAdapter<BookmarkHiveModel> {
       desc: fields[2] as String,
       company: fields[3] as String,
       location: fields[4] as String,
+      logo: fields[5] as String,
+      postedBy: fields[6] as String,
+      appliedBy: (fields[7] as List).cast<String>(),
+      bookmarkedBy: (fields[8] as List).cast<String>(),
+      acceptedUser: (fields[9] as List).cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, BookmarkHiveModel obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.bookmarkId)
       ..writeByte(1)
@@ -38,7 +43,17 @@ class BookmarkHiveModelAdapter extends TypeAdapter<BookmarkHiveModel> {
       ..writeByte(3)
       ..write(obj.company)
       ..writeByte(4)
-      ..write(obj.location);
+      ..write(obj.location)
+      ..writeByte(5)
+      ..write(obj.logo)
+      ..writeByte(6)
+      ..write(obj.postedBy)
+      ..writeByte(7)
+      ..write(obj.appliedBy)
+      ..writeByte(8)
+      ..write(obj.bookmarkedBy)
+      ..writeByte(9)
+      ..write(obj.acceptedUser);
   }
 
   @override

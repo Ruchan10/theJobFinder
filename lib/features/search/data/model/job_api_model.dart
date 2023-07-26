@@ -7,7 +7,7 @@ import '../../domain/entity/job_entity.dart';
 part 'job_api_model.g.dart';
 
 final jobApiModelProvider = Provider<JobApiModel>(
-  (ref) => const JobApiModel.empty(),
+  (ref) => JobApiModel.empty(),
 );
 
 @JsonSerializable()
@@ -18,6 +18,11 @@ class JobApiModel extends Equatable {
   final String desc;
   final String company;
   final String location;
+  final String logo;
+  final String postedBy;
+  final List<String> bookmarkedBy;
+  final List<String> appliedBy;
+  final List<String> acceptedUser;
 
   const JobApiModel({
     required this.jobId,
@@ -25,12 +30,22 @@ class JobApiModel extends Equatable {
     required this.desc,
     required this.company,
     required this.location,
+    required this.logo,
+    required this.postedBy,
+    required this.bookmarkedBy,
+    required this.appliedBy,
+    required this.acceptedUser,
   });
-  const JobApiModel.empty()
+  JobApiModel.empty()
       : jobId = '',
         title = '',
         desc = '',
         company = '',
+        logo = '',
+        postedBy = '',
+        bookmarkedBy = [],
+        appliedBy = [],
+        acceptedUser = [],
         location = '';
 
   Map<String, dynamic> toJson() => _$JobApiModelToJson(this);
@@ -45,6 +60,11 @@ class JobApiModel extends Equatable {
         desc: desc,
         company: company,
         location: location,
+        logo: logo,
+        postedBy: postedBy,
+        bookmarkedBy: bookmarkedBy,
+        appliedBy: appliedBy,
+        acceptedUser: acceptedUser,
       );
 
   // Convert Entity to API Object
@@ -54,6 +74,11 @@ class JobApiModel extends Equatable {
         desc: entity.desc,
         company: entity.company,
         location: entity.location,
+        logo: entity.logo,
+        postedBy: entity.postedBy,
+        bookmarkedBy: entity.bookmarkedBy,
+        appliedBy: entity.appliedBy,
+        acceptedUser: entity.acceptedUser,
       );
 
   // Convert API List to Entity List
@@ -61,5 +86,16 @@ class JobApiModel extends Equatable {
       models.map((model) => model.toEntity()).toList();
 
   @override
-  List<Object?> get props => [jobId, title, desc, company, location];
+  List<Object?> get props => [
+        jobId,
+        title,
+        desc,
+        company,
+        location,
+        postedBy,
+        logo,
+        acceptedUser,
+        appliedBy,
+        bookmarkedBy
+      ];
 }

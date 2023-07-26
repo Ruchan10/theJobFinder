@@ -28,5 +28,11 @@ class BookmarkLocalRepositoryImpl implements IBookmarkRepository {
   Future<Either<Failure, List<BookmarkEntity>>> getAllBookmarks() {
     return bookmarkLocalDataSource.getAllBookmarks();
   }
+  
+  @override
+  Future<Either<Failure, bool>> removeBookmark(String id) {
+    // TODO: implement removeBookmark
+    throw UnimplementedError();
+  }
 
 }

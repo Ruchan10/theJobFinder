@@ -61,6 +61,8 @@ class JobRemoteDataSource {
   Future<Either<Failure, List<JobEntity>>> getAllJobs() async {
     try {
       var response = await dio.get(ApiEndpoints.getAllJobs);
+      print("In get all job function");
+      print(response);
       if (response.statusCode == 200) {
         List<JobEntity> jobs = [];
 
@@ -95,7 +97,7 @@ class JobRemoteDataSource {
         (r) => token = r!,
       );
 
-      Response response = await dio.post(
+      Response response = await dio.delete(
         ApiEndpoints.removeBookmark + jobId,
         options: Options(
           headers: {
@@ -122,7 +124,8 @@ class JobRemoteDataSource {
       );
     }
   }
-    Future<Either<Failure, bool>> addBookmark(String jobId) async {
+
+  Future<Either<Failure, bool>> addBookmark(String jobId) async {
     try {
       // Get the token from shared prefs
       String? token;

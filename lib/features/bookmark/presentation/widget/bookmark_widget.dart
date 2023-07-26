@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:the_job_finder/features/bookmark/domain/entity/bookmark_entity.dart';
 
 import '../../../../widgets/company_card.dart';
-import '../../domain/entity/bookmark_entity.dart';
 
 class BookmarkWidget extends StatelessWidget {
   final WidgetRef ref;
@@ -27,15 +27,17 @@ class BookmarkWidget extends StatelessWidget {
         return Column(
           children: [
             getCompanyCard(
-                context: context,
-                name: bookmarkList[index].company,
-                job: bookmarkList[index].title,
-                location: bookmarkList[index].location,
-                time: bookmarkList[index].desc,
-                ref: ref,
-                list: bookmarkList,
-                index: index,
-                icon: const Icon(Icons.bookmark)),
+              context: context,
+              name: bookmarkList[index].company,
+              job: bookmarkList[index].title,
+              location: bookmarkList[index].location,
+              time: bookmarkList[index].desc,
+              ref: ref,
+              list: bookmarkList,
+              index: index,
+              bookmarked: true,
+              fromBookmark: true,
+            ),
             const SizedBox(height: 7),
           ],
         );

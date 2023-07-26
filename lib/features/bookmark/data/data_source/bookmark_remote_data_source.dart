@@ -57,6 +57,8 @@ class BookmarkRemoteDataSource {
 
   Future<Either<Failure, List<BookmarkEntity>>> getAllBookmarks() async {
     try {
+      print("inside Get All bookmark function ");
+
       final tokenOption = await userSharedPrefs.getUserToken();
       final token = tokenOption.getOrElse(() => null);
 
@@ -89,4 +91,42 @@ class BookmarkRemoteDataSource {
       );
     }
   }
+    Future<Either<Failure, bool>> removeBookmark(String jobId) async {
+    try {
+      // Get the token from shared prefs
+      String? token;
+      var data = await userSharedPrefs.getUserToken();
+      data.fold(
+        (l) => token = null,
+        (r) => token = r!,
+      );
+
+      Response response = await dio.delete(
+        ApiEndpoints.removeBookmark + jobId,
+        options: Options(
+          headers: {
+            'Authorization': '$token',
+          },
+        ),
+      );
+      if (response.statusCode == 200) {
+        return const Right(true);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          error: e.error.toString(),
+          statusCode: e.response?.statusCode.toString() ?? '0',
+        ),
+      );
+    }
+  }
+
 }

@@ -107,21 +107,6 @@ class _SearchViewState extends ConsumerState<SearchView> {
                 ],
               ),
               SizedBox(height: height * 0.02),
-              // Column(
-              //   children: [
-              //     if (jobState.isLoading) ...{
-              //       const Center(child: CircularProgressIndicator()),
-              //     } else if (jobState.error != null) ...{
-              //       Text(jobState.error.toString()),
-              //     } else if (jobState.jobs.isEmpty) ...{
-              //       const Center(child: Text('No Jobs')),
-              //     } else ...{
-              //       Flexible(
-              //         child: JobWidget(ref: ref, jobList: jobState.jobs),
-              //       ),
-              //     }
-              //   ],
-              // ),
               Flexible(
                 child: JobWidget(ref: ref, jobList: jobState.jobs),
               ),

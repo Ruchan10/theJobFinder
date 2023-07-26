@@ -1,5 +1,4 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:uuid/uuid.dart';
 
@@ -20,13 +19,34 @@ class JobHiveModel {
   final String title;
   @HiveField(2)
   final String desc;
-    @HiveField(3)
+  @HiveField(3)
   final String company;
-    @HiveField(4)
+  @HiveField(4)
   final String location;
+  @HiveField(5)
+  final String logo;
+  @HiveField(6)
+  final String postedBy;
+  @HiveField(7)
+  final List<String> appliedBy;
+  @HiveField(8)
+  final List<String> bookmarkedBy;
+  @HiveField(9)
+  final List<String> acceptedUser;
 
   // empty constructor
-  JobHiveModel.empty() : this(jobId: '', title: '', desc:'',location:'',company:'');
+  JobHiveModel.empty()
+      : this(
+            jobId: '',
+            title: '',
+            desc: '',
+            location: '',
+            company: '',
+            logo: '',
+            postedBy: '',
+            appliedBy: [],
+            bookmarkedBy: [],
+            acceptedUser: []);
 
   JobHiveModel({
     String? jobId,
@@ -34,6 +54,11 @@ class JobHiveModel {
     required this.desc,
     required this.company,
     required this.location,
+    required this.logo,
+    required this.postedBy,
+    required this.appliedBy,
+    required this.bookmarkedBy,
+    required this.acceptedUser,
   }) : jobId = jobId ?? const Uuid().v4();
 
   // Convert Hive Object to Entity
@@ -43,6 +68,11 @@ class JobHiveModel {
         desc: desc,
         location: location,
         company: company,
+        logo: logo,
+        postedBy: postedBy,
+        appliedBy: appliedBy,
+        acceptedUser: acceptedUser,
+        bookmarkedBy: bookmarkedBy,
       );
 
   // Convert Entity to Hive Object
@@ -52,6 +82,11 @@ class JobHiveModel {
         desc: entity.desc,
         company: entity.company,
         location: entity.location,
+        logo: entity.logo,
+        postedBy: entity.postedBy,
+        appliedBy: entity.appliedBy,
+        acceptedUser: entity.acceptedUser,
+        bookmarkedBy: entity.bookmarkedBy,
       );
 
   // Convert Hive List to Entity List
@@ -60,6 +95,6 @@ class JobHiveModel {
 
   @override
   String toString() {
-    return 'jobId: $jobId, title: $title, desc:$desc, company:$company, location:$location';
+    return 'jobId: $jobId, title: $title, desc:$desc, company:$company, location:$location,logo:$logo,postedBy:$postedBy,appliedBy:$appliedBy,acceptedUser:$acceptedUser,bookmarkedBy:$bookmarkedBy';
   }
 }

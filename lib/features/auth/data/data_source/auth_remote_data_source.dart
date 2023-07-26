@@ -60,10 +60,14 @@ class AuthRemoteDataSource {
           "password": password,
         },
       );
+      print("RESPONSE");
       if (response.statusCode == 200) {
         // retrieve token
         String token = response.data["token"];
+        String userId = response.data["user"]['_id'];
+
         await userSharedPrefs.setUserToken(token);
+        await userSharedPrefs.setUserId(userId);
         return const Right(true);
       } else {
         return Left(
@@ -90,9 +94,7 @@ class AuthRemoteDataSource {
         ApiEndpoints.register,
         data: {
           "email": student.email,
-
           "password": student.password,
-
         },
       );
       if (response.statusCode == 200) {

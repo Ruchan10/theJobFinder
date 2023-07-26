@@ -27,6 +27,8 @@ final bookmarkRepositoryProvider = Provider<IBookmarkRepository>(
 abstract class IBookmarkRepository {
   Future<Either<Failure, List<BookmarkEntity>>> getAllBookmarks();
   Future<Either<Failure, bool>> addBookmark(BookmarkEntity bookmark);
+  Future<Either<Failure, bool>> removeBookmark(String id);
+
   // Future<Either<Failure, List<AuthEntity>>> getAllStudentsByBookmark(
   //     String bookmarkId);
 }

@@ -1,22 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:the_job_finder/features/home/presentation/view/bottom_view/search_view.dart';
 
+import '../features/bookmark/presentation/viewmodel/bookmark_view_model.dart';
 import '../features/search/presentation/viewmodel/job_view_model.dart';
 
 bool isBookmarkIcon(IconData? icon) {
   return icon == Icons.bookmark || icon == Icons.bookmark_outline;
 }
 
-Widget getCompanyCard(
-    {required BuildContext context,
-    required String name,
-    required String job,
-    required String location,
-    required String time,
-    required WidgetRef ref,
-    required int index,
-    required list,
-    Icon icon = const Icon(Icons.bookmark_outline)}) {
+Widget getCompanyCard({
+  required BuildContext context,
+  required String name,
+  required String job,
+  required String location,
+  required String time,
+  required WidgetRef ref,
+  required int index,
+  required list,
+  required bool bookmarked,
+  required bool fromBookmark,
+}) {
+  Icon bookmarkIcon;
+  if (bookmarked) {
+    bookmarkIcon = const Icon(Icons.bookmark);
+  } else {
+    bookmarkIcon = const Icon(Icons.bookmark_outline);
+  }
   return Expanded(
     child: Container(
       decoration: BoxDecoration(
@@ -50,20 +60,29 @@ Widget getCompanyCard(
                 ),
                 IconButton(
                   onPressed: () {
-                    if (isBookmarkIcon(icon.icon)) {
-                      print(list[index].jobId);
+                    if (!bookmarked) {
+                      const SearchView();
+                      print("Add bookmark");
                       ref
                           .read(jobViewModelProvider.notifier)
                           .addBookmark(context, list[index]);
                     } else {
                       print("SHould be remove?");
+                      if (fromBookmark) {
+                        print("ITS WORKING");
+                        ref
+                            .read(bookmarkViewModelProvider.notifier)
+                            .removeBookmark(context, list[index]);
+                      } else {
+                        print("ITS Not WORKING");
 
-//  ref
-                      // .read(jobViewModelProvider.notifier)
-                      // .removeBookmark(context, list[index]);
+                        ref
+                            .read(jobViewModelProvider.notifier)
+                            .removeBookmark(context, list[index]);
+                      }
                     }
                   },
-                  icon: icon,
+                  icon: bookmarkIcon,
                 ),
               ],
             ),
