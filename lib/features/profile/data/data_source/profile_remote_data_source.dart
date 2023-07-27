@@ -7,7 +7,6 @@ import '../../../../core/failure/failure.dart';
 import '../../../../core/network/remote/http_service.dart';
 import '../../../../core/shared_prefs/user_shared_pref.dart';
 import '../../domain/entity/profile_entity.dart';
-import '../dto/get_all_profiles.dart';
 import '../model/profile_api_model.dart';
 
 final profileRemoteDataSourceProvider = Provider(
@@ -35,7 +34,7 @@ class ProfileRemoteDataSource {
   Future<Either<Failure, bool>> updateProfile(ProfileEntity profile) async {
     try {
       var response = await dio.post(
-        ApiEndpoints.createProfile,
+        ApiEndpoints.updateProfile,
         data: profileApiModel.fromEntity(profile).toJson(),
       );
 

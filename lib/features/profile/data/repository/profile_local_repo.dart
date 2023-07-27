@@ -20,26 +20,7 @@ class ProfileLocalRepositoryImpl implements IProfileRepository {
   });
 
   @override
-  Future<Either<Failure, bool>> addProfile(ProfileEntity profile) {
-    return profileLocalDataSource.addProfile(profile);
+  Future<Either<Failure, bool>> updateProfile(ProfileEntity profile) {
+    return profileLocalDataSource.updateProfile(profile);
   }
-
-  @override
-  Future<Either<Failure, List<ProfileEntity>>> getAllProfiles() {
-    return profileLocalDataSource.getAllProfiles();
-  }
-  
-  @override
-  Future<Either<Failure, bool>> removeBookmark(String id) {
-    // TODO: implement removeBookmark
-    throw UnimplementedError();
-  }
-  
-  @override
-  Future<Either<Failure, bool>> addBookmark(String id) {
-    // TODO: implement addBookmark
-    throw UnimplementedError();
-  }
-
-
 }

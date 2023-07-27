@@ -16,77 +16,54 @@ class ProfileHiveModel {
   @HiveField(0)
   final String profileId;
   @HiveField(1)
-  final String title;
+  final String fullName;
   @HiveField(2)
-  final String desc;
+  final String email;
   @HiveField(3)
-  final String company;
+  final String phoneNum;
   @HiveField(4)
-  final String location;
+  final String cvFile;
   @HiveField(5)
-  final String logo;
-  @HiveField(6)
-  final String postedBy;
-  @HiveField(7)
-  final List<String> appliedBy;
-  @HiveField(8)
-  final List<String> bookmarkedBy;
-  @HiveField(9)
-  final List<String> acceptedUser;
+  final String profilePic;
 
   // empty constructor
   ProfileHiveModel.empty()
       : this(
             profileId: '',
-            title: '',
-            desc: '',
-            location: '',
-            company: '',
-            logo: '',
-            postedBy: '',
-            appliedBy: [],
-            bookmarkedBy: [],
-            acceptedUser: []);
+            fullName: '',
+            email: '',
+            cvFile: '',
+            phoneNum: '',
+            profilePic: '',
+            );
 
   ProfileHiveModel({
     String? profileId,
-    required this.title,
-    required this.desc,
-    required this.company,
-    required this.location,
-    required this.logo,
-    required this.postedBy,
-    required this.appliedBy,
-    required this.bookmarkedBy,
-    required this.acceptedUser,
+    required this.fullName,
+    required this.email,
+    required this.phoneNum,
+    required this.cvFile,
+    required this.profilePic,
   }) : profileId = profileId ?? const Uuid().v4();
 
   // Convert Hive Object to Entity
   ProfileEntity toEntity() => ProfileEntity(
         profileId: profileId,
-        title: title,
-        desc: desc,
-        location: location,
-        company: company,
-        logo: logo,
-        postedBy: postedBy,
-        appliedBy: appliedBy,
-        acceptedUser: acceptedUser,
-        bookmarkedBy: bookmarkedBy,
+        fullName: fullName,
+        email: email,
+        cvFile: cvFile,
+        phoneNum: phoneNum,
+        profilePic: profilePic,
       );
 
   // Convert Entity to Hive Object
   ProfileHiveModel toHiveModel(ProfileEntity entity) => ProfileHiveModel(
         // profileId: entity.profileId,
-        title: entity.title,
-        desc: entity.desc,
-        company: entity.company,
-        location: entity.location,
-        logo: entity.logo,
-        postedBy: entity.postedBy,
-        appliedBy: entity.appliedBy,
-        acceptedUser: entity.acceptedUser,
-        bookmarkedBy: entity.bookmarkedBy,
+        fullName: entity.fullName,
+        email: entity.email,
+        phoneNum: entity.phoneNum,
+        cvFile: entity.cvFile,
+        profilePic: entity.profilePic,
       );
 
   // Convert Hive List to Entity List
@@ -95,6 +72,6 @@ class ProfileHiveModel {
 
   @override
   String toString() {
-    return 'profileId: $profileId, title: $title, desc:$desc, company:$company, location:$location,logo:$logo,postedBy:$postedBy,appliedBy:$appliedBy,acceptedUser:$acceptedUser,bookmarkedBy:$bookmarkedBy';
+    return 'profileId: $profileId, fullName: $fullName, email:$email, phoneNum:$phoneNum, cvFile:$cvFile,profilePic:$profilePic';
   }
 }

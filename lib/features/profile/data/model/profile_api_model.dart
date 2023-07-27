@@ -14,39 +14,27 @@ final profileApiModelProvider = Provider<ProfileApiModel>(
 class ProfileApiModel extends Equatable {
   @JsonKey(name: '_id')
   final String? profileId;
+  final String fullName;
   final String email;
-  final String desc;
-  final String company;
-  final String location;
-  final String logo;
-  final String postedBy;
-  final List<String> bookmarkedBy;
-  final List<String> appliedBy;
-  final List<String> acceptedUser;
+  final String phoneNum;
+  final String cvFile;
+  final String profilePic;
 
   const ProfileApiModel({
     required this.profileId,
-    required this.title,
-    required this.desc,
-    required this.company,
-    required this.location,
-    required this.logo,
-    required this.postedBy,
-    required this.bookmarkedBy,
-    required this.appliedBy,
-    required this.acceptedUser,
+    required this.fullName,
+    required this.email,
+    required this.phoneNum,
+    required this.cvFile,
+    required this.profilePic,
   });
   ProfileApiModel.empty()
       : profileId = '',
-        title = '',
-        desc = '',
-        company = '',
-        logo = '',
-        postedBy = '',
-        bookmarkedBy = [],
-        appliedBy = [],
-        acceptedUser = [],
-        location = '';
+        fullName = '',
+        email = '',
+        phoneNum = '',
+        profilePic = '',
+        cvFile = '';
 
   Map<String, dynamic> toJson() => _$ProfileApiModelToJson(this);
 
@@ -56,29 +44,21 @@ class ProfileApiModel extends Equatable {
   // Convert API Object to Entity
   ProfileEntity toEntity() => ProfileEntity(
         profileId: profileId,
-        title: title,
-        desc: desc,
-        company: company,
-        location: location,
-        logo: logo,
-        postedBy: postedBy,
-        bookmarkedBy: bookmarkedBy,
-        appliedBy: appliedBy,
-        acceptedUser: acceptedUser,
+        fullName: fullName,
+        email: email,
+        phoneNum: phoneNum,
+        cvFile: cvFile,
+        profilePic: profilePic,
       );
 
   // Convert Entity to API Object
   ProfileApiModel fromEntity(ProfileEntity entity) => ProfileApiModel(
         profileId: entity.profileId ?? '',
-        title: entity.title,
-        desc: entity.desc,
-        company: entity.company,
-        location: entity.location,
-        logo: entity.logo,
-        postedBy: entity.postedBy,
-        bookmarkedBy: entity.bookmarkedBy,
-        appliedBy: entity.appliedBy,
-        acceptedUser: entity.acceptedUser,
+        fullName: entity.fullName,
+        email: entity.email,
+        phoneNum: entity.phoneNum,
+        cvFile: entity.cvFile,
+        profilePic: entity.profilePic,
       );
 
   // Convert API List to Entity List
@@ -88,14 +68,10 @@ class ProfileApiModel extends Equatable {
   @override
   List<Object?> get props => [
         profileId,
-        title,
-        desc,
-        company,
-        location,
-        postedBy,
-        logo,
-        acceptedUser,
-        appliedBy,
-        bookmarkedBy
+        fullName,
+        email,
+        phoneNum,
+        cvFile,
+        profilePic,
       ];
 }

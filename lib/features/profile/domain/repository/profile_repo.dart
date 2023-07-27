@@ -28,9 +28,6 @@ final profileRepositoryProvider = Provider<IProfileRepository>(
 );
 
 abstract class IProfileRepository {
-  Future<Either<Failure, List<ProfileEntity>>> getAllProfiles();
-  Future<Either<Failure, bool>> addProfile(ProfileEntity profile);
-  Future<Either<Failure, bool>> removeBookmark(String id);
-  Future<Either<Failure, bool>> addBookmark(String id);
+  Future<Either<Failure, bool>> updateProfile(ProfileEntity profile);
 
 }

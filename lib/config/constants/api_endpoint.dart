@@ -25,4 +25,5 @@ class ApiEndpoints {
   // ====================== User Routes ======================
   static const String getUserDetails = "users/profile/";
   static const String deleteUser = "users/profile/";
+  static const String updateProfile = "users/profile/";
 }

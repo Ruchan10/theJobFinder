@@ -28,7 +28,7 @@ class ProfileLocalDataSource {
       // Convert Entity to Hive Object
       final hiveProfile = profileHiveModel.toHiveModel(profile);
       // Add to Hive
-      await hiveService.addProfile(hiveProfile);
+      await hiveService.updateProfile(hiveProfile);
       return const Right(true);
     } catch (e) {
       return Left(Failure(error: e.toString()));

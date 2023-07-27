@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../viewmodel/profile_view_model.dart';
-import '../widget/profile_widget.dart';
 
 class AddProfileView extends ConsumerStatefulWidget {
   const AddProfileView({super.key});
@@ -76,9 +75,7 @@ class _AddProfileViewState extends ConsumerState<AddProfileView> {
             } else if (profileState.profiles.isEmpty) ...{
               const Center(child: Text('No Profiles')),
             } else ...{
-              Flexible(
-                child: ProfileWidget(ref: ref, profileList: profileState.profiles),
-              ),
+              const Flexible(child: Text("Profile")),
             }
           ],
         ),

@@ -6,6 +6,7 @@ import 'package:the_job_finder/features/bookmark/data/model/bookmark_hive_model.
 import 'package:the_job_finder/features/search/data/model/job_hive_model.dart';
 
 import '../../config/constants/hive_table_constant.dart';
+import '../../features/profile/data/model/profile_hive_model.dart';
 
 final hiveServiceProvider = Provider<HiveService>((ref) => HiveService());
 
@@ -159,5 +160,11 @@ class HiveService {
     var jobs = box.values.toList();
     box.close();
     return jobs;
+  }
+
+    Future<void> updateProfile(ProfileHiveModel profile) async {
+    var box =
+        await Hive.openBox<ProfileHiveModel>(HiveTableConstant.profileBox);
+    await box.put(profile.profileId, profile);
   }
 }
