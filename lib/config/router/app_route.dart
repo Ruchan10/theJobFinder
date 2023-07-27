@@ -2,11 +2,11 @@ import 'package:the_job_finder/features/auth/presentation/view/login_view.dart';
 import 'package:the_job_finder/features/auth/presentation/view/signup_view.dart';
 import 'package:the_job_finder/features/home/presentation/view/bottom_view/bookmark_view.dart';
 import 'package:the_job_finder/features/home/presentation/view/dashboard_view.dart';
-import 'package:the_job_finder/view/test_login.dart';
 
 import '../../features/home/presentation/view/bottom_view/home_view.dart';
 import '../../features/home/presentation/view/bottom_view/profile_view.dart';
 import '../../features/home/presentation/view/bottom_view/search_view.dart';
+import '../../features/profile/presentation/view/edit_profile_view.dart';
 
 class AppRoute {
   AppRoute._();
@@ -31,7 +31,7 @@ class AppRoute {
       profileRoute: (context) => const ProfileView(),
       searchRoute: (context) => const SearchView(),
       signupRoute: (context) => const SignupView(),
-      // testRoute: (context) => const TestView(),
+      testRoute: (context) => const UpdateProfile(),
     };
   }
 }
