@@ -16,34 +16,34 @@ class ProfileHiveModel {
   @HiveField(0)
   final String profileId;
   @HiveField(1)
-  final String fullName;
+  final String? fullName;
   @HiveField(2)
-  final String email;
+  final String? email;
   @HiveField(3)
-  final String phoneNum;
+  final String? phoneNum;
   @HiveField(4)
-  final String cvFile;
+  final String? cv;
   @HiveField(5)
-  final String profilePic;
+  final String? profile;
 
   // empty constructor
   ProfileHiveModel.empty()
       : this(
-            profileId: '',
-            fullName: '',
-            email: '',
-            cvFile: '',
-            phoneNum: '',
-            profilePic: '',
-            );
+          profileId: '',
+          fullName: '',
+          email: '',
+          cv: '',
+          phoneNum: '',
+          profile: '',
+        );
 
   ProfileHiveModel({
     String? profileId,
-    required this.fullName,
-    required this.email,
-    required this.phoneNum,
-    required this.cvFile,
-    required this.profilePic,
+    this.fullName,
+    this.email,
+    this.phoneNum,
+    this.cv,
+    this.profile,
   }) : profileId = profileId ?? const Uuid().v4();
 
   // Convert Hive Object to Entity
@@ -51,9 +51,9 @@ class ProfileHiveModel {
         profileId: profileId,
         fullName: fullName,
         email: email,
-        cvFile: cvFile,
+        cv: cv,
         phoneNum: phoneNum,
-        profilePic: profilePic,
+        profile: profile,
       );
 
   // Convert Entity to Hive Object
@@ -62,8 +62,8 @@ class ProfileHiveModel {
         fullName: entity.fullName,
         email: entity.email,
         phoneNum: entity.phoneNum,
-        cvFile: entity.cvFile,
-        profilePic: entity.profilePic,
+        cv: entity.cv,
+        profile: entity.profile,
       );
 
   // Convert Hive List to Entity List
@@ -72,6 +72,6 @@ class ProfileHiveModel {
 
   @override
   String toString() {
-    return 'profileId: $profileId, fullName: $fullName, email:$email, phoneNum:$phoneNum, cvFile:$cvFile,profilePic:$profilePic';
+    return 'profileId: $profileId, fullName: $fullName, email:$email, phoneNum:$phoneNum, cv:$cv,profile:$profile';
   }
 }

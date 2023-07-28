@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:the_job_finder/features/profile/presentation/viewmodel/profile_view_model.dart';
+
+import '../../domain/entity/profile_entity.dart';
 
 class UpdateProfile extends ConsumerStatefulWidget {
   const UpdateProfile({super.key});
@@ -15,6 +18,9 @@ class UpdateProfile extends ConsumerStatefulWidget {
 }
 
 class _UpdateProfileState extends ConsumerState<UpdateProfile> {
+  final _fullNameController = TextEditingController();
+  final _phoneNumController = TextEditingController();
+
   final FileCaseController firstController = FileCaseController(
       filePickerOptions:
           FilePickerOptions(type: FileType.any, allowMultiple: true),
@@ -82,6 +88,27 @@ class _UpdateProfileState extends ConsumerState<UpdateProfile> {
         debugPrint(e.toString());
       }
     }
+  }
+
+  void _updateProfileData() {
+    final fullName = _fullNameController.text;
+    final phoneNumber = _phoneNumController.text;
+    // Make sure you have the profile picture and CV file selected before proceeding.
+    if (_img == null || _cv == null) {
+      // Show an error message or take appropriate action if the user hasn't selected the required files.
+      return;
+    }
+
+    // Create a ProfileEntity object with the gathered data.
+    final profile = ProfileEntity(
+      profile: _img!.path,
+      fullName: fullName,
+      phoneNum: phoneNumber,
+      cv: _cv!.path,
+    );
+
+    // Call the updateProfile function from the ProfileViewModel.
+    ref.read(profileViewModelProvider.notifier).updateProfile(context, profile);
   }
 
   @override
@@ -165,6 +192,7 @@ class _UpdateProfileState extends ConsumerState<UpdateProfile> {
                 height: height * .07,
                 width: 300,
                 child: TextFormField(
+                  controller: _fullNameController,
                   decoration: const InputDecoration(
                     contentPadding:
                         EdgeInsets.only(top: 20), // add padding to adjust text
@@ -188,6 +216,7 @@ class _UpdateProfileState extends ConsumerState<UpdateProfile> {
                 height: height * .07,
                 width: 300,
                 child: TextFormField(
+                  controller: _phoneNumController,
                   decoration: const InputDecoration(
                     contentPadding:
                         EdgeInsets.only(top: 20), // add padding to adjust text
@@ -206,6 +235,7 @@ class _UpdateProfileState extends ConsumerState<UpdateProfile> {
                   ),
                 ),
               ),
+              const SizedBox(height: 15),
               Row(
                 children: [
                   const SizedBox(width: 70),
@@ -239,6 +269,30 @@ class _UpdateProfileState extends ConsumerState<UpdateProfile> {
                     ),
                   ),
                 ],
+              ),
+              const SizedBox(height: 40),
+              SizedBox(
+                height: height * .05,
+                width: 300,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _updateProfileData();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.green,
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32.0),
+                    ),
+                    side: BorderSide(color: Colors.green.shade600, width: 1),
+                    textStyle: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 20,
+                    ),
+                  ),
+                  child: const Text("Update Profile"),
+                ),
               ),
             ],
           ),

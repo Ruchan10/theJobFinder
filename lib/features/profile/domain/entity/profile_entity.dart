@@ -2,28 +2,28 @@ import 'package:equatable/equatable.dart';
 
 class ProfileEntity extends Equatable {
   final String? profileId;
-  final String fullName;
-  final String email;
-  final String phoneNum;
-  final String cvFile;
-  final String profilePic;
+  final String? fullName;
+  final String? email;
+  final String? phoneNum;
+  final String? cv;
+  final String? profile;
   @override
   List<Object?> get props => [
         profileId,
         fullName,
         email,
         phoneNum,
-        cvFile,
-        profilePic,
+        cv,
+        profile,
       ];
 
   const ProfileEntity({
     this.profileId,
-    required this.fullName,
-    required this.email,
-    required this.phoneNum,
-    required this.cvFile,
-    required this.profilePic,
+     this.fullName,
+     this.email,
+     this.phoneNum,
+     this.cv,
+     this.profile,
   });
 
   factory ProfileEntity.fromJson(Map<String, dynamic> json) => ProfileEntity(
@@ -31,8 +31,8 @@ class ProfileEntity extends Equatable {
         fullName: json["fullName"],
         email: json["email"],
         phoneNum: json["phoneNum"],
-        cvFile: json["cvFile"],
-        profilePic: json["profilePic"],
+        cv: json["cv"],
+        profile: json["profile"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -40,12 +40,12 @@ class ProfileEntity extends Equatable {
         "fullName": fullName,
         "email": email,
         "phoneNum": phoneNum,
-        "cvFile": cvFile,
-        "profilePic": profilePic,
+        "cv": cv,
+        "profile": profile,
       };
 
   @override
   String toString() {
-    return 'ProfileEntity(profileId: $profileId, fullName: $fullName, email: $email, phoneNum: $phoneNum, cvFile: $cvFile,profilePic:$profilePic)';
+    return 'ProfileEntity(profileId: $profileId, fullName: $fullName, email: $email, phoneNum: $phoneNum, cv: $cv,profile:$profile)';
   }
 }

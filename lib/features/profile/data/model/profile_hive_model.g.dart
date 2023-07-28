@@ -18,11 +18,11 @@ class ProfileHiveModelAdapter extends TypeAdapter<ProfileHiveModel> {
     };
     return ProfileHiveModel(
       profileId: fields[0] as String?,
-      fullName: fields[1] as String,
-      email: fields[2] as String,
-      phoneNum: fields[3] as String,
-      cvFile: fields[4] as String,
-      profilePic: fields[5] as String,
+      fullName: fields[1] as String?,
+      email: fields[2] as String?,
+      phoneNum: fields[3] as String?,
+      cv: fields[4] as String?,
+      profile: fields[5] as String?,
     );
   }
 
@@ -39,9 +39,9 @@ class ProfileHiveModelAdapter extends TypeAdapter<ProfileHiveModel> {
       ..writeByte(3)
       ..write(obj.phoneNum)
       ..writeByte(4)
-      ..write(obj.cvFile)
+      ..write(obj.cv)
       ..writeByte(5)
-      ..write(obj.profilePic);
+      ..write(obj.profile);
   }
 
   @override

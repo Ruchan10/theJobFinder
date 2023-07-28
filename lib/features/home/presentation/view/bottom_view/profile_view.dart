@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:the_job_finder/config/router/app_route.dart';
 
 import '../../../../../core/common/provider/internet_connectivity.dart';
 import '../../../../../widgets/settings_btn.dart';
@@ -48,10 +49,17 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                 ),
               ),
               const SizedBox(height: 30),
-              getSettingsBtn(
-                text: "Edit Profile",
-                icon: const Icon(Icons.person_2_outlined,
-                    size: 40, color: Colors.purple),
+              GestureDetector(
+                onTap: () {
+                  print("Edit Profile");
+
+                  Navigator.pushNamed(context, AppRoute.editProfileRoute);
+                },
+                child: getSettingsBtn(
+                  text: "Edit Profile",
+                  icon: const Icon(Icons.person_2_outlined,
+                      size: 40, color: Colors.purple),
+                ),
               ),
               const SizedBox(height: 15),
               getSettingsBtn(
@@ -74,36 +82,6 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
               getSettingsBtn(
                 text: "Share App",
                 icon: const Icon(Icons.share, size: 40, color: Colors.yellow),
-              ),
-              const SizedBox(height: 15),
-              Row(
-                children: [
-                  const SizedBox(width: 70),
-                  const Text(
-                    " CV   ",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Container(
-                    height: 70,
-                    width: screenWidth * 0.3,
-                    margin: const EdgeInsets.symmetric(horizontal: 16.0),
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.edit_document, color: Colors.white),
-                        Text("Upload Here",
-                            style: TextStyle(color: Colors.white)),
-                      ],
-                    ),
-                  ),
-                ],
               ),
               const SizedBox(height: 15),
               const SizedBox(height: 15),

@@ -52,7 +52,7 @@ class JobWidget extends StatelessWidget {
           itemBuilder: (context, index) {
             bool isBookmarked = false;
             if (currentUserId != null &&
-                jobList[index].bookmarkedBy.contains(currentUserId)) {
+                jobList[index].bookmarkedBy!.contains(currentUserId)) {
               isBookmarked = true;
             }
             return Column(

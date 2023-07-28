@@ -33,11 +33,29 @@ class JobRemoteDataSource {
   });
 
   Future<Either<Failure, bool>> addJob(JobEntity job) async {
+    print("IN addJob Function");
     try {
-      var response = await dio.post(
-        ApiEndpoints.createJob,
-        data: jobApiModel.fromEntity(job).toJson(),
-      );
+      String? token;
+      await userSharedPrefs
+          .getUserToken()
+          .then((value) => value.fold((l) => null, (r) => token = r!));
+      FormData formData = FormData.fromMap({
+        'title': job.title,
+        'desc': job.desc,
+        'jobTime': job.jobTime,
+        'location': job.location,
+        'salary': job.salary,
+        'company': job.company,
+        'logo': await MultipartFile.fromFile(job.logo),
+      });
+
+      var response = await dio.post(ApiEndpoints.createJob,
+          data: formData,
+          options: Options(
+            headers: {
+              'Authorization': '$token',
+            },
+          ));
 
       if (response.statusCode == 201) {
         return const Right(true);

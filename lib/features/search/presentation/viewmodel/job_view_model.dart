@@ -19,14 +19,18 @@ class JobViewModel extends StateNotifier<JobState> {
     getAllJobs();
   }
 
-  addJob(JobEntity job) async {
+  addJob(BuildContext context,JobEntity job) async {
     state.copyWith(isLoading: true);
     var data = await jobUseCase.addJob(job);
 
-    data.fold(
-      (l) => state = state.copyWith(isLoading: false, error: l.error),
-      (r) => state = state.copyWith(isLoading: false, error: null),
-    );
+    data.fold((l) => state = state.copyWith(isLoading: false, error: l.error),
+        (r) {
+      state = state.copyWith(isLoading: false, error: null);
+      showSnackBar(
+          message: 'Profile Updated Successfully',
+          context: context,
+          color: Colors.green);
+    });
   }
 
   getAllJobs() async {

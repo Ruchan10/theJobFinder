@@ -3,8 +3,8 @@ class ApiEndpoints {
 
   static const Duration connectionTimeout = Duration(seconds: 1000);
   static const Duration receiveTimeout = Duration(seconds: 1000);
-  static const String baseUrl = "http://10.0.2.2:3000/";
-  // static const String baseUrl = "http://192.168.4.4:3000/";
+  // static const String baseUrl = "http://10.0.2.2:3000/";
+  static const String baseUrl = "http://192.168.1.6:3000/";
 
   // ====================== Auth Routes ======================
   static const String login = "auth/login";
@@ -25,5 +25,5 @@ class ApiEndpoints {
   // ====================== User Routes ======================
   static const String getUserDetails = "users/profile/";
   static const String deleteUser = "users/profile/";
-  static const String updateProfile = "users/profile/";
+  static const String updateProfile = "users/editProfile/";
 }

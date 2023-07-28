@@ -9,11 +9,11 @@ part of 'profile_api_model.dart';
 ProfileApiModel _$ProfileApiModelFromJson(Map<String, dynamic> json) =>
     ProfileApiModel(
       profileId: json['_id'] as String?,
-      fullName: json['fullName'] as String,
-      email: json['email'] as String,
-      phoneNum: json['phoneNum'] as String,
-      cvFile: json['cvFile'] as String,
-      profilePic: json['profilePic'] as String,
+      fullName: json['fullName'] as String?,
+      email: json['email'] as String?,
+      phoneNum: json['phoneNum'] as String?,
+      cv: json['cv'] as String?,
+      profile: json['profile'] as String?,
     );
 
 Map<String, dynamic> _$ProfileApiModelToJson(ProfileApiModel instance) =>
@@ -22,6 +22,6 @@ Map<String, dynamic> _$ProfileApiModelToJson(ProfileApiModel instance) =>
       'fullName': instance.fullName,
       'email': instance.email,
       'phoneNum': instance.phoneNum,
-      'cvFile': instance.cvFile,
-      'profilePic': instance.profilePic,
+      'cv': instance.cv,
+      'profile': instance.profile,
     };

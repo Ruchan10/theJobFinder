@@ -2,6 +2,7 @@ import 'package:the_job_finder/features/auth/presentation/view/login_view.dart';
 import 'package:the_job_finder/features/auth/presentation/view/signup_view.dart';
 import 'package:the_job_finder/features/home/presentation/view/bottom_view/bookmark_view.dart';
 import 'package:the_job_finder/features/home/presentation/view/dashboard_view.dart';
+import 'package:the_job_finder/features/search/presentation/view/Add_Job_view.dart';
 
 import '../../features/home/presentation/view/bottom_view/home_view.dart';
 import '../../features/home/presentation/view/bottom_view/profile_view.dart';
@@ -19,7 +20,9 @@ class AppRoute {
   static const String searchRoute = '/searchRoute';
   static const String signupRoute = '/signupRoute';
   static const String jobRoute = '/jobRoute';
+  static const String editProfileRoute = '/editProfileRoute';
   static const String testRoute = '/testRoute';
+  static const String addJobRoute = '/addJobRoute';
 
   static getAppRoutes() {
     return {
@@ -31,6 +34,8 @@ class AppRoute {
       profileRoute: (context) => const ProfileView(),
       searchRoute: (context) => const SearchView(),
       signupRoute: (context) => const SignupView(),
+      editProfileRoute: (context) => const UpdateProfile(),
+      addJobRoute: (context) => const AddJobView(),
       testRoute: (context) => const UpdateProfile(),
     };
   }

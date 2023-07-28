@@ -14,27 +14,27 @@ final profileApiModelProvider = Provider<ProfileApiModel>(
 class ProfileApiModel extends Equatable {
   @JsonKey(name: '_id')
   final String? profileId;
-  final String fullName;
-  final String email;
-  final String phoneNum;
-  final String cvFile;
-  final String profilePic;
+  final String? fullName;
+  final String? email;
+  final String? phoneNum;
+  final String? cv;
+  final String? profile;
 
   const ProfileApiModel({
     required this.profileId,
-    required this.fullName,
-    required this.email,
-    required this.phoneNum,
-    required this.cvFile,
-    required this.profilePic,
+    this.fullName,
+    this.email,
+    this.phoneNum,
+    this.cv,
+    this.profile,
   });
-  ProfileApiModel.empty()
+  const ProfileApiModel.empty()
       : profileId = '',
         fullName = '',
         email = '',
         phoneNum = '',
-        profilePic = '',
-        cvFile = '';
+        profile = '',
+        cv = '';
 
   Map<String, dynamic> toJson() => _$ProfileApiModelToJson(this);
 
@@ -47,8 +47,8 @@ class ProfileApiModel extends Equatable {
         fullName: fullName,
         email: email,
         phoneNum: phoneNum,
-        cvFile: cvFile,
-        profilePic: profilePic,
+        cv: cv,
+        profile: profile,
       );
 
   // Convert Entity to API Object
@@ -57,8 +57,8 @@ class ProfileApiModel extends Equatable {
         fullName: entity.fullName,
         email: entity.email,
         phoneNum: entity.phoneNum,
-        cvFile: entity.cvFile,
-        profilePic: entity.profilePic,
+        cv: entity.cv,
+        profile: entity.profile,
       );
 
   // Convert API List to Entity List
@@ -71,7 +71,7 @@ class ProfileApiModel extends Equatable {
         fullName,
         email,
         phoneNum,
-        cvFile,
-        profilePic,
+        cv,
+        profile,
       ];
 }

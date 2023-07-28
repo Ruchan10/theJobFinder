@@ -33,10 +33,24 @@ class ProfileRemoteDataSource {
 
   Future<Either<Failure, bool>> updateProfile(ProfileEntity profile) async {
     try {
-      var response = await dio.post(
-        ApiEndpoints.updateProfile,
-        data: profileApiModel.fromEntity(profile).toJson(),
-      );
+      String? token;
+      await userSharedPrefs
+          .getUserToken()
+          .then((value) => value.fold((l) => null, (r) => token = r!));
+
+      FormData formData = FormData.fromMap({
+        'fullName': profile.fullName,
+        'phoneNum': profile.phoneNum,
+        'cv': await MultipartFile.fromFile(profile.cv!),
+        'profile': await MultipartFile.fromFile(profile.profile!),
+      });
+      var response = await dio.post(ApiEndpoints.updateProfile,
+          data: formData,
+          options: Options(
+            headers: {
+              'Authorization': '$token',
+            },
+          ));
 
       if (response.statusCode == 201) {
         return const Right(true);

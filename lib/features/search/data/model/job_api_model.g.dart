@@ -12,15 +12,18 @@ JobApiModel _$JobApiModelFromJson(Map<String, dynamic> json) => JobApiModel(
       desc: json['desc'] as String,
       company: json['company'] as String,
       location: json['location'] as String,
+      jobTime: json['jobTime'] as String,
       logo: json['logo'] as String,
-      postedBy: json['postedBy'] as String,
-      bookmarkedBy: (json['bookmarkedBy'] as List<dynamic>)
-          .map((e) => e as String)
+      salary: json['salary'] as String,
+      postedBy: json['postedBy'] as String?,
+      bookmarkedBy: (json['bookmarkedBy'] as List<dynamic>?)
+          ?.map((e) => e as String)
           .toList(),
-      appliedBy:
-          (json['appliedBy'] as List<dynamic>).map((e) => e as String).toList(),
-      acceptedUser: (json['acceptedUser'] as List<dynamic>)
-          .map((e) => e as String)
+      appliedBy: (json['appliedBy'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      acceptedUser: (json['acceptedUser'] as List<dynamic>?)
+          ?.map((e) => e as String)
           .toList(),
     );
 
@@ -32,6 +35,8 @@ Map<String, dynamic> _$JobApiModelToJson(JobApiModel instance) =>
       'company': instance.company,
       'location': instance.location,
       'logo': instance.logo,
+      'salary': instance.salary,
+      'jobTime': instance.jobTime,
       'postedBy': instance.postedBy,
       'bookmarkedBy': instance.bookmarkedBy,
       'appliedBy': instance.appliedBy,

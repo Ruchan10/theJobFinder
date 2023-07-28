@@ -26,14 +26,17 @@ class JobHiveModel {
   @HiveField(5)
   final String logo;
   @HiveField(6)
-  final String postedBy;
+  final String? postedBy;
   @HiveField(7)
-  final List<String> appliedBy;
+  final List<String>? appliedBy;
   @HiveField(8)
-  final List<String> bookmarkedBy;
+  final List<String>? bookmarkedBy;
   @HiveField(9)
-  final List<String> acceptedUser;
-
+  final List<String>? acceptedUser;
+    @HiveField(10)
+  final String salary;
+ @HiveField(11)
+  final String jobTime;
   // empty constructor
   JobHiveModel.empty()
       : this(
@@ -42,6 +45,8 @@ class JobHiveModel {
             desc: '',
             location: '',
             company: '',
+            jobTime: '',
+            salary: '',
             logo: '',
             postedBy: '',
             appliedBy: [],
@@ -53,12 +58,14 @@ class JobHiveModel {
     required this.title,
     required this.desc,
     required this.company,
+    required this.jobTime,
     required this.location,
+    required this.salary,
     required this.logo,
-    required this.postedBy,
-    required this.appliedBy,
-    required this.bookmarkedBy,
-    required this.acceptedUser,
+    this.postedBy,
+    this.appliedBy,
+    this.bookmarkedBy,
+    this.acceptedUser,
   }) : jobId = jobId ?? const Uuid().v4();
 
   // Convert Hive Object to Entity
@@ -68,6 +75,8 @@ class JobHiveModel {
         desc: desc,
         location: location,
         company: company,
+        salary: salary,
+        jobTime: jobTime,
         logo: logo,
         postedBy: postedBy,
         appliedBy: appliedBy,
@@ -81,7 +90,9 @@ class JobHiveModel {
         title: entity.title,
         desc: entity.desc,
         company: entity.company,
+        jobTime: entity.jobTime,
         location: entity.location,
+        salary: entity.salary,
         logo: entity.logo,
         postedBy: entity.postedBy,
         appliedBy: entity.appliedBy,
@@ -95,6 +106,6 @@ class JobHiveModel {
 
   @override
   String toString() {
-    return 'jobId: $jobId, title: $title, desc:$desc, company:$company, location:$location,logo:$logo,postedBy:$postedBy,appliedBy:$appliedBy,acceptedUser:$acceptedUser,bookmarkedBy:$bookmarkedBy';
+    return 'jobId: $jobId, title: $title, desc:$desc, company:$company, jobTime:$jobTime, location:$location,logo:$logo,salary:$salary,postedBy:$postedBy,appliedBy:$appliedBy,acceptedUser:$acceptedUser,bookmarkedBy:$bookmarkedBy';
   }
 }

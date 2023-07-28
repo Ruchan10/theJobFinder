@@ -12,7 +12,7 @@ class LoginView extends ConsumerStatefulWidget {
 
 class _LoginViewState extends ConsumerState<LoginView> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController(text: "test");
+  final _emailController = TextEditingController(text: "test@gmail.com");
   final _passwordController = TextEditingController(text: "test");
   final _gap = const SizedBox(height: 8);
   bool isObscure = true;
@@ -158,7 +158,6 @@ class _LoginViewState extends ConsumerState<LoginView> {
                           style: ElevatedButton.styleFrom(
                             foregroundColor: Colors.white,
                             backgroundColor: Colors.green,
-                            shadowColor: Colors.red,
                             elevation: 5,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(32.0),

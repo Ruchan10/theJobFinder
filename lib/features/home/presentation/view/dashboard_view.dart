@@ -2,6 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:the_job_finder/features/home/presentation/view/bottom_view/search_view.dart';
 
+import '../../../../config/router/app_route.dart';
 import 'bottom_view/bookmark_view.dart';
 import 'bottom_view/home_view.dart';
 import 'bottom_view/profile_view.dart';
@@ -39,7 +40,9 @@ class _dashBoardViewState extends State<dashBoardView> {
     return Scaffold(
       body: lstBottomScreen[bottomNavIndex],
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, AppRoute.addJobRoute);
+        },
         backgroundColor: const Color.fromARGB(255, 106, 180, 108),
         elevation: 1,
         child: const Icon(Icons.add),

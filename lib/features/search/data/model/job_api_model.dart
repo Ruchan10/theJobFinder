@@ -19,10 +19,12 @@ class JobApiModel extends Equatable {
   final String company;
   final String location;
   final String logo;
-  final String postedBy;
-  final List<String> bookmarkedBy;
-  final List<String> appliedBy;
-  final List<String> acceptedUser;
+  final String salary;
+  final String jobTime;
+  final String? postedBy;
+  final List<String>? bookmarkedBy;
+  final List<String>? appliedBy;
+  final List<String>? acceptedUser;
 
   const JobApiModel({
     required this.jobId,
@@ -30,16 +32,20 @@ class JobApiModel extends Equatable {
     required this.desc,
     required this.company,
     required this.location,
+    required this.jobTime,
     required this.logo,
-    required this.postedBy,
-    required this.bookmarkedBy,
-    required this.appliedBy,
-    required this.acceptedUser,
+    required this.salary,
+     this.postedBy,
+     this.bookmarkedBy,
+     this.appliedBy,
+     this.acceptedUser,
   });
   JobApiModel.empty()
       : jobId = '',
         title = '',
         desc = '',
+        salary = '',
+        jobTime = '',
         company = '',
         logo = '',
         postedBy = '',
@@ -59,8 +65,10 @@ class JobApiModel extends Equatable {
         title: title,
         desc: desc,
         company: company,
+        jobTime: jobTime,
         location: location,
         logo: logo,
+        salary: salary,
         postedBy: postedBy,
         bookmarkedBy: bookmarkedBy,
         appliedBy: appliedBy,
@@ -72,7 +80,9 @@ class JobApiModel extends Equatable {
         jobId: entity.jobId ?? '',
         title: entity.title,
         desc: entity.desc,
+        jobTime: entity.jobTime,
         company: entity.company,
+        salary: entity.salary,
         location: entity.location,
         logo: entity.logo,
         postedBy: entity.postedBy,
@@ -90,6 +100,8 @@ class JobApiModel extends Equatable {
         jobId,
         title,
         desc,
+        salary,
+        jobTime,
         company,
         location,
         postedBy,
