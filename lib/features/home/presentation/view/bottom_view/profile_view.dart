@@ -76,36 +76,6 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                 icon: const Icon(Icons.share, size: 40, color: Colors.yellow),
               ),
               const SizedBox(height: 15),
-              Row(
-                children: [
-                  const SizedBox(width: 70),
-                  const Text(
-                    " CV   ",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Container(
-                    height: 70,
-                    width: screenWidth * 0.3,
-                    margin: const EdgeInsets.symmetric(horizontal: 16.0),
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: const Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.edit_document, color: Colors.white),
-                        Text("Upload Here",
-                            style: TextStyle(color: Colors.white)),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 15),
               const SizedBox(height: 15),
               getSettingsBtn(
                 text: "Log Out",
