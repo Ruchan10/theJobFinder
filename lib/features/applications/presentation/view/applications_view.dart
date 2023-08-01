@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:getwidget/components/tabs/gf_tabbar.dart';
+import 'package:the_job_finder/features/applications/presentation/viewmodel/applied_view_model.dart';
+
+import '../viewmodel/received_view_model.dart';
+import '../widget/get_applied_jobs_widget.dart';
+import '../widget/get_created_jobs_widget.dart';
 
 class ApplicationsView extends ConsumerStatefulWidget {
   const ApplicationsView({super.key});
@@ -9,9 +15,21 @@ class ApplicationsView extends ConsumerStatefulWidget {
       _ApplicationsViewState();
 }
 
-class _ApplicationsViewState extends ConsumerState<ApplicationsView> {
+class _ApplicationsViewState extends ConsumerState<ApplicationsView>
+    with SingleTickerProviderStateMixin {
+  late TabController tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    tabController = TabController(length: 2, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
+    var jobState = ref.watch(appliedViewModelProvider);
+    var jobState0 = ref.watch(createdViewModelProvider);
+    print("in application view state");
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -28,13 +46,38 @@ class _ApplicationsViewState extends ConsumerState<ApplicationsView> {
                   ),
                   const Spacer(),
                   const Text(
-                    "Update Profile",
+                    "Applications",
                     style: TextStyle(
                       fontSize: 26,
                     ),
                   ),
                   const Spacer(),
                 ],
+              ),
+              GFTabBar(
+                length: 2,
+                controller: tabController,
+                tabs: const [
+                  Tab(
+                    child: Text(
+                      "Applied",
+                    ),
+                  ),
+                  Tab(
+                    child: Text(
+                      "Received",
+                    ),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: TabBarView(
+                  controller: tabController,
+                  children: [
+                    GetAppliedWidget(ref: ref, jobList: jobState.jobs),
+                    GetCreatedWidget(ref: ref, jobList: jobState0.jobs),
+                  ],
+                ),
               ),
             ],
           ),

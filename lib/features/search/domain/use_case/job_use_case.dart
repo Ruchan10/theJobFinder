@@ -20,6 +20,14 @@ class JobUseCase {
     return jobRepository.getAllJobs();
   }
 
+  Future<Either<Failure, List<JobEntity>>> getCreated() {
+    return jobRepository.getCreated();
+  }
+
+  Future<Either<Failure, List<JobEntity>>> getApplied() {
+    return jobRepository.getApplied();
+  }
+
   Future<Either<Failure, bool>> addJob(JobEntity job) {
     return jobRepository.addJob(job);
   }

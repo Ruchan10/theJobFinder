@@ -16,7 +16,9 @@ final profileViewModelProvider =
 class ProfileViewModel extends StateNotifier<ProfileState> {
   final ProfileUseCase profileUseCase;
 
-  ProfileViewModel(this.profileUseCase) : super(ProfileState.initial());
+  ProfileViewModel(this.profileUseCase) : super(ProfileState.initial()) {
+    getUserDetails();
+  }
 
   updateProfile(BuildContext context, ProfileEntity profile) async {
     state.copyWith(isLoading: true);
@@ -30,5 +32,16 @@ class ProfileViewModel extends StateNotifier<ProfileState> {
           context: context,
           color: Colors.green);
     });
+  }
+
+  getUserDetails() async {
+    state = state.copyWith(isLoading: true);
+    var data = await profileUseCase.getUserDetails();
+    print("getUserDetails()");
+    print(data);
+    data.fold(
+      (l) => state = state.copyWith(isLoading: false, error: l.error),
+      (r) => state = state.copyWith(isLoading: false, profiles: r),
+    );
   }
 }

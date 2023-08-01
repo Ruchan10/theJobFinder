@@ -17,6 +17,12 @@ class UpdateProfile extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _UpdateProfileState();
 }
 
+List<ProfileEntity> profile = [];
+
+String? _userName;
+const String apiBaseUrl = 'http://192.168.1.6:3000/';
+String? _phoneNum;
+
 class _UpdateProfileState extends ConsumerState<UpdateProfile> {
   final _fullNameController = TextEditingController();
   final _phoneNumController = TextEditingController();
@@ -103,7 +109,7 @@ class _UpdateProfileState extends ConsumerState<UpdateProfile> {
     final profile = ProfileEntity(
       profile: _img!.path,
       fullName: fullName,
-      phoneNum: phoneNumber,
+      phoneNumber: phoneNumber,
       cv: _cv!.path,
     );
 
@@ -113,6 +119,12 @@ class _UpdateProfileState extends ConsumerState<UpdateProfile> {
 
   @override
   Widget build(BuildContext context) {
+    var userState = ref.watch(profileViewModelProvider);
+    profile = userState.profiles;
+    _userName = profile[0].fullName;
+    _phoneNum = profile[0].phoneNumber;
+    _fullNameController.text = _userName!;
+    _phoneNumController.text = _phoneNum!;
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -183,7 +195,8 @@ class _UpdateProfileState extends ConsumerState<UpdateProfile> {
                     radius: 50,
                     backgroundImage: _img != null
                         ? FileImage(_img!)
-                        : const AssetImage('') as ImageProvider,
+                        : NetworkImage(apiBaseUrl + profile[0].profile!)
+                            as ImageProvider,
                   ),
                 ),
               ),

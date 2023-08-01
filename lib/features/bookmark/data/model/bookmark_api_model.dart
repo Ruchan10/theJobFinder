@@ -20,14 +20,19 @@ class BookmarkApiModel extends Equatable {
   final String location;
   final String logo;
   final String postedBy;
+  final String salary;
+
   final List<String> bookmarkedBy;
   final List<String> appliedBy;
   final List<String> acceptedUser;
+
   const BookmarkApiModel({
     required this.bookmarkId,
     required this.title,
     required this.desc,
     required this.company,
+    required this.salary,
+
     required this.location,
     required this.logo,
     required this.postedBy,
@@ -41,6 +46,8 @@ class BookmarkApiModel extends Equatable {
         desc = '',
         company = '',
         logo = '',
+        salary = '',
+
         postedBy = '',
         bookmarkedBy = [],
         appliedBy = [],
@@ -59,6 +66,8 @@ class BookmarkApiModel extends Equatable {
         desc: desc,
         company: company,
         location: location,
+        salary: salary,
+
         logo: logo,
         postedBy: postedBy,
         bookmarkedBy: bookmarkedBy,
@@ -73,6 +82,8 @@ class BookmarkApiModel extends Equatable {
         desc: entity.desc,
         company: entity.company,
         location: entity.location,
+        salary: entity.salary,
+
         logo: entity.logo,
         postedBy: entity.postedBy,
         bookmarkedBy: entity.bookmarkedBy,
@@ -90,6 +101,8 @@ class BookmarkApiModel extends Equatable {
         title: entity.title,
         desc: entity.desc,
         location: entity.location,
+        salary: entity.salary,
+
         company: entity.company,
         logo: entity.logo,
         postedBy: entity.postedBy,
@@ -107,6 +120,8 @@ class BookmarkApiModel extends Equatable {
         title,
         desc,
         location,
+        salary,
+
         company,
         postedBy,
         logo,

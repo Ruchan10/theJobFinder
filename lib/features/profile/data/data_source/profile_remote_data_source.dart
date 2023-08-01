@@ -7,6 +7,7 @@ import '../../../../core/failure/failure.dart';
 import '../../../../core/network/remote/http_service.dart';
 import '../../../../core/shared_prefs/user_shared_pref.dart';
 import '../../domain/entity/profile_entity.dart';
+import '../dto/update_profile.dart';
 import '../model/profile_api_model.dart';
 
 final profileRemoteDataSourceProvider = Provider(
@@ -40,7 +41,7 @@ class ProfileRemoteDataSource {
 
       FormData formData = FormData.fromMap({
         'fullName': profile.fullName,
-        'phoneNum': profile.phoneNum,
+        'phoneNumber': profile.phoneNumber,
         'cv': await MultipartFile.fromFile(profile.cv!),
         'profile': await MultipartFile.fromFile(profile.profile!),
       });
@@ -66,6 +67,54 @@ class ProfileRemoteDataSource {
       return Left(
         Failure(
           error: e.message.toString(),
+        ),
+      );
+    }
+  }
+
+  Future<Either<Failure, List<ProfileEntity>>> getUserDetails() async {
+    try {
+      String? token;
+      var data = await userSharedPrefs.getUserToken();
+      data.fold(
+        (l) => token = null,
+        (r) => token = r!,
+      );
+      String? userId;
+      var data0 = await userSharedPrefs.getUserId();
+      data0.fold(
+        (l) => userId = null,
+        (r) => userId = r!,
+      );
+
+      var response = await dio.get(
+        ApiEndpoints.getUserDetails + userId!,
+        options: Options(
+          headers: {
+            'Authorization': '$token',
+          },
+        ),
+      );
+      if (response.statusCode == 200) {
+        List<ProfileEntity> profile = [];
+
+        GetAllProfileDTO profileAddDTO =
+            GetAllProfileDTO.fromJson(response.data);
+        profile = profileApiModel.toEntityList(profileAddDTO.data);
+        return Right(profile);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          error: e.error.toString(),
+          statusCode: e.response?.statusCode.toString() ?? '0',
         ),
       );
     }

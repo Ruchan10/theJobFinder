@@ -23,4 +23,10 @@ class ProfileLocalRepositoryImpl implements IProfileRepository {
   Future<Either<Failure, bool>> updateProfile(ProfileEntity profile) {
     return profileLocalDataSource.updateProfile(profile);
   }
+
+  @override
+  Future<Either<Failure, List<ProfileEntity>>> getUserDetails() {
+    // TODO: implement getUserDetails
+    throw UnimplementedError();
+  }
 }

@@ -18,7 +18,8 @@ class _SearchViewState extends ConsumerState<SearchView> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     var jobState = ref.watch(jobViewModelProvider);
-
+    print("Inside search_view");
+    print(jobState.jobs);
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -107,8 +108,10 @@ class _SearchViewState extends ConsumerState<SearchView> {
                 ],
               ),
               SizedBox(height: height * 0.02),
-              Flexible(
-                child: JobWidget(ref: ref, jobList: jobState.jobs),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: JobWidget(ref: ref, jobList: jobState.jobs),
+                ),
               ),
             ],
           ),

@@ -1,24 +1,27 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../model/profile_api_model.dart';
+import '../../../search/data/model/job_api_model.dart';
+
 
 @JsonSerializable()
-class GetAllProfileDTO {
+class GetCreatedJobDTO {
   final bool success;
   final int count;
-  final List<ProfileApiModel> data;
+  final List<JobApiModel> data;
 
-  GetAllProfileDTO({
+  GetCreatedJobDTO({
     required this.success,
     required this.count,
     required this.data,
   });
 
-  factory GetAllProfileDTO.fromJson(Map<String, dynamic> json) {
-    return GetAllProfileDTO(
+  factory GetCreatedJobDTO.fromJson(Map<String, dynamic> json) {
+    return GetCreatedJobDTO(
       success: json['success'] as bool,
       count: json['count'] as int,
-      data: [ProfileApiModel.fromJson(json['data'] as Map<String, dynamic>)],
+      data: (json['data'] as List<dynamic>)
+          .map((e) => JobApiModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
   }
 

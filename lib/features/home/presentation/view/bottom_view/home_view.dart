@@ -1,21 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:the_job_finder/widgets/company_card.dart';
-import 'package:the_job_finder/widgets/pill_btns_icons.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../../core/common/provider/internet_connectivity.dart';
+import '../../../../../widgets/pill_btns_icons.dart';
+import '../../../../profile/domain/entity/profile_entity.dart';
+import '../../../../profile/presentation/viewmodel/profile_view_model.dart';
+import '../../../../search/presentation/viewmodel/job_view_model.dart';
+import '../../../../search/presentation/widget/job_widget.dart';
 
-class homeView extends StatefulWidget {
+class homeView extends ConsumerStatefulWidget {
   const homeView({super.key});
 
   @override
-  State<homeView> createState() => _homeViewState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _homeViewState();
 }
 
-class _homeViewState extends State<homeView> {
+class _homeViewState extends ConsumerState<homeView> {
+  List<ProfileEntity> profile = [];
+  final String apiBaseUrl = 'http://192.168.1.6:3000/';
+  String? _userName;
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    var userState = ref.watch(profileViewModelProvider);
+    profile = userState.profiles;
+    _userName = profile[0].fullName;
+    var jobState = ref.watch(jobViewModelProvider);
 
     return Scaffold(
       body: SafeArea(
@@ -24,10 +35,9 @@ class _homeViewState extends State<homeView> {
             padding: const EdgeInsets.all(20),
             child: Column(
               children: [
-                Container(
+                SizedBox(
                   height: height * .05,
                   width: width,
-                  alignment: Alignment.topLeft,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -46,11 +56,10 @@ class _homeViewState extends State<homeView> {
                             },
                             icon: const Icon(Icons.notifications),
                           ),
-                          IconButton(
-                            onPressed: () {
-                              setState(() {});
-                            },
-                            icon: const Icon(Icons.circle_outlined, size: 50),
+                          CircleAvatar(
+                            // radius: 50,
+                            backgroundImage:
+                                NetworkImage(apiBaseUrl + profile[0].profile!),
                           ),
                         ]),
                       ),
@@ -61,9 +70,9 @@ class _homeViewState extends State<homeView> {
                   height: height * .1,
                   alignment: Alignment.topLeft,
                   width: double.infinity,
-                  child: const Text(
-                    "     Ruchan Kayastha",
-                    style: TextStyle(
+                  child: Text(
+                    "     $_userName",
+                    style: const TextStyle(
                       fontSize: 26,
                     ),
                   ),
@@ -87,16 +96,17 @@ class _homeViewState extends State<homeView> {
                           child: const Text(
                             "  Quick Search",
                             style: TextStyle(
-                              fontSize: 40,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
                         const Padding(
-                          padding: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(25),
                           child: Text(
-                            "You can search quickly for the job you want",
+                            "You can search quickly for the job you want.",
                             style: TextStyle(
-                              fontSize: 25,
+                              fontSize: 20,
                             ),
                           ),
                         ),
@@ -131,49 +141,30 @@ class _homeViewState extends State<homeView> {
                   ),
                 ),
                 SizedBox(height: height * .04),
-                Row(
-                  children: [
-                    getPillBtnIcon(
-                      "All",
-                      const Icon(Icons.all_inbox),
-                      color: const Color.fromARGB(255, 184, 245, 187),
-                    ),
-                    SizedBox(width: width * .05),
-                    getPillBtnIcon(
-                      "Recents",
-                      const Icon(Icons.recent_actors),
-                    ),
-                    SizedBox(width: width * .05),
-                    getPillBtnIcon(
-                      "Popular",
-                      const Icon(Icons.power_input),
-                    ),
-                  ],
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      getPillBtnIcon(
+                        "All",
+                        const Icon(Icons.all_inbox),
+                        color: const Color.fromARGB(255, 184, 245, 187),
+                      ),
+                      SizedBox(width: width * .05),
+                      getPillBtnIcon(
+                        "Recents",
+                        const Icon(Icons.recent_actors),
+                      ),
+                      SizedBox(width: width * .05),
+                      getPillBtnIcon(
+                        "Popular",
+                        const Icon(Icons.power_input),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(height: height * .05),
-                Row(
-                  // scrollDirection: Axis.horizontal,
-                  children: [
-                    getCompanyCardSmall(
-                      context,
-                      width,
-                      height,
-                      "Apple",
-                      "Software Engineer",
-                      "1 Infinite Loop, Cupertino",
-                    ),
-                    SizedBox(width: width * .03),
-                    // getCompanyCardSmall(
-                    //   context,
-                    //   width,
-                    //   height,
-                    //   "Google",
-                    //   "Manager",
-                    //   "Mountain View, CA 94043, USA",
-                    // ),
-                  ],
-                ),
-                SizedBox(height: height * .04),
+                JobWidget(ref: ref, jobList: jobState.jobs),
               ],
             ),
           ),

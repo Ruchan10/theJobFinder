@@ -25,6 +25,12 @@ class JobRemoteRepositoryImpl implements IJobRepository {
   @override
   Future<Either<Failure, List<JobEntity>>> getAllJobs() {
     return jobRemoteDataSource.getAllJobs();
+  }  @override
+  Future<Either<Failure, List<JobEntity>>> getCreated() {
+    return jobRemoteDataSource.getCreated();
+  }  @override
+  Future<Either<Failure, List<JobEntity>>> getApplied() {
+    return jobRemoteDataSource.getApplied();
   }
 
   @override

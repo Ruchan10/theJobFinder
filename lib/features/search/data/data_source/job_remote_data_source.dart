@@ -79,8 +79,6 @@ class JobRemoteDataSource {
   Future<Either<Failure, List<JobEntity>>> getAllJobs() async {
     try {
       var response = await dio.get(ApiEndpoints.getAllJobs);
-      print("In get all job function");
-      print(response);
       if (response.statusCode == 200) {
         List<JobEntity> jobs = [];
 
@@ -163,6 +161,93 @@ class JobRemoteDataSource {
       );
       if (response.statusCode == 200) {
         return const Right(true);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          error: e.error.toString(),
+          statusCode: e.response?.statusCode.toString() ?? '0',
+        ),
+      );
+    }
+  }
+
+  Future<Either<Failure, List<JobEntity>>> getApplied() async {
+    try {
+      String? token;
+      var data = await userSharedPrefs.getUserToken();
+      data.fold(
+        (l) => token = null,
+        (r) => token = r!,
+      );
+
+      var response = await dio.get(
+        ApiEndpoints.getApplied,
+        options: Options(
+          headers: {
+            'Authorization': '$token',
+          },
+        ),
+      );
+      if (response.statusCode == 200) {
+        List<JobEntity> jobs = [];
+
+        GetAllJobDTO jobAddDTO = GetAllJobDTO.fromJson(response.data);
+        jobs = jobApiModel.toEntityList(jobAddDTO.data);
+        return Right(jobs);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          error: e.error.toString(),
+          statusCode: e.response?.statusCode.toString() ?? '0',
+        ),
+      );
+    }
+  }
+
+  Future<Either<Failure, List<JobEntity>>> getCreated() async {
+    try {
+      String? userId;
+      var data = await userSharedPrefs.getUserId();
+      data.fold(
+        (l) => userId = null,
+        (r) => userId = r!,
+      );
+      String? token;
+      var data0 = await userSharedPrefs.getUserToken();
+      data0.fold(
+        (l) => token = null,
+        (r) => token = r!,
+      );
+      var response = await dio.get(
+        ApiEndpoints.getCreated + userId!,
+        options: Options(
+          headers: {
+            'Authorization': '$token',
+          },
+        ),
+      );
+      if (response.statusCode == 200) {
+        List<JobEntity> jobs = [];
+
+        GetAllJobDTO jobAddDTO = GetAllJobDTO.fromJson(response.data);
+        jobs = jobApiModel.toEntityList(jobAddDTO.data);
+        return Right(jobs);
       } else {
         return Left(
           Failure(

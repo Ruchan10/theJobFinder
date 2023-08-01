@@ -46,4 +46,28 @@ class JobLocalDataSource {
       return Left(Failure(error: e.toString()));
     }
   }
+
+  Future<Either<Failure, List<JobEntity>>> getApplied() async {
+    try {
+      // Get all applicationes from Hive
+      final applications = await hiveService.getApplied();
+      // Convert Hive Object to Entity
+      final applicationEntities = jobHiveModel.toEntityList(applications);
+      return Right(applicationEntities);
+    } catch (e) {
+      return Left(Failure(error: e.toString()));
+    }
+  }
+
+  Future<Either<Failure, List<JobEntity>>> getCreatedJobs() async {
+    try {
+      // Get all applicationes from Hive
+      final applications = await hiveService.getCreated();
+      // Convert Hive Object to Entity
+      final applicationEntities = jobHiveModel.toEntityList(applications);
+      return Right(applicationEntities);
+    } catch (e) {
+      return Left(Failure(error: e.toString()));
+    }
+  }
 }

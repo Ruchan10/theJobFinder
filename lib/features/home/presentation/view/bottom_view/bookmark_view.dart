@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:the_job_finder/config/router/app_route.dart';
 
 import '../../../../bookmark/presentation/viewmodel/bookmark_view_model.dart';
 import '../../../../bookmark/presentation/widget/bookmark_widget.dart';
@@ -18,7 +17,7 @@ class _BookmarkViewState extends ConsumerState<BookmarkView> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     var bookmarkState = ref.watch(bookmarkViewModelProvider);
-
+    print("IN bookmark View");
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -46,8 +45,7 @@ class _BookmarkViewState extends ConsumerState<BookmarkView> {
                         const Spacer(),
                         IconButton(
                           onPressed: () {
-                            setState(() {
-                            });
+                            setState(() {});
                           },
                           icon: const Icon(Icons.notifications_outlined),
                         ),
@@ -89,10 +87,7 @@ class _BookmarkViewState extends ConsumerState<BookmarkView> {
                 ),
               ),
               SizedBox(height: height * 0.02),
-              Flexible(
-                child: BookmarkWidget(
-                    ref: ref, bookmarkList: bookmarkState.bookmarks),
-              ),
+              BookmarkWidget(ref: ref, bookmarkList: bookmarkState.bookmarks),
             ],
           ),
         ),

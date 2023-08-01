@@ -16,6 +16,7 @@ class BookmarkWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("in bookmark widget");
     return GridView.builder(
       // Put this otherwise it will take all the space
       shrinkWrap: true,
@@ -24,22 +25,21 @@ class BookmarkWidget extends StatelessWidget {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1, childAspectRatio: 2.1),
       itemBuilder: (context, index) {
-        return Column(
-          children: [
-            getCompanyCard(
-              context: context,
-              name: bookmarkList[index].company,
-              job: bookmarkList[index].title,
-              location: bookmarkList[index].location,
-              time: bookmarkList[index].desc,
-              ref: ref,
-              list: bookmarkList,
-              index: index,
-              bookmarked: true,
-              fromBookmark: true,
-            ),
-            const SizedBox(height: 7),
-          ],
+        print("bookmarkList${bookmarkList[index].company}");
+        return Card(
+          child: getCompanyCard(
+            context: context,
+            name: bookmarkList[index].company,
+            job: bookmarkList[index].title,
+            logo: bookmarkList[index].logo,
+            location: bookmarkList[index].location,
+            time: bookmarkList[index].desc,
+            ref: ref,
+            list: bookmarkList,
+            index: index,
+            bookmarked: true,
+            fromBookmark: true,
+          ),
         );
       },
     );

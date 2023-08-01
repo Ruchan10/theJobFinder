@@ -20,11 +20,17 @@ class ProfileHiveModel {
   @HiveField(2)
   final String? email;
   @HiveField(3)
-  final String? phoneNum;
+  final String? phoneNumber;
   @HiveField(4)
   final String? cv;
   @HiveField(5)
   final String? profile;
+  @HiveField(6)
+  final String? password;
+  @HiveField(7)
+  final List<String>? appliedJobs;
+  @HiveField(8)
+  final List<String>? bookmarkedJobs;
 
   // empty constructor
   ProfileHiveModel.empty()
@@ -33,17 +39,23 @@ class ProfileHiveModel {
           fullName: '',
           email: '',
           cv: '',
-          phoneNum: '',
+          phoneNumber: '',
           profile: '',
+          password: '',
+          appliedJobs: [],
+          bookmarkedJobs: [],
         );
 
   ProfileHiveModel({
     String? profileId,
     this.fullName,
     this.email,
-    this.phoneNum,
+    this.phoneNumber,
     this.cv,
     this.profile,
+    this.password,
+    this.bookmarkedJobs,
+    this.appliedJobs,
   }) : profileId = profileId ?? const Uuid().v4();
 
   // Convert Hive Object to Entity
@@ -52,7 +64,10 @@ class ProfileHiveModel {
         fullName: fullName,
         email: email,
         cv: cv,
-        phoneNum: phoneNum,
+        password: password,
+        phoneNumber: phoneNumber,
+        bookmarkedJobs: bookmarkedJobs,
+        appliedJobs: appliedJobs,
         profile: profile,
       );
 
@@ -61,9 +76,12 @@ class ProfileHiveModel {
         // profileId: entity.profileId,
         fullName: entity.fullName,
         email: entity.email,
-        phoneNum: entity.phoneNum,
+        phoneNumber: entity.phoneNumber,
         cv: entity.cv,
+        password: entity.password,
         profile: entity.profile,
+        bookmarkedJobs: entity.bookmarkedJobs,
+        appliedJobs: entity.appliedJobs,
       );
 
   // Convert Hive List to Entity List
@@ -72,6 +90,6 @@ class ProfileHiveModel {
 
   @override
   String toString() {
-    return 'profileId: $profileId, fullName: $fullName, email:$email, phoneNum:$phoneNum, cv:$cv,profile:$profile';
+    return 'profileId: $profileId, fullName: $fullName, email:$email, phoneNum:$phoneNumber, cv:$cv,profile:$profile, appliedJobs:$appliedJobs,bookmarkedJobs:$bookmarkedJobs,password:$password,';
   }
 }

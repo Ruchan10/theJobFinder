@@ -1,49 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../widgets/company_card.dart';
+import '../../../applications/presentation/widget/get_applied_jobs_widget.dart';
 import '../../../search/domain/entity/job_entity.dart';
 
-class LoadJob extends StatelessWidget {
+class HomeJobWidget extends ConsumerWidget {
   final WidgetRef ref;
-  final List<JobEntity> lstJobs;
-  const LoadJob({super.key, required this.lstJobs, required this.ref});
+  final List<JobEntity> jobList;
+
+  const HomeJobWidget({
+    Key? key,
+    required this.ref,
+    required this.jobList,
+  }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    print(lstJobs.length);
-    print("INSIDE LoadJob Function");
-    return ListView.builder(
-      itemCount: lstJobs.length,
-      itemBuilder: ((context, index) => ListTile(
-          title: Text(lstJobs[index].title),
-          subtitle: Text(lstJobs[index].title),
-          trailing: IconButton(
-            onPressed: () {
-              showDialog(
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentUserIdAsyncValue = ref.watch(currentUserIdProvider);
+    return currentUserIdAsyncValue.when(
+      data: (currentUserId) {
+        return ListView.builder(
+          scrollDirection:
+              Axis.horizontal, // Set the scroll direction to horizontal
+          itemCount: jobList.length,
+          itemBuilder: (context, index) {
+            bool isBookmarked = false;
+            if (currentUserId != null &&
+                jobList[index].bookmarkedBy!.contains(currentUserId)) {
+              isBookmarked = true;
+            }
+            return Card(
+              child: getCompanyCard(
                 context: context,
-                builder: (context) => AlertDialog(
-                  title: Text(
-                      'Are you sure you want to delete ${lstJobs[index].title}?'),
-                  actions: [
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text('No')),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          // ref
-                          //     .read(batchViewModelProvider.notifier)
-                          //     .deletebatch(context, lstJobes[index]);
-                        },
-                        child: const Text('Yes')),
-                  ],
-                ),
-              );
-            },
-            icon: const Icon(Icons.delete),
-          ))),
+                name: jobList[index].company,
+                job: jobList[index].title,
+                logo: jobList[index].logo,
+                location: jobList[index].location,
+                time: jobList[index].desc,
+                ref: ref,
+                list: jobList,
+                index: index,
+                bookmarked: isBookmarked,
+                fromBookmark: false,
+              ),
+            );
+          },
+        );
+      },
+      loading: () =>
+          const CircularProgressIndicator(), // You can show a loading indicator
+      error: (error, stack) {
+        // You can handle the error state here
+        print('Error fetching currentUserId: $error');
+        return const Text('Error fetching data');
+      },
     );
   }
 }

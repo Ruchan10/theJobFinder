@@ -31,4 +31,5 @@ class JobState {
       error: error ?? this.error,
     );
   }
+
 }

@@ -21,4 +21,10 @@ class ProfileRemoteRepositoryImpl implements IProfileRepository {
   Future<Either<Failure, bool>> updateProfile(ProfileEntity profile) {
     return profileRemoteDataSource.updateProfile(profile);
   }
+  
+  @override
+  Future<Either<Failure, List<ProfileEntity>>> getUserDetails() {
+        return profileRemoteDataSource.getUserDetails();
+
+  }
 }

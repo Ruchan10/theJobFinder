@@ -33,6 +33,8 @@ class BookmarkHiveModel {
   final List<String> bookmarkedBy;
   @HiveField(9)
   final List<String> acceptedUser;
+      @HiveField(10)
+  final String salary;
   // empty constructor
   BookmarkHiveModel.empty()
       : this(
@@ -41,6 +43,8 @@ class BookmarkHiveModel {
             desc: '',
             location: '',
             company: '',
+            salary: '',
+
             logo: '',
             postedBy: '',
             appliedBy: [],
@@ -55,6 +59,8 @@ class BookmarkHiveModel {
     required this.location,
     required this.logo,
     required this.postedBy,
+    required this.salary,
+
     required this.appliedBy,
     required this.bookmarkedBy,
     required this.acceptedUser,
@@ -68,6 +74,8 @@ class BookmarkHiveModel {
         location: location,
         company: company,
         logo: logo,
+        salary: salary,
+
         postedBy: postedBy,
         appliedBy: appliedBy,
         acceptedUser: acceptedUser,
@@ -84,6 +92,8 @@ class BookmarkHiveModel {
         title: entity.title,
         desc: entity.desc,
         company: entity.company,
+        salary: entity.salary,
+
         location: entity.location,
         logo: entity.logo,
         postedBy: entity.postedBy,
@@ -97,6 +107,6 @@ class BookmarkHiveModel {
 
   @override
   String toString() {
-    return 'bookmarkId: $bookmarkId,  title: $title, desc:$desc, company:$company, location:$location,postedBy:$postedBy,appliedBy:$appliedBy,acceptedUser:$acceptedUser,bookmarkedBy:$bookmarkedBy';
+    return 'bookmarkId: $bookmarkId,  title: $title, desc:$desc, company:$company,salary:$salary, location:$location,postedBy:$postedBy,appliedBy:$appliedBy,acceptedUser:$acceptedUser,bookmarkedBy:$bookmarkedBy';
   }
 }

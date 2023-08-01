@@ -38,6 +38,7 @@ class _dashBoardViewState extends State<dashBoardView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: lstBottomScreen[bottomNavIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -45,6 +46,7 @@ class _dashBoardViewState extends State<dashBoardView> {
         },
         backgroundColor: const Color.fromARGB(255, 106, 180, 108),
         elevation: 1,
+        shape: const CircleBorder(),
         child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

@@ -4,9 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:the_job_finder/core/app.dart';
 import 'package:the_job_finder/core/network/hive_service.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  HiveService().init();
+  await HiveService().init();
   FilePicker.platform;
 
   runApp(

@@ -9,11 +9,14 @@ bool isBookmarkIcon(IconData? icon) {
   return icon == Icons.bookmark || icon == Icons.bookmark_outline;
 }
 
+const String apiBaseUrl = 'http://192.168.1.6:3000/';
+
 Widget getCompanyCard({
   required BuildContext context,
   required String name,
   required String job,
   required String location,
+  required String logo,
   required String time,
   required WidgetRef ref,
   required int index,
@@ -27,73 +30,73 @@ Widget getCompanyCard({
   } else {
     bookmarkIcon = const Icon(Icons.bookmark_outline);
   }
-  return Expanded(
-    child: Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black12),
-        shape: BoxShape.rectangle,
-        color: Colors.white,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(50),
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(6),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.facebook_outlined),
-                      ),
-                      Text(
-                        name,
-                        style: const TextStyle(fontSize: 30),
-                      ),
-                    ],
-                  ),
+  return Container(
+    // decoration: BoxDecoration(
+    //   border: Border.all(color: Colors.black12),
+    //   shape: BoxShape.rectangle,
+    //   color: Colors.white,
+    //   borderRadius: const BorderRadius.all(
+    //     Radius.circular(50),
+    //   ),
+    // ),
+    child: Padding(
+      padding: const EdgeInsets.all(6),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      // radius: 50,
+                      backgroundImage: logo.isNotEmpty
+                          ? NetworkImage(apiBaseUrl + logo)
+                          : const AssetImage('') as ImageProvider,
+                    ),
+                    Text(
+                      name,
+                      style: const TextStyle(fontSize: 30),
+                    ),
+                  ],
                 ),
-                IconButton(
-                  onPressed: () {
-                    if (!bookmarked) {
-                      const SearchView();
-                      print("Add bookmark");
+              ),
+              IconButton(
+                onPressed: () {
+                  if (!bookmarked) {
+                    const SearchView();
+                    print("Add bookmark");
+                    ref
+                        .read(jobViewModelProvider.notifier)
+                        .addBookmark(context, list[index]);
+                  } else {
+                    if (fromBookmark) {
+                      ref
+                          .read(bookmarkViewModelProvider.notifier)
+                          .removeBookmark(context, list[index]);
+                    } else {
                       ref
                           .read(jobViewModelProvider.notifier)
-                          .addBookmark(context, list[index]);
-                    } else {
-                      print("SHould be remove?");
-                      if (fromBookmark) {
-                        print("ITS WORKING");
-                        ref
-                            .read(bookmarkViewModelProvider.notifier)
-                            .removeBookmark(context, list[index]);
-                      } else {
-                        print("ITS Not WORKING");
-
-                        ref
-                            .read(jobViewModelProvider.notifier)
-                            .removeBookmark(context, list[index]);
-                      }
+                          .removeBookmark(context, list[index]);
                     }
-                  },
-                  icon: bookmarkIcon,
-                ),
-              ],
-            ),
-            Container(
+                  }
+                },
+                icon: bookmarkIcon,
+              ),
+            ],
+          ),
+          Expanded(
+            child: Container(
               alignment: Alignment.topLeft,
               child: Text(
                 "   $job",
                 style: const TextStyle(fontSize: 20),
               ),
             ),
-            Row(
+          ),
+          Expanded(
+            child: Row(
               children: [
                 IconButton(
                   onPressed: () {},
@@ -102,7 +105,9 @@ Widget getCompanyCard({
                 Text(location),
               ],
             ),
-            Row(
+          ),
+          Expanded(
+            child: Row(
               children: [
                 IconButton(
                   onPressed: () {},
@@ -111,18 +116,20 @@ Widget getCompanyCard({
                 Text(time),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     ),
   );
 }
 
-Widget getCompanyCardSmall(BuildContext context, double width, double height,
-    String name, String job, String location) {
+Widget getCompanyCardSmall(
+    {required BuildContext context,
+    required String name,
+    required String job,
+    required String location}) {
   return Container(
-    width: width * .61,
-    height: height * .18,
+    alignment: Alignment.centerLeft,
     decoration: BoxDecoration(
       border: Border.all(color: Colors.black12),
       shape: BoxShape.rectangle,
@@ -133,59 +140,45 @@ Widget getCompanyCardSmall(BuildContext context, double width, double height,
     ),
     child: Padding(
       padding: const EdgeInsets.all(6),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(
-                  child: Row(
-                    children: [
-                      SizedBox(width: width * .03),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.apple_outlined),
-                      ),
-                      Text(
-                        name,
-                        style: const TextStyle(fontSize: 30),
-                      ),
-                    ],
+      child: Column(
+        crossAxisAlignment:
+            CrossAxisAlignment.start, // Align children to the left
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.apple_outlined),
                   ),
-                ),
-                SizedBox(
-                  height: height * .07,
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.bookmark),
-                      ),
-                      SizedBox(width: width * .03),
-                    ],
+                  Text(
+                    name,
+                    style: const TextStyle(fontSize: 30),
                   ),
-                ),
-              ],
-            ),
-            Container(
-              alignment: Alignment.topLeft,
-              child: Text(
-                "   $job",
-                style: const TextStyle(fontSize: 20),
+                ],
               ),
-            ),
-            Row(
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.location_on),
-                ),
-                Text(location),
-              ],
-            ),
-          ],
-        ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.bookmark),
+              ),
+            ],
+          ),
+          Text(
+            "   $job",
+            style: const TextStyle(fontSize: 20),
+          ),
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.location_on),
+              ),
+              Text(location),
+            ],
+          ),
+        ],
       ),
     ),
   );

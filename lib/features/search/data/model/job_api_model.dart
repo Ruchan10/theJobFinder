@@ -35,10 +35,10 @@ class JobApiModel extends Equatable {
     required this.jobTime,
     required this.logo,
     required this.salary,
-     this.postedBy,
-     this.bookmarkedBy,
-     this.appliedBy,
-     this.acceptedUser,
+    this.postedBy,
+    this.bookmarkedBy,
+    this.appliedBy,
+    this.acceptedUser,
   });
   JobApiModel.empty()
       : jobId = '',

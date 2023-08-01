@@ -19,7 +19,7 @@ class JobViewModel extends StateNotifier<JobState> {
     getAllJobs();
   }
 
-  addJob(BuildContext context,JobEntity job) async {
+  addJob(BuildContext context, JobEntity job) async {
     state.copyWith(isLoading: true);
     var data = await jobUseCase.addJob(job);
 
@@ -82,6 +82,26 @@ class JobViewModel extends StateNotifier<JobState> {
           context: context,
         );
       },
+    );
+  }
+
+  Future<void> getCreated() async {
+    state = state.copyWith(isLoading: true);
+    var data = await jobUseCase.getCreated();
+
+    data.fold(
+      (l) => state = state.copyWith(isLoading: false, error: l.error),
+      (r) => state = state.copyWith(isLoading: false, jobs: r),
+    );
+  }
+
+  Future<void> getApplied() async {
+    state = state.copyWith(isLoading: true);
+    var data = await jobUseCase.getApplied();
+
+    data.fold(
+      (l) => state = state.copyWith(isLoading: false, error: l.error),
+      (r) => state = state.copyWith(isLoading: false, jobs: r),
     );
   }
 }

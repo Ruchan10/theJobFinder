@@ -19,4 +19,8 @@ class ProfileUseCase {
   Future<Either<Failure, bool>> updateProfile(ProfileEntity profile) {
     return profileRepository.updateProfile(profile);
   }
+
+  Future<Either<Failure, List<ProfileEntity>>> getUserDetails() {
+    return profileRepository.getUserDetails();
+  }
 }

@@ -149,6 +149,22 @@ class HiveService {
     return bookmarks;
   }
 
+  Future<List<JobHiveModel>> getApplied() async {
+    var box =
+        await Hive.openBox<JobHiveModel>(HiveTableConstant.applicationBox);
+    var applieds = box.values.toList();
+    box.close();
+    return applieds;
+  }
+
+  Future<List<JobHiveModel>> getCreated() async {
+    var box =
+        await Hive.openBox<JobHiveModel>(HiveTableConstant.applicationBox);
+    var applieds = box.values.toList();
+    box.close();
+    return applieds;
+  }
+
 // Job Queries
   Future<void> addJob(JobHiveModel job) async {
     var box = await Hive.openBox<JobHiveModel>(HiveTableConstant.jobBox);
@@ -162,7 +178,7 @@ class HiveService {
     return jobs;
   }
 
-    Future<void> updateProfile(ProfileHiveModel profile) async {
+  Future<void> updateProfile(ProfileHiveModel profile) async {
     var box =
         await Hive.openBox<ProfileHiveModel>(HiveTableConstant.profileBox);
     await box.put(profile.profileId, profile);
