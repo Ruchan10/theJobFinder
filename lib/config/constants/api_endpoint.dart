@@ -20,12 +20,16 @@ class ApiEndpoints {
   static const String deleteJob = "jobs/";
   static const String addBookmark = "jobs/addBookmark/";
   static const String removeBookmark = "jobs/removeBookmark/";
+  static const String withdrawJob = "jobs/withdraw/";
+  static const String getApplied = "jobs/getAppliedJobs/";
+  static const String applyJob = "jobs/applyJob/";
+  static const String getCreated = "jobs/user/";
   static const String getBookmark = "jobs/getBookmarked/";
 
   // ====================== User Routes ======================
   static const String getUserDetails = "users/profile/";
   static const String deleteUser = "users/profile/";
   static const String updateProfile = "users/editProfile/";
-  static const String getApplied = "jobs/getAppliedJobs/";
-  static const String getCreated = "jobs/user/";
+  static const String changeEmail = "users/changeEmail/";
+  static const String changePassword = "auth/changePassword/";
 }

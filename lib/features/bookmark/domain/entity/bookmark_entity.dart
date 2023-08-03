@@ -9,6 +9,7 @@ class BookmarkEntity extends Equatable {
   final String logo;
   final String postedBy;
   final String salary;
+  final String jobTime;
 
   final List<String> bookmarkedBy;
   final List<String> appliedBy;
@@ -24,6 +25,7 @@ class BookmarkEntity extends Equatable {
         postedBy,
         bookmarkedBy,
         appliedBy,
+        jobTime,
         salary,
         acceptedUser
       ];
@@ -35,6 +37,8 @@ class BookmarkEntity extends Equatable {
     required this.company,
     required this.location,
     required this.logo,
+    required this.jobTime,
+
     required this.postedBy,
     required this.bookmarkedBy,
     required this.appliedBy,
@@ -49,6 +53,7 @@ class BookmarkEntity extends Equatable {
         company: json["company"] as String,
         location: json["location"] as String,
         logo: json["logo"],
+        jobTime: json["jobTime"],
         postedBy: json["postedBy"],
         bookmarkedBy: json["bookmarkedBy"],
         appliedBy: json["appliedBy"],
@@ -60,6 +65,7 @@ class BookmarkEntity extends Equatable {
         "bookmarkId": bookmarkId,
         "title": title,
         "desc": desc,
+        "jobTime": jobTime,
         "company": company,
         "location": location,
         "logo": logo,
@@ -72,6 +78,6 @@ class BookmarkEntity extends Equatable {
 
   @override
   String toString() {
-    return 'BookmarkEntity(bookmarkId: $bookmarkId,title: $title, desc: $desc, company: $company, location: $location,logo:$logo, salary: $salary,postedBy:$postedBy,appliedBy:$appliedBy,acceptedUser:$acceptedUser,bookmarkedBy:$bookmarkedBy)';
+    return 'BookmarkEntity(bookmarkId: $bookmarkId,title: $title, desc: $desc, company: $company, location: $location,logo:$logo, salary: $salary,jobTime:$jobTime,postedBy:$postedBy,appliedBy:$appliedBy,acceptedUser:$acceptedUser,bookmarkedBy:$bookmarkedBy)';
   }
 }

@@ -8,6 +8,10 @@ import 'dart:async' as _i4;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:the_job_finder/core/failure/failure.dart' as _i5;
+import 'package:the_job_finder/features/auth/domain/entity/change_email_entity.dart'
+    as _i7;
+import 'package:the_job_finder/features/auth/domain/entity/change_password_entity.dart'
+    as _i8;
 import 'package:the_job_finder/features/auth/domain/entity/student_hive_entity.dart'
     as _i6;
 import 'package:the_job_finder/features/auth/domain/use_case/auth_usecase.dart'
@@ -56,6 +60,40 @@ class MockAuthUseCase extends _i1.Mock implements _i3.AuthUseCase {
           Invocation.method(
             #registerStudent,
             [student],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, bool>>);
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, bool>> changeEmail(
+          _i7.ChangeEmailEntity? emails) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #changeEmail,
+          [emails],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, bool>>.value(
+            _FakeEither_0<_i5.Failure, bool>(
+          this,
+          Invocation.method(
+            #changeEmail,
+            [emails],
+          ),
+        )),
+      ) as _i4.Future<_i2.Either<_i5.Failure, bool>>);
+  @override
+  _i4.Future<_i2.Either<_i5.Failure, bool>> changePassword(
+          _i8.ChangePasswordEntity? pws) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #changePassword,
+          [pws],
+        ),
+        returnValue: _i4.Future<_i2.Either<_i5.Failure, bool>>.value(
+            _FakeEither_0<_i5.Failure, bool>(
+          this,
+          Invocation.method(
+            #changePassword,
+            [pws],
           ),
         )),
       ) as _i4.Future<_i2.Either<_i5.Failure, bool>>);

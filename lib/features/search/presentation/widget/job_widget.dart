@@ -54,18 +54,22 @@ class JobWidget extends StatelessWidget {
               isBookmarked = true;
             }
             return Card(
-              child: getCompanyCard(
-                context: context,
-                name: jobList[index].company,
-                job: jobList[index].title,
-                location: jobList[index].location,
-                logo: jobList[index].logo,
-                time: jobList[index].jobTime,
-                ref: ref,
-                list: jobList,
-                index: index,
-                bookmarked: isBookmarked,
-                fromBookmark: false,
+              child: Padding(
+                padding: const EdgeInsets.all(7),
+                child: getCompanyCard(
+                  context: context,
+                  name: jobList[index].company,
+                  job: jobList[index].title,
+                  location: jobList[index].location,
+                  logo: jobList[index].logo,
+                  salary: jobList[index].salary,
+                  time: jobList[index].jobTime,
+                  ref: ref,
+                  list: jobList,
+                  index: index,
+                  bookmarked: isBookmarked,
+                  fromBookmark: false,
+                ),
               ),
             );
           },

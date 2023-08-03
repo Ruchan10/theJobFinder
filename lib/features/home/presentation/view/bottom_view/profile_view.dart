@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:the_job_finder/config/router/app_route.dart';
+import 'package:the_job_finder/features/auth/domain/entity/change_email_entity.dart';
 
 import '../../../../../core/common/provider/internet_connectivity.dart';
 import '../../../../../widgets/settings_btn.dart';
+import '../../../../auth/domain/entity/change_password_entity.dart';
+import '../../../../auth/presentation/viewmodel/auth_view_model.dart';
 import '../../../../profile/domain/entity/profile_entity.dart';
 import '../../../../profile/presentation/viewmodel/profile_view_model.dart';
 
@@ -19,8 +22,13 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
   late double screenWidth;
   List<ProfileEntity> profile = [];
   final String apiBaseUrl = 'http://192.168.1.6:3000/';
-  String? _userName;
-
+  String? _userName = "User";
+  String? _email;
+  final _getEmail = TextEditingController();
+  final _confirmEmail = TextEditingController();
+  final _getPw = TextEditingController();
+  final _cPw = TextEditingController();
+  final _currentPw = TextEditingController();
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
@@ -32,6 +40,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
     var userState = ref.watch(profileViewModelProvider);
     profile = userState.profiles;
     _userName = profile[0].fullName;
+    _email = profile[0].email;
     final internetStatus = ref.watch(connectivityStatusProvider);
 
     return Scaffold(
@@ -46,9 +55,10 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
               ),
               CircleAvatar(
                 radius: 70,
-                backgroundImage: profile.isNotEmpty
+                backgroundImage: profile[0].profile != null
                     ? NetworkImage(apiBaseUrl + profile[0].profile!)
-                    : const AssetImage('') as ImageProvider,
+                    : const AssetImage('assets/images/profile.jpg')
+                        as ImageProvider,
               ),
               Text(
                 "$_userName",
@@ -60,8 +70,6 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
               const SizedBox(height: 30),
               GestureDetector(
                 onTap: () {
-                  print("Edit Profile");
-
                   Navigator.pushNamed(context, AppRoute.editProfileRoute);
                 },
                 child: getSettingsBtn(
@@ -160,12 +168,12 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
             ),
             content: Column(
               children: [
-                const Text('Current Email:- '),
+                Text('Current Email:- $_email'),
                 const SizedBox(height: 10),
                 SizedBox(
                   // width: 300,
                   child: TextFormField(
-                    // controller: _emailController,
+                    controller: _getEmail,
                     decoration: const InputDecoration(
                       contentPadding: EdgeInsets.only(
                           top: 20), // add padding to adjust text
@@ -188,7 +196,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                 SizedBox(
                   // width: 300,
                   child: TextFormField(
-                    // controller: _emailController,
+                    controller: _confirmEmail,
                     decoration: const InputDecoration(
                       contentPadding: EdgeInsets.only(
                           top: 20), // add padding to adjust text
@@ -212,7 +220,13 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
             actions: [
               TextButton(
                 onPressed: () {
-                  // Close the modal when this button is pressed
+                  String email = _getEmail.text.trim();
+                  String confirmEmail = _confirmEmail.text.trim();
+                  var emails = ChangeEmailEntity(
+                      email: email, confirmEmail: confirmEmail);
+                  ref
+                      .read(authViewModelProvider.notifier)
+                      .changeEmail(emails, context);
                   Navigator.of(context).pop();
                 },
                 child: const Text('Change'),
@@ -248,7 +262,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
               children: [
                 SizedBox(
                   child: TextFormField(
-                    // controller: _emailController,
+                    controller: _currentPw,
                     decoration: const InputDecoration(
                       contentPadding: EdgeInsets.only(
                           top: 20), // add padding to adjust text
@@ -269,7 +283,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                 const SizedBox(height: 8),
                 SizedBox(
                   child: TextFormField(
-                    // controller: _emailController,
+                    controller: _cPw,
                     decoration: const InputDecoration(
                       contentPadding: EdgeInsets.only(
                           top: 20), // add padding to adjust text
@@ -291,7 +305,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                 SizedBox(
                   // width: 300,
                   child: TextFormField(
-                    // controller: _emailController,
+                    controller: _getPw,
                     decoration: const InputDecoration(
                       contentPadding: EdgeInsets.only(
                           top: 20), // add padding to adjust text
@@ -314,7 +328,15 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
             actions: [
               TextButton(
                 onPressed: () {
-                  // Close the modal when this button is pressed
+                  print("IN change Pw");
+                  String cPw = _currentPw.text.trim();
+                  String pw = _getPw.text.trim();
+                  String confirmPw = _cPw.text.trim();
+                  var pws = ChangePasswordEntity(
+                      pw: pw, cpw: confirmPw, currentPw: cPw);
+                  ref
+                      .read(authViewModelProvider.notifier)
+                      .changePassword(pws, context);
                   Navigator.of(context).pop();
                 },
                 child: const Text('Change'),

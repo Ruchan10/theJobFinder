@@ -33,9 +33,9 @@ class JobHiveModel {
   final List<String>? bookmarkedBy;
   @HiveField(9)
   final List<String>? acceptedUser;
-    @HiveField(10)
+  @HiveField(10)
   final String salary;
- @HiveField(11)
+  @HiveField(11)
   final String jobTime;
   // empty constructor
   JobHiveModel.empty()

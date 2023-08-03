@@ -57,7 +57,6 @@ class BookmarkRemoteDataSource {
 
   Future<Either<Failure, List<BookmarkEntity>>> getAllBookmarks() async {
     try {
-      print("inside Get All bookmark function ");
 
       final tokenOption = await userSharedPrefs.getUserToken();
       final token = tokenOption.getOrElse(() => null);

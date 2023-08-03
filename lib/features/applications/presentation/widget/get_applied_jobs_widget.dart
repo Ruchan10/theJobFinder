@@ -45,23 +45,21 @@ class GetAppliedWidget extends StatelessWidget {
                 jobList[index].bookmarkedBy!.contains(currentUserId)) {
               isBookmarked = true;
             }
-            return Column(
-              children: [
-                getCompanyCard(
-                  context: context,
-                  name: jobList[index].company,
-                  job: jobList[index].title,
-                  location: jobList[index].location,
-                  logo: jobList[index].logo,
-                  time: jobList[index].jobTime,
-                  ref: ref,
-                  list: jobList,
-                  index: index,
-                  bookmarked: isBookmarked,
-                  fromBookmark: false,
-                ),
-                const SizedBox(height: 7),
-              ],
+            return Card(
+              child: getCompanyCard(
+                context: context,
+                name: jobList[index].company,
+                job: jobList[index].title,
+                salary: jobList[index].salary,
+                location: jobList[index].location,
+                logo: jobList[index].logo,
+                time: jobList[index].jobTime,
+                ref: ref,
+                list: jobList,
+                index: index,
+                bookmarked: isBookmarked,
+                fromBookmark: false,
+              ),
             );
           },
         );

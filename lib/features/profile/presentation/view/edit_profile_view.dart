@@ -60,12 +60,9 @@ class _UpdateProfileState extends ConsumerState<UpdateProfile> {
 
   Future _browseCv() async {
     final permissionStatus = await Permission.storage.status;
-    print(permissionStatus);
     if (permissionStatus.isDenied) {
       // Here just ask for the permission for the first time
       await Permission.storage.request();
-      print("DENIED");
-
       // I noticed that sometimes popup won't show after user press deny
       // so I do the check once again but now go straight to appSettings
       if (permissionStatus.isDenied) {
@@ -74,7 +71,6 @@ class _UpdateProfileState extends ConsumerState<UpdateProfile> {
     } else if (permissionStatus.isPermanentlyDenied) {
       // Here open app settings for user to manually enable permission in case
       // where permission was permanently denied
-      print("PERMANANTLY DENIED");
       await openAppSettings();
     } else {
       try {
@@ -121,8 +117,10 @@ class _UpdateProfileState extends ConsumerState<UpdateProfile> {
   Widget build(BuildContext context) {
     var userState = ref.watch(profileViewModelProvider);
     profile = userState.profiles;
-    _userName = profile[0].fullName;
-    _phoneNum = profile[0].phoneNumber;
+    print("PROFILES");
+    print(profile);
+    _userName = profile[0].fullName ?? "";
+    _phoneNum = profile[0].phoneNumber ?? "";
     _fullNameController.text = _userName!;
     _phoneNumController.text = _phoneNum!;
     double height = MediaQuery.of(context).size.height;
@@ -195,8 +193,10 @@ class _UpdateProfileState extends ConsumerState<UpdateProfile> {
                     radius: 50,
                     backgroundImage: _img != null
                         ? FileImage(_img!)
-                        : NetworkImage(apiBaseUrl + profile[0].profile!)
-                            as ImageProvider,
+                        : profile[0].profile != null
+                            ? NetworkImage(apiBaseUrl + profile[0].profile!)
+                            : const AssetImage('assets/images/profile.jpg')
+                                as ImageProvider,
                   ),
                 ),
               ),

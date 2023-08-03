@@ -28,26 +28,40 @@ class JobLocalRepositoryImpl implements IJobRepository {
   Future<Either<Failure, List<JobEntity>>> getAllJobs() {
     return jobLocalDataSource.getAllJobs();
   }
-  
+
   @override
   Future<Either<Failure, bool>> removeBookmark(String id) {
     // TODO: implement removeBookmark
     throw UnimplementedError();
-  }  @override
+  }
+
+  @override
   Future<Either<Failure, List<JobEntity>>> getCreated() {
     // TODO: implement removeBookmark
     throw UnimplementedError();
   }
-    @override
+
+  @override
   Future<Either<Failure, List<JobEntity>>> getApplied() {
     // TODO: implement removeBookmark
     throw UnimplementedError();
   }
+
   @override
   Future<Either<Failure, bool>> addBookmark(String id) {
     // TODO: implement addBookmark
     throw UnimplementedError();
   }
 
+  @override
+  Future<Either<Failure, bool>> applyJob(String id) {
+    // TODO: implement applyJob
+    throw UnimplementedError();
+  }
 
+  @override
+  Future<Either<Failure, bool>> withdrawJob(String id) {
+    // TODO: implement withdrawJob
+    throw UnimplementedError();
+  }
 }

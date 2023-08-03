@@ -62,6 +62,24 @@ class JobViewModel extends StateNotifier<JobState> {
         );
       },
     );
+  } Future<void> withdrawJob(BuildContext context, JobEntity job) async {
+    state.copyWith(isLoading: true);
+    var data = await jobUseCase.withdrawJob(job.jobId!);
+
+    data.fold(
+      (l) {
+        showSnackBar(message: l.error, context: context, color: Colors.red);
+
+        state = state.copyWith(isLoading: false, error: l.error);
+      },
+      (r) {
+        state = state.copyWith(isLoading: false, error: null);
+        showSnackBar(
+          message: 'Job Withdrawed',
+          context: context,
+        );
+      },
+    );
   }
 
   Future<void> addBookmark(BuildContext context, JobEntity job) async {
@@ -75,10 +93,29 @@ class JobViewModel extends StateNotifier<JobState> {
         state = state.copyWith(isLoading: false, error: l.error);
       },
       (r) {
-        // state.jobs.remove(job);
         state = state.copyWith(isLoading: false, error: null);
         showSnackBar(
           message: 'Bookmark Added',
+          context: context,
+        );
+      },
+    );
+  }
+
+  Future<void> applyJob(BuildContext context, JobEntity job) async {
+    state.copyWith(isLoading: true);
+    var data = await jobUseCase.applyJob(job.jobId!);
+
+    data.fold(
+      (l) {
+        showSnackBar(message: l.error, context: context, color: Colors.red);
+
+        state = state.copyWith(isLoading: false, error: l.error);
+      },
+      (r) {
+        state = state.copyWith(isLoading: false, error: null);
+        showSnackBar(
+          message: 'Job Applied',
           context: context,
         );
       },

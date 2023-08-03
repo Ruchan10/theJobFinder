@@ -8,9 +8,13 @@ import 'dart:async' as _i6;
 import 'package:dartz/dartz.dart' as _i2;
 import 'package:flutter/foundation.dart' as _i4;
 import 'package:flutter/src/widgets/framework.dart' as _i3;
-import 'package:flutter/src/widgets/notification_listener.dart' as _i9;
+import 'package:flutter/src/widgets/notification_listener.dart' as _i11;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:the_job_finder/core/failure/failure.dart' as _i7;
+import 'package:the_job_finder/features/auth/domain/entity/change_email_entity.dart'
+    as _i9;
+import 'package:the_job_finder/features/auth/domain/entity/change_password_entity.dart'
+    as _i10;
 import 'package:the_job_finder/features/auth/domain/entity/student_hive_entity.dart'
     as _i8;
 import 'package:the_job_finder/features/auth/domain/use_case/auth_usecase.dart'
@@ -111,6 +115,58 @@ class MockAuthUseCase extends _i1.Mock implements _i5.AuthUseCase {
           Invocation.method(
             #registerStudent,
             [student],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.Failure, bool>>);
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, bool>> changeEmail(
+          _i9.ChangeEmailEntity? emails) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #changeEmail,
+          [emails],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.Failure, bool>>.value(
+            _FakeEither_0<_i7.Failure, bool>(
+          this,
+          Invocation.method(
+            #changeEmail,
+            [emails],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i6.Future<_i2.Either<_i7.Failure, bool>>.value(
+                _FakeEither_0<_i7.Failure, bool>(
+          this,
+          Invocation.method(
+            #changeEmail,
+            [emails],
+          ),
+        )),
+      ) as _i6.Future<_i2.Either<_i7.Failure, bool>>);
+  @override
+  _i6.Future<_i2.Either<_i7.Failure, bool>> changePassword(
+          _i10.ChangePasswordEntity? pws) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #changePassword,
+          [pws],
+        ),
+        returnValue: _i6.Future<_i2.Either<_i7.Failure, bool>>.value(
+            _FakeEither_0<_i7.Failure, bool>(
+          this,
+          Invocation.method(
+            #changePassword,
+            [pws],
+          ),
+        )),
+        returnValueForMissingStub:
+            _i6.Future<_i2.Either<_i7.Failure, bool>>.value(
+                _FakeEither_0<_i7.Failure, bool>(
+          this,
+          Invocation.method(
+            #changePassword,
+            [pws],
           ),
         )),
       ) as _i6.Future<_i2.Either<_i7.Failure, bool>>);
@@ -227,7 +283,7 @@ class MockBuildContext extends _i1.Mock implements _i3.BuildContext {
         returnValueForMissingStub: null,
       );
   @override
-  void dispatchNotification(_i9.Notification? notification) =>
+  void dispatchNotification(_i11.Notification? notification) =>
       super.noSuchMethod(
         Invocation.method(
           #dispatchNotification,

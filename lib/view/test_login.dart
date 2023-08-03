@@ -1,61 +1,74 @@
-import 'package:flutter/material.dart';
-import 'package:getwidget/getwidget.dart';
+//   import 'dart:io';
 
-class TestScreen extends StatefulWidget {
-  const TestScreen({Key? key}) : super(key: key);
-  @override
-  State<TestScreen> createState() => _TestScreenState();
-}
+// import 'package:flutter/material.dart';
+// import 'package:image_picker/image_picker.dart';
+// import 'package:permission_handler/permission_handler.dart';
 
-class _TestScreenState extends State<TestScreen>
-    with SingleTickerProviderStateMixin {
-  late TabController tabController;
+// import '../features/search/domain/entity/job_entity.dart';
+// import '../features/search/presentation/viewmodel/job_view_model.dart';
 
-  @override
-  void initState() {
-    super.initState();
-    tabController = TabController(length: 2, vsync: this);
-  }
+// File? _logo;
+//   String? _selectedFileName;
+//   final companyName = TextEditingController();
+//   final jobTitle = TextEditingController();
+//   final qualifications = TextEditingController();
+//   final jobSalary = TextEditingController();
+//   final workLocation = TextEditingController();
+//   String dropdownValue = 'Job Time';
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          GFTabBar(
-            length: 2,
-            controller: tabController,
-            tabs: const [
-              Tab(
-                child: Text(
-                  "Applied",
-                ),
-              ),
-              Tab(
-                child: Text(
-                  "Received",
-                ),
-              ),
-            ],
-          ),
-          Expanded(
-            child: TabBarView(
-              controller: tabController,
-              children: const [
-                Center(child: Text("a")), // Content for "Applied" tab
-                Center(child: Text("r")), // Content for "Received" tab
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+//   Future _browseLogo() async {
+//     final permissionStatus = await Permission.storage.status;
+//     print(permissionStatus);
+//     if (permissionStatus.isDenied) {
+//       // Here just ask for the permission for the first time
+//       await Permission.storage.request();
+//       print("DENIED");
 
-  @override
-  void dispose() {
-    // Don't forget to dispose of the tabController when it's no longer needed
-    tabController.dispose();
-    super.dispose();
-  }
-}
+//       // I noticed that sometimes popup won't show after user press deny
+//       // so I do the check once again but now go straight to appSettings
+//       if (permissionStatus.isDenied) {
+//         await openAppSettings();
+//       }
+//     } else if (permissionStatus.isPermanentlyDenied) {
+//       // Here open app settings for user to manually enable permission in case
+//       // where permission was permanently denied
+//       print("PERMANANTLY DENIED");
+//       await openAppSettings();
+//     } else {
+//       try {
+//         final image =
+//             await ImagePicker().pickImage(source: ImageSource.gallery);
+
+//         if (image != null) {
+//           setState(() {
+//             _logo = File(image.path);
+//             _selectedFileName = image.name;
+//           });
+//         } else {
+//           // User canceled the file picking process or no files were selected.
+//         }
+//       } catch (e) {
+//         debugPrint(e.toString());
+//       }
+//     }
+//   }
+
+//   void _addJobData() {
+//     final title = jobTitle.text;
+//     final desc = qualifications.text;
+//     final company = companyName.text;
+//     final location = workLocation.text;
+//     final salary = jobSalary.text;
+
+//     final newJob = JobEntity(
+//         title: title,
+//         desc: desc,
+//         company: company,
+//         jobTime: dropdownValue,
+//         location: location,
+//         logo: _logo!.path,
+//         salary: salary);
+//     ref.read(jobViewModelProvider.notifier).addJob(context, newJob);
+//   }
+
+//   final gap = const SizedBox(height: 8);

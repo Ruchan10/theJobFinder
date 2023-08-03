@@ -32,6 +32,7 @@ class BookmarkWidget extends StatelessWidget {
             name: bookmarkList[index].company,
             job: bookmarkList[index].title,
             logo: bookmarkList[index].logo,
+            salary: bookmarkList[index].salary,
             location: bookmarkList[index].location,
             time: bookmarkList[index].desc,
             ref: ref,

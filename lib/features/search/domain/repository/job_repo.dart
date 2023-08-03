@@ -33,6 +33,8 @@ abstract class IJobRepository {
   Future<Either<Failure, List<JobEntity>>> getApplied();
   Future<Either<Failure, bool>> addJob(JobEntity job);
   Future<Either<Failure, bool>> removeBookmark(String id);
+  Future<Either<Failure, bool>> withdrawJob(String id);
   Future<Either<Failure, bool>> addBookmark(String id);
+  Future<Either<Failure, bool>> applyJob(String id);
 
 }

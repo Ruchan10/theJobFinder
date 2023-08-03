@@ -35,6 +35,7 @@ class HomeJobWidget extends ConsumerWidget {
                 context: context,
                 name: jobList[index].company,
                 job: jobList[index].title,
+                salary: jobList[index].salary,
                 logo: jobList[index].logo,
                 location: jobList[index].location,
                 time: jobList[index].desc,

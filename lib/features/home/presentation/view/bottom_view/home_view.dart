@@ -17,7 +17,7 @@ class homeView extends ConsumerStatefulWidget {
 class _homeViewState extends ConsumerState<homeView> {
   List<ProfileEntity> profile = [];
   final String apiBaseUrl = 'http://192.168.1.6:3000/';
-  String? _userName;
+  String? _userName = "User";
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,8 @@ class _homeViewState extends ConsumerState<homeView> {
     profile = userState.profiles;
     _userName = profile[0].fullName;
     var jobState = ref.watch(jobViewModelProvider);
-
+    print("PROFILE");
+    print(profile[0].profile);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -58,8 +59,10 @@ class _homeViewState extends ConsumerState<homeView> {
                           ),
                           CircleAvatar(
                             // radius: 50,
-                            backgroundImage:
-                                NetworkImage(apiBaseUrl + profile[0].profile!),
+                            backgroundImage: profile[0].profile != null
+                                ? NetworkImage(apiBaseUrl + profile[0].profile!)
+                                : const AssetImage('assets/images/profile.jpg')
+                                    as ImageProvider,
                           ),
                         ]),
                       ),

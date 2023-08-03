@@ -40,7 +40,7 @@ class AppRoute {
       editProfileRoute: (context) => const UpdateProfile(),
       addJobRoute: (context) => const AddJobView(),
       applicationsRoute: (context) => const ApplicationsView(),
-      testRoute: (context) => const TestScreen(),
+      // testRoute: (context) => const TestScreen(),
     };
   }
 }

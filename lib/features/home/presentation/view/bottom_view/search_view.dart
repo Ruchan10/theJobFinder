@@ -109,8 +109,12 @@ class _SearchViewState extends ConsumerState<SearchView> {
               ),
               SizedBox(height: height * 0.02),
               Expanded(
-                child: SingleChildScrollView(
-                  child: JobWidget(ref: ref, jobList: jobState.jobs),
+                child: ListView(
+                  physics: const ClampingScrollPhysics(),
+                  children: [
+                    JobWidget(ref: ref, jobList: jobState.jobs),
+                    SizedBox(height: height * 0.20),
+                  ],
                 ),
               ),
             ],
