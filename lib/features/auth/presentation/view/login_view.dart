@@ -12,8 +12,8 @@ class LoginView extends ConsumerStatefulWidget {
 
 class _LoginViewState extends ConsumerState<LoginView> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController(text: "test@gmail.com");
-  final _passwordController = TextEditingController(text: "test");
+  final _emailController = TextEditingController(text: "t");
+  final _passwordController = TextEditingController(text: "t");
   final _gap = const SizedBox(height: 8);
   bool isObscure = true;
   @override

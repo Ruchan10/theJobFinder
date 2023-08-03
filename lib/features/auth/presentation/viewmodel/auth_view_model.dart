@@ -6,6 +6,8 @@ import 'package:the_job_finder/features/auth/presentation/state/auth_state.dart'
 
 import '../../../../config/router/app_route.dart';
 import '../../../../core/common/snackbar/my_snackbar.dart';
+import '../../domain/entity/change_email_entity.dart';
+import '../../domain/entity/change_password_entity.dart';
 
 final authViewModelProvider =
     StateNotifierProvider<AuthViewModel, AuthState>((ref) {
@@ -34,12 +36,52 @@ class AuthViewModel extends StateNotifier<AuthState> {
     );
   }
 
+  Future<void> changeEmail(
+      ChangeEmailEntity emails, BuildContext context) async {
+    state = state.copyWith(isLoading: true);
+    var data = await _authUseCase.changeEmail(emails);
+    data.fold(
+        (failure) => state = state.copyWith(
+              isLoading: false,
+              error: failure.error,
+            ),
+        (success) => {
+              state = state.copyWith(
+                isLoading: false,
+                error: null,
+              ),
+              showSnackBar(
+                  message: 'Email Changed Successfully',
+                  context: context,
+                  color: Colors.green)
+            });
+  }
+
+  Future<void> changePassword(
+      ChangePasswordEntity pws, BuildContext context) async {
+    state = state.copyWith(isLoading: true);
+    var data = await _authUseCase.changePassword(pws);
+    data.fold(
+        (failure) => state = state.copyWith(
+              isLoading: false,
+              error: failure.error,
+            ),
+        (success) => {
+              state = state.copyWith(
+                isLoading: false,
+                error: null,
+              ),
+              showSnackBar(
+                  message: 'Password Changed Successfully',
+                  context: context,
+                  color: Colors.green)
+            });
+  }
+
   Future<bool> loginStudent(
       BuildContext context, String username, String password) async {
     state = state.copyWith(isLoading: true);
     var data = await _authUseCase.loginStudent(username, password);
-    print("DATA");
-    print(data);
     data.fold(
       (failure) {
         state = state.copyWith(isLoading: false, error: failure.error);
@@ -50,26 +92,10 @@ class AuthViewModel extends StateNotifier<AuthState> {
       },
       (success) {
         state = state.copyWith(isLoading: false, error: null);
-        showSnackBar(
-            message: 'Login Successful', context: context, color: Colors.red);
         Navigator.popAndPushNamed(context, AppRoute.dashboardRoute);
       },
     );
 
     return false;
   }
-
-  // Future<void> uploadImage(File? file) async {
-  //   state = state.copyWith(isLoading: true);
-  //   var data = await _authUseCase.uploadProfilePicture(file!);
-  //   data.fold(
-  //     (l) {
-  //       state = state.copyWith(isLoading: false, error: l.error);
-  //     },
-  //     (imageName) {
-  //       state =
-  //           state.copyWith(isLoading: false, error: null, imageName: imageName);
-  //     },
-  //   );
-  // }
 }

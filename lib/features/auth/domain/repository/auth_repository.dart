@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:the_job_finder/core/failure/failure.dart';
 import 'package:the_job_finder/features/auth/data/repository/auth_remote_repository.dart';
 
+import '../entity/change_email_entity.dart';
+import '../entity/change_password_entity.dart';
 import '../entity/student_hive_entity.dart';
 
 final authRepositoryProvider = Provider<IAuthRepository>((ref) {
@@ -11,5 +13,6 @@ final authRepositoryProvider = Provider<IAuthRepository>((ref) {
 
 abstract class IAuthRepository {
   Future<Either<Failure, bool>> registerStudent(StudentEntity student);
+  Future<Either<Failure, bool>> changeEmail(ChangeEmailEntity emails);Future<Either<Failure, bool>> changePassword(ChangePasswordEntity pws);
   Future<Either<Failure, bool>> loginStudent(String email, String password);
 }

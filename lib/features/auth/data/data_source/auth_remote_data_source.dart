@@ -9,6 +9,9 @@ import 'package:the_job_finder/core/network/remote/http_service.dart';
 import 'package:the_job_finder/core/shared_prefs/user_shared_pref.dart';
 import 'package:the_job_finder/features/auth/domain/entity/student_hive_entity.dart';
 
+import '../../domain/entity/change_email_entity.dart';
+import '../../domain/entity/change_password_entity.dart';
+
 final authRemoteDataSourceProvider = Provider((ref) => AuthRemoteDataSource(
       dio: ref.read(httpServiceProvider),
       userSharedPrefs: ref.read(userSharedPrefsProvider),
@@ -96,6 +99,84 @@ class AuthRemoteDataSource {
           "email": student.email,
           "password": student.password,
         },
+      );
+      if (response.statusCode == 200) {
+        return const Right(true);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(Failure(
+        error: e.error.toString(),
+        statusCode: e.response?.statusCode.toString() ?? '0',
+      ));
+    }
+  }
+
+  // change email
+  Future<Either<Failure, bool>> changeEmail(ChangeEmailEntity emails) async {
+    try {
+      String? token;
+      var data = await userSharedPrefs.getUserToken();
+      data.fold(
+        (l) => token = null,
+        (r) => token = r!,
+      );
+      Response response = await dio.post(
+        ApiEndpoints.changeEmail,
+        data: {
+          "email": emails.email,
+          "confirmEmail": emails.confirmEmail,
+        },
+        options: Options(
+          headers: {
+            'Authorization': '$token',
+          },
+        ),
+      );
+      if (response.statusCode == 200) {
+        return const Right(true);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(Failure(
+        error: e.error.toString(),
+        statusCode: e.response?.statusCode.toString() ?? '0',
+      ));
+    }
+  } // change password
+
+  Future<Either<Failure, bool>> changePassword(ChangePasswordEntity pws) async {
+    try {
+      String? token;
+      var data = await userSharedPrefs.getUserToken();
+      data.fold(
+        (l) => token = null,
+        (r) => token = r!,
+      );
+      Response response = await dio.post(
+        ApiEndpoints.changePassword,
+        data: {
+          "newPassword": pws.pw,
+          "reenterNewPassword": pws.cpw,
+          "currentPassword": pws.currentPw,
+        },
+        options: Options(
+          headers: {
+            'Authorization': '$token',
+          },
+        ),
       );
       if (response.statusCode == 200) {
         return const Right(true);
