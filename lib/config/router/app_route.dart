@@ -4,7 +4,7 @@ import 'package:the_job_finder/features/auth/presentation/view/signup_view.dart'
 import 'package:the_job_finder/features/home/presentation/view/bottom_view/bookmark_view.dart';
 import 'package:the_job_finder/features/home/presentation/view/dashboard_view.dart';
 import 'package:the_job_finder/features/search/presentation/view/Add_Job_view.dart';
-import 'package:the_job_finder/view/test_login.dart';
+import 'package:the_job_finder/features/splash/presentation/view/splash_view.dart';
 
 import '../../features/home/presentation/view/bottom_view/home_view.dart';
 import '../../features/home/presentation/view/bottom_view/profile_view.dart';
@@ -26,6 +26,7 @@ class AppRoute {
   static const String applicationsRoute = '/applicationsRoute';
   static const String testRoute = '/testRoute';
   static const String addJobRoute = '/addJobRoute';
+  static const String splashRoute = '/splashRoute';
 
   static getAppRoutes() {
     return {
@@ -40,7 +41,7 @@ class AppRoute {
       editProfileRoute: (context) => const UpdateProfile(),
       addJobRoute: (context) => const AddJobView(),
       applicationsRoute: (context) => const ApplicationsView(),
-      // testRoute: (context) => const TestScreen(),
+      splashRoute: (context) => const SplashView(),
     };
   }
 }

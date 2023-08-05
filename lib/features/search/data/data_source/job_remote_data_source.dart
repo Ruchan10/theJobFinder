@@ -139,7 +139,9 @@ class JobRemoteDataSource {
         ),
       );
     }
-  }  Future<Either<Failure, bool>> withdrawJob(String jobId) async {
+  }
+
+  Future<Either<Failure, bool>> withdrawJob(String jobId) async {
     try {
       // Get the token from shared prefs
       String? token;
@@ -213,7 +215,9 @@ class JobRemoteDataSource {
         ),
       );
     }
-  }  Future<Either<Failure, bool>> applyJob(String jobId) async {
+  }
+
+  Future<Either<Failure, bool>> applyJob(String jobId) async {
     try {
       // Get the token from shared prefs
       String? token;

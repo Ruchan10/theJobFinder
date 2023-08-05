@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:the_job_finder/config/router/app_route.dart';
 import 'package:the_job_finder/features/auth/domain/entity/change_email_entity.dart';
 
@@ -10,6 +9,7 @@ import '../../../../auth/domain/entity/change_password_entity.dart';
 import '../../../../auth/presentation/viewmodel/auth_view_model.dart';
 import '../../../../profile/domain/entity/profile_entity.dart';
 import '../../../../profile/presentation/viewmodel/profile_view_model.dart';
+import '../../viewmodel/home_viewmodel.dart';
 
 class ProfileView extends ConsumerStatefulWidget {
   const ProfileView({super.key});
@@ -132,7 +132,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
               const SizedBox(height: 15),
               GestureDetector(
                 onTap: () {
-                  _logOut(context);
+                  ref.read(homeViewModelProvider.notifier).logout(context);
                 },
                 child: getSettingsBtn(
                   text: "Log Out",
@@ -414,22 +414,5 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
         );
       },
     );
-  }
-
-  Future<void> _logOut(BuildContext context) async {
-    try {
-      // Remove the token or any other data from SharedPreferences
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.remove("token");
-
-      // Navigate to the login or home page as per your app's navigation flow
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        AppRoute.loginRoute, // Replace with your desired route for login page
-        (Route<dynamic> route) => false,
-      );
-    } catch (error) {
-      print(error);
-    }
   }
 }

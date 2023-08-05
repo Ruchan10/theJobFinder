@@ -1,5 +1,7 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:the_job_finder/core/failure/failure.dart';
 
 import '../../../../core/common/snackbar/my_snackbar.dart';
 import '../../domain/entity/job_entity.dart';
@@ -62,9 +64,16 @@ class JobViewModel extends StateNotifier<JobState> {
         );
       },
     );
-  } Future<void> withdrawJob(BuildContext context, JobEntity job) async {
+  }
+
+  Future<void> withdrawJob(BuildContext context, dynamic job) async {
     state.copyWith(isLoading: true);
-    var data = await jobUseCase.withdrawJob(job.jobId!);
+    Either<Failure, bool> data;
+    if (job.bookmarkId != null) {
+      data = await jobUseCase.withdrawJob(job.bookmarkId);
+    } else {
+      data = await jobUseCase.withdrawJob(job.jobId!);
+    }
 
     data.fold(
       (l) {
@@ -102,9 +111,14 @@ class JobViewModel extends StateNotifier<JobState> {
     );
   }
 
-  Future<void> applyJob(BuildContext context, JobEntity job) async {
+  Future<void> applyJob(BuildContext context, dynamic job) async {
     state.copyWith(isLoading: true);
-    var data = await jobUseCase.applyJob(job.jobId!);
+    Either<Failure, bool> data;
+    if (job.bookmarkId != null) {
+      data = await jobUseCase.applyJob(job.bookmarkId);
+    } else {
+      data = await jobUseCase.applyJob(job.jobId!);
+    }
 
     data.fold(
       (l) {

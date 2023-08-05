@@ -87,215 +87,216 @@ class _AddJobViewState extends ConsumerState<AddJobView> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                gap,
-                const Align(
-                  alignment: Alignment.center,
-                  child: Text(
-                    'Add Job',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                SizedBox(
-                  height: height * .07,
-                  width: 300,
-                  child: TextFormField(
-                    controller: companyName,
-                    decoration: const InputDecoration(
-                      contentPadding:
-                          EdgeInsets.all(20), // add padding to adjust text
-                      isDense: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
-                        ),
-                      ),
-                      labelText: "Company Name",
-                    ),
-                  ),
-                ),
-                gap,
-                SizedBox(
-                  height: height * .07,
-                  width: 300,
-                  child: TextFormField(
-                    controller: jobTitle,
-                    decoration: const InputDecoration(
-                      contentPadding:
-                          EdgeInsets.all(20), // add padding to adjust text
-                      isDense: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
-                        ),
-                      ),
-                      labelText: "Job Title",
-                    ),
-                  ),
-                ),
-                gap,
-                SizedBox(
-                  height: 200,
-                  width: width * .82,
-                  child: Expanded(
-                    child: TextFormField(
-                      controller: qualifications,
-                      decoration: const InputDecoration(
-                        contentPadding:
-                            EdgeInsets.all(20), // add padding to adjust text
-                        isDense: true,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(20),
-                          ),
-                        ),
-                        labelText: "Enter Qualifications and description",
-                        alignLabelWithHint: true,
-                      ),
-                      maxLines: null,
-                      expands: true,
-                    ),
-                  ),
-                ),
-                gap,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      "Company Logo   ",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        _browseLogo();
-                      },
-                      child: Container(
-                        height: 70,
-                        width: width * 0.3,
-                        margin: const EdgeInsets.symmetric(horizontal: 16.0),
-                        decoration: BoxDecoration(
-                          color: Colors.green,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.edit_document,
-                                color: Colors.white),
-                            Text(_selectedFileName ?? 'Upload Here',
-                                style: const TextStyle(color: Colors.white)),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                gap,
-                Container(
-                  height: 50,
-                  margin: const EdgeInsets.all(20),
-                  child: DropdownButtonHideUnderline(
-                    child: GFDropdown(
-                      padding: const EdgeInsets.all(5),
-                      borderRadius: BorderRadius.circular(10),
-                      border: const BorderSide(color: Colors.black12, width: 1),
-                      dropdownButtonColor: Colors.grey[300],
-                      value: dropdownValue,
-                      onChanged: (newValue) {
-                        setState(() {
-                          dropdownValue = newValue!;
-                        });
-                      },
-                      items: ['Job Time', 'Full Time', 'Part Time']
-                          .map((value) => DropdownMenuItem(
-                                value: value,
-                                child: Text(value),
-                              ))
-                          .toList(),
-                    ),
-                  ),
-                ),
-                gap,
-                SizedBox(
-                  height: height * .07,
-                  width: 300,
-                  child: TextFormField(
-                    controller: jobSalary,
-                    decoration: const InputDecoration(
-                      contentPadding:
-                          EdgeInsets.all(20), // add padding to adjust text
-                      isDense: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
-                        ),
-                      ),
-                      labelText: "Enter Salary, Eg:- \$1000/yr",
-                    ),
-                  ),
-                ),
-                gap,
-                SizedBox(
-                  height: height * .07,
-                  width: 300,
-                  child: TextFormField(
-                    controller: workLocation,
-                    decoration: const InputDecoration(
-                      contentPadding:
-                          EdgeInsets.all(20), // add padding to adjust text
-                      isDense: true,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
-                        ),
-                      ),
-                      labelText: "Enter job work location",
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 15),
-                SizedBox(
-                  height: height * .05,
-                  width: 300,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      _addJobData();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.white,
-                      backgroundColor: Colors.green,
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32.0),
-                      ),
-                      side: BorderSide(color: Colors.green.shade600, width: 1),
-                      textStyle: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    child: const Text("Add Job"),
-                  ),
-                ),
-              ],
+    return Column(
+      children: [
+        gap,
+        const Align(
+          alignment: Alignment.center,
+          child: Text(
+            'Add Job',
+            style: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
-      ),
+        const SizedBox(height: 20),
+        SizedBox(
+          height: height * .07,
+          width: 300,
+          child: TextFormField(
+            controller: companyName,
+            decoration: InputDecoration(
+              contentPadding:
+                  const EdgeInsets.all(20), // add padding to adjust text
+              isDense: true,
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20),
+                ),
+              ),
+              labelText: "Company Name",
+              focusedBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.green, width: 2),
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+        ),
+        gap,
+        SizedBox(
+          height: height * .07,
+          width: 300,
+          child: TextFormField(
+            controller: jobTitle,
+            decoration: InputDecoration(
+              contentPadding:
+                  const EdgeInsets.all(20), // add padding to adjust text
+              isDense: true,
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20),
+                ),
+              ),
+              labelText: "Job Title",
+              focusedBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.green, width: 2),
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+        ),
+        gap,
+        gap,
+        SizedBox(
+          height: 200,
+          width: width * .82,
+          child: TextFormField(
+            controller: qualifications,
+            decoration: InputDecoration(
+              contentPadding: const EdgeInsets.all(20),
+              isDense: true,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              labelText: "Enter Qualifications and description",
+              floatingLabelBehavior: FloatingLabelBehavior.always,
+              focusedBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.green, width: 2),
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+            maxLines: null,
+            expands: true,
+          ),
+        ),
+        gap,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "Company Logo   ",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                _browseLogo();
+              },
+              child: Container(
+                height: 70,
+                width: width * 0.3,
+                margin: const EdgeInsets.symmetric(horizontal: 16.0),
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.edit_document, color: Colors.white),
+                    Text(_selectedFileName ?? 'Upload Here',
+                        style: const TextStyle(color: Colors.white)),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+        gap,
+        Container(
+          height: 50,
+          margin: const EdgeInsets.all(20),
+          child: DropdownButtonHideUnderline(
+            child: GFDropdown(
+              padding: const EdgeInsets.all(5),
+              borderRadius: BorderRadius.circular(10),
+              border: const BorderSide(color: Colors.black12, width: 1),
+              dropdownButtonColor: Colors.grey[300],
+              value: dropdownValue,
+              onChanged: (newValue) {
+                setState(() {
+                  dropdownValue = newValue!;
+                });
+              },
+              items: ['Job Time', 'Full Time', 'Part Time']
+                  .map((value) => DropdownMenuItem(
+                        value: value,
+                        child: Text(value),
+                      ))
+                  .toList(),
+            ),
+          ),
+        ),
+        gap,
+        SizedBox(
+          height: height * .07,
+          width: 300,
+          child: TextFormField(
+            controller: jobSalary,
+            decoration: InputDecoration(
+              contentPadding:
+                  const EdgeInsets.all(20), // add padding to adjust text
+              isDense: true,
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20),
+                ),
+              ),
+              labelText: "Enter Salary, Eg:- \$1000/yr",
+              focusedBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.green, width: 2),
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+        ),
+        gap,
+        SizedBox(
+          height: height * .07,
+          width: 300,
+          child: TextFormField(
+            controller: workLocation,
+            decoration: InputDecoration(
+              contentPadding:
+                  const EdgeInsets.all(20), // add padding to adjust text
+              isDense: true,
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(20),
+                ),
+              ),
+              labelText: "Enter job work location",
+              focusedBorder: OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.green, width: 2),
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 15),
+        SizedBox(
+          height: height * .05,
+          width: 300,
+          child: ElevatedButton(
+            onPressed: () {
+              _addJobData();
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.green,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(32.0),
+              ),
+              textStyle: const TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            child: const Text("ADD JOB"),
+          ),
+        ),
+      ],
     );
   }
 }

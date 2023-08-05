@@ -2,7 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:the_job_finder/features/home/presentation/view/bottom_view/search_view.dart';
 
-import '../../../../config/router/app_route.dart';
+import '../../../search/presentation/view/Add_Job_view.dart';
 import 'bottom_view/bookmark_view.dart';
 import 'bottom_view/home_view.dart';
 import 'bottom_view/profile_view.dart';
@@ -34,6 +34,21 @@ class _dashBoardViewState extends State<dashBoardView> {
     const SearchView(),
     const ProfileView(),
   ];
+  void _showAddJobModal() {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (context) {
+        return AnimatedContainer(
+          duration: const Duration(seconds: 5),
+          curve: Curves.easeInOut,
+          child: const Scaffold(
+            body: AddJobView(),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +56,7 @@ class _dashBoardViewState extends State<dashBoardView> {
       resizeToAvoidBottomInset: false,
       body: lstBottomScreen[bottomNavIndex],
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, AppRoute.addJobRoute);
-        },
+        onPressed: _showAddJobModal,
         backgroundColor: const Color.fromARGB(255, 106, 180, 108),
         elevation: 1,
         shape: const CircleBorder(),
