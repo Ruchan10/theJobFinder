@@ -34,7 +34,7 @@ void main() {
   });
 
   testWidgets('logging', (tester) async {
-    when(mockAuthUsecase.loginStudent('test1@gmail.com', 'rk'))
+    when(mockAuthUsecase.loginUser('test1@gmail.com', 'rk'))
         .thenAnswer((_) => Future.value(const Right(true)));
 
     await tester.pumpWidget(
@@ -56,12 +56,12 @@ void main() {
     await tester.tap(find.byType(ElevatedButton).at(0));
     await tester.pumpAndSettle();
 
-    expect(find.text("Login Successful"), findsOneWidget);
+    expect(find.text("Welcome"), findsOneWidget);
   });
 
   testWidgets('login test with email and password and open dashboard',
       (WidgetTester tester) async {
-    when(mockAuthUsecase.loginStudent('rk', 'rk'))
+    when(mockAuthUsecase.loginUser('rk', 'rk'))
         .thenAnswer((_) async => Right(isLogin));
 
     await tester.pumpWidget(
@@ -82,7 +82,7 @@ void main() {
     await tester.enterText(find.byType(TextField).at(1), 'rk');
 
     await tester.tap(
-      find.widgetWithText(ElevatedButton, 'Login'),
+      find.widgetWithText(ElevatedButton, 'LOG IN'),
     );
 
     await tester.pumpAndSettle();

@@ -7,7 +7,7 @@ import 'package:the_job_finder/config/constants/api_endpoint.dart';
 import 'package:the_job_finder/core/failure/failure.dart';
 import 'package:the_job_finder/core/network/remote/http_service.dart';
 import 'package:the_job_finder/core/shared_prefs/user_shared_pref.dart';
-import 'package:the_job_finder/features/auth/domain/entity/student_hive_entity.dart';
+import 'package:the_job_finder/features/auth/domain/entity/user_hive_entity.dart';
 
 import '../../domain/entity/change_email_entity.dart';
 import '../../domain/entity/change_password_entity.dart';
@@ -53,8 +53,7 @@ class AuthRemoteDataSource {
   }
 
 //Login
-  Future<Either<Failure, bool>> loginStudent(
-      String email, String password) async {
+  Future<Either<Failure, bool>> loginUser(String email, String password) async {
     try {
       Response response = await dio.post(
         ApiEndpoints.login,
@@ -63,8 +62,8 @@ class AuthRemoteDataSource {
           "password": password,
         },
       );
-      print("RESPONSE");
       if (response.statusCode == 200) {
+        print(response);
         // retrieve token
         String token = response.data["token"];
         String userId = response.data["user"]['_id'];
@@ -91,7 +90,7 @@ class AuthRemoteDataSource {
   }
 
   // register
-  Future<Either<Failure, bool>> registerStudent(StudentEntity student) async {
+  Future<Either<Failure, bool>> registerUser(UserEntity student) async {
     try {
       Response response = await dio.post(
         ApiEndpoints.register,
@@ -155,7 +154,9 @@ class AuthRemoteDataSource {
         statusCode: e.response?.statusCode.toString() ?? '0',
       ));
     }
-  } // change password
+  }
+
+  // change password
 
   Future<Either<Failure, bool>> changePassword(ChangePasswordEntity pws) async {
     try {
@@ -171,6 +172,116 @@ class AuthRemoteDataSource {
           "newPassword": pws.pw,
           "reenterNewPassword": pws.cpw,
           "currentPassword": pws.currentPw,
+        },
+        options: Options(
+          headers: {
+            'Authorization': '$token',
+          },
+        ),
+      );
+      if (response.statusCode == 200) {
+        return const Right(true);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(Failure(
+        error: e.error.toString(),
+        statusCode: e.response?.statusCode.toString() ?? '0',
+      ));
+    }
+  }
+
+  // Add Notifications
+  Future<Either<Failure, bool>> addNoti(String noti) async {
+    try {
+      String? token;
+      var data = await userSharedPrefs.getUserToken();
+      data.fold(
+        (l) => token = null,
+        (r) => token = r!,
+      );
+      Response response = await dio.post(
+        ApiEndpoints.addNoti + noti,
+        options: Options(
+          headers: {
+            'Authorization': '$token',
+          },
+        ),
+      );
+      if (response.statusCode == 200) {
+        return const Right(true);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(Failure(
+        error: e.error.toString(),
+        statusCode: e.response?.statusCode.toString() ?? '0',
+      ));
+    }
+  }
+
+  // Get Notifications
+  Future<Either<Failure, List<String>>> getNoti() async {
+    try {
+      String? token;
+      var data = await userSharedPrefs.getUserToken();
+      data.fold(
+        (l) => token = null,
+        (r) => token = r!,
+      );
+      Response response = await dio.get(
+        ApiEndpoints.getNoti,
+        options: Options(
+          headers: {
+            'Authorization': '$token',
+          },
+        ),
+      );
+      if (response.statusCode == 200) {
+        List<String> notis;
+        notis = response.data["data"];
+        return Right(notis);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(Failure(
+        error: e.error.toString(),
+        statusCode: e.response?.statusCode.toString() ?? '0',
+      ));
+    }
+  }
+
+  // Clear Notifications
+  Future<Either<Failure, bool>> clearNoti() async {
+    try {
+      String? token;
+      var data = await userSharedPrefs.getUserToken();
+      data.fold(
+        (l) => token = null,
+        (r) => token = r!,
+      );
+      Response response = await dio.post(
+        ApiEndpoints.clearNoti,
+        data: {
+          null,
         },
         options: Options(
           headers: {

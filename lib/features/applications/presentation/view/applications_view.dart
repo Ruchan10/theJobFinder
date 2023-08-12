@@ -25,61 +25,71 @@ class _ApplicationsViewState extends ConsumerState<ApplicationsView>
     tabController = TabController(length: 2, vsync: this);
   }
 
+  Future<void> _refreshApps() async {
+    await ref.read(appliedViewModelProvider.notifier).getApplied();
+    await ref.read(createdViewModelProvider.notifier).getCreated();
+  }
+
   @override
   Widget build(BuildContext context) {
     var jobState = ref.watch(appliedViewModelProvider);
     var jobState0 = ref.watch(createdViewModelProvider);
     print("in application view state");
-    return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      setState(() {});
-                    },
-                    icon: const Icon(Icons.arrow_back),
-                  ),
-                  const Spacer(),
-                  const Text(
-                    "Applications",
-                    style: TextStyle(
-                      fontSize: 26,
-                    ),
-                  ),
-                  const Spacer(),
-                ],
-              ),
-              GFTabBar(
-                length: 2,
-                controller: tabController,
-                tabs: const [
-                  Tab(
-                    child: Text(
-                      "Applied",
-                    ),
-                  ),
-                  Tab(
-                    child: Text(
-                      "Received",
-                    ),
-                  ),
-                ],
-              ),
-              Expanded(
-                child: TabBarView(
-                  controller: tabController,
+    return RefreshIndicator(
+      onRefresh: _refreshApps,
+      child: Scaffold(
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                Row(
                   children: [
-                    GetAppliedWidget(ref: ref, jobList: jobState.jobs),
-                    GetCreatedWidget(ref: ref, jobList: jobState0.jobs),
+                    IconButton(
+                      onPressed: () {
+                        setState(() {
+                          Navigator.pop(context);
+                        });
+                      },
+                      icon: const Icon(Icons.arrow_back),
+                    ),
+                    const Spacer(),
+                    const Text(
+                      "Applications",
+                      style: TextStyle(
+                        fontSize: 26,
+                      ),
+                    ),
+                    const Spacer(),
                   ],
                 ),
-              ),
-            ],
+                GFTabBar(
+                  length: 2,
+                  controller: tabController,
+                  tabs: const [
+                    Tab(
+                      child: Text(
+                        "Applied",
+                      ),
+                    ),
+                    Tab(
+                      child: Text(
+                        "Received",
+                      ),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: TabBarView(
+                    controller: tabController,
+                    children: [
+                      GetAppliedWidget(ref: ref, jobList: jobState.jobs),
+                      GetCreatedWidget(ref: ref, jobList: jobState0.jobs),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

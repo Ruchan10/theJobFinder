@@ -15,7 +15,7 @@ import 'package:the_job_finder/features/auth/domain/entity/change_email_entity.d
     as _i9;
 import 'package:the_job_finder/features/auth/domain/entity/change_password_entity.dart'
     as _i10;
-import 'package:the_job_finder/features/auth/domain/entity/student_hive_entity.dart'
+import 'package:the_job_finder/features/auth/domain/entity/user_hive_entity.dart'
     as _i8;
 import 'package:the_job_finder/features/auth/domain/use_case/auth_usecase.dart'
     as _i5;
@@ -93,19 +93,19 @@ class _FakeDiagnosticsNode_3 extends _i1.SmartFake
 /// See the documentation for Mockito's code generation for more information.
 class MockAuthUseCase extends _i1.Mock implements _i5.AuthUseCase {
   @override
-  _i6.Future<_i2.Either<_i7.Failure, bool>> registerStudent(
-          _i8.StudentEntity? student) =>
+  _i6.Future<_i2.Either<_i7.Failure, bool>> registerUser(
+          _i8.UserEntity? user) =>
       (super.noSuchMethod(
         Invocation.method(
-          #registerStudent,
-          [student],
+          #registerUser,
+          [user],
         ),
         returnValue: _i6.Future<_i2.Either<_i7.Failure, bool>>.value(
             _FakeEither_0<_i7.Failure, bool>(
           this,
           Invocation.method(
-            #registerStudent,
-            [student],
+            #registerUser,
+            [user],
           ),
         )),
         returnValueForMissingStub:
@@ -113,8 +113,8 @@ class MockAuthUseCase extends _i1.Mock implements _i5.AuthUseCase {
                 _FakeEither_0<_i7.Failure, bool>(
           this,
           Invocation.method(
-            #registerStudent,
-            [student],
+            #registerUser,
+            [user],
           ),
         )),
       ) as _i6.Future<_i2.Either<_i7.Failure, bool>>);
@@ -171,13 +171,13 @@ class MockAuthUseCase extends _i1.Mock implements _i5.AuthUseCase {
         )),
       ) as _i6.Future<_i2.Either<_i7.Failure, bool>>);
   @override
-  _i6.Future<_i2.Either<_i7.Failure, bool>> loginStudent(
+  _i6.Future<_i2.Either<_i7.Failure, bool>> loginUser(
     String? username,
     String? password,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
-          #loginStudent,
+          #loginUser,
           [
             username,
             password,
@@ -187,7 +187,7 @@ class MockAuthUseCase extends _i1.Mock implements _i5.AuthUseCase {
             _FakeEither_0<_i7.Failure, bool>(
           this,
           Invocation.method(
-            #loginStudent,
+            #loginUser,
             [
               username,
               password,
@@ -199,7 +199,7 @@ class MockAuthUseCase extends _i1.Mock implements _i5.AuthUseCase {
                 _FakeEither_0<_i7.Failure, bool>(
           this,
           Invocation.method(
-            #loginStudent,
+            #loginUser,
             [
               username,
               password,

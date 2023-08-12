@@ -39,11 +39,13 @@ class _dashBoardViewState extends State<dashBoardView> {
       context: context,
       isScrollControlled: true,
       builder: (context) {
-        return AnimatedContainer(
-          duration: const Duration(seconds: 5),
-          curve: Curves.easeInOut,
-          child: const Scaffold(
-            body: AddJobView(),
+        return SafeArea(
+          child: AnimatedContainer(
+            duration: const Duration(seconds: 5),
+            curve: Curves.easeInOut,
+            child: const Scaffold(
+              body: AddJobView(),
+            ),
           ),
         );
       },

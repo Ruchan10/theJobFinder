@@ -10,6 +10,7 @@ class ApiEndpoints {
   static const String login = "auth/login";
   static const String register = "auth/signup";
   static const String uploadImage = "auth/uploadImage";
+  static const String changePassword = "auth/changePassword/";
 
   // ====================== Job Routes ======================
   static const String getAllJobs = "jobs/";
@@ -25,11 +26,19 @@ class ApiEndpoints {
   static const String applyJob = "jobs/applyJob/";
   static const String getCreated = "jobs/user/";
   static const String getBookmark = "jobs/getBookmarked/";
+  static const String getApplicants = "jobs/applicants/";
+  static const String rejectApplicant = "jobs/reject/";
+  static const String acceptApplicant = "jobs/acceptedUser/";
 
   // ====================== User Routes ======================
   static const String getUserDetails = "users/profile/";
   static const String deleteUser = "users/profile/";
   static const String updateProfile = "users/editProfile/";
   static const String changeEmail = "users/changeEmail/";
-  static const String changePassword = "auth/changePassword/";
+  static const String getNoti = "users/getNoti/";
+  static const String clearNoti = "users/clearNoti/";
+  static const String addNoti = "users/addNoti/";
+
+  // ====================== Extra Routes ======================
+  static const String searchQuery = "search/mainSearch/";
 }

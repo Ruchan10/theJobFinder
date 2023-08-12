@@ -12,16 +12,16 @@ class AppTheme {
       // ),
 
       // change the theme according to the user choice
+      fontFamily: 'poppins',
+      useMaterial3: true,
       colorScheme: isDark
           ? const ColorScheme.dark(
-              primary: ThemeConstant.darkPrimaryColor,
+              primary: Color.fromARGB(255, 2, 55, 16),
             )
           : const ColorScheme.light(
               primary: Color.fromARGB(255, 17, 119, 20),
             ),
       brightness: isDark ? Brightness.dark : Brightness.light,
-      fontFamily: 'OpenSans',
-      useMaterial3: true,
 
       // Change app bar color
       appBarTheme: const AppBarTheme(

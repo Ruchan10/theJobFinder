@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:the_job_finder/features/home/presentation/view/bottom_view/search_view.dart';
+import 'package:the_job_finder/features/home/presentation/viewmodel/noti_view_model.dart';
 
 import '../../../../../widgets/pill_btns_icons.dart';
 import '../../../../profile/domain/entity/profile_entity.dart';
 import '../../../../profile/presentation/viewmodel/profile_view_model.dart';
 import '../../../../search/presentation/viewmodel/job_view_model.dart';
 import '../../../../search/presentation/widget/job_widget.dart';
+import '../../viewmodel/home_viewmodel.dart';
 
 class homeView extends ConsumerStatefulWidget {
   const homeView({super.key});
@@ -18,6 +21,13 @@ class _homeViewState extends ConsumerState<homeView> {
   List<ProfileEntity> profile = [];
   final String apiBaseUrl = 'http://192.168.1.6:3000/';
   String? _userName = "User";
+  String? _profileImg;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  void _navigateToSearchView() {
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => const SearchView(),
+    ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,10 +35,16 @@ class _homeViewState extends ConsumerState<homeView> {
     double width = MediaQuery.of(context).size.width;
     var userState = ref.watch(profileViewModelProvider);
     profile = userState.profiles;
-    _userName = profile[0].fullName;
+    // Check if profile list is not empty before accessing its elements
+    if (profile.isNotEmpty) {
+      _userName = profile[0].fullName;
+      _profileImg = profile[0].profile;
+    } else {
+      _userName = "User"; // Default value when profile is empty
+    }
+
     var jobState = ref.watch(jobViewModelProvider);
-    print("PROFILE");
-    print(profile[0].profile);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -52,14 +68,80 @@ class _homeViewState extends ConsumerState<homeView> {
                       SizedBox(
                         child: Row(children: [
                           IconButton(
-                            onPressed: () {
-                              setState(() {});
+                            onPressed: () async {
+                              var notiState = ref.watch(notiViewModelProvider);
+                              // Show a dialog to display notifications
+                              await showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return FittedBox(
+                                    child: AlertDialog(
+                                      title: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          const Text('Notifications'),
+                                          IconButton(
+                                            icon: const Icon(Icons.close),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                      content: Column(
+                                        children: [
+                                          // List of notifications
+                                          if (notiState.notis == null) ...{
+                                            const Text('No notifications')
+                                          } else ...{
+                                            ListView.builder(
+                                              shrinkWrap: true,
+                                              itemCount:
+                                                  notiState.notis!.length,
+                                              itemBuilder: (context, index) {
+                                                return ListTile(
+                                                  title: Text(
+                                                      notiState.notis![index]),
+                                                );
+                                              },
+                                            )
+                                          },
+
+                                          // "Clear All" button
+                                          ElevatedButton(
+                                            onPressed: () {
+                                              setState(() {
+                                                ref
+                                                    .read(notiViewModelProvider
+                                                        .notifier)
+                                                    .clearNoti();
+                                                ref.watch(
+                                                    notiViewModelProvider);
+                                              });
+                                            },
+                                            child: const Text('Clear All'),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+
+                              // ref
+                              //     .read(notiViewModelProvider.notifier)
+                              //     .addNoti("TESTING2.",
+                              //         "64d658a7242b5e9f27d24c3b");
+                              // var notis = await notiState.getNoti();
+                              print("IN HOME");
+                              // print(notis[0]);
                             },
                             icon: const Icon(Icons.notifications),
                           ),
                           CircleAvatar(
                             // radius: 50,
-                            backgroundImage: profile[0].profile != null
+                            backgroundImage: _profileImg != null
                                 ? NetworkImage(apiBaseUrl + profile[0].profile!)
                                 : const AssetImage('assets/images/profile.jpg')
                                     as ImageProvider,
@@ -116,24 +198,36 @@ class _homeViewState extends ConsumerState<homeView> {
                         SizedBox(height: height * .01),
                         SizedBox(
                           width: width * .7,
-                          child: const TextField(
-                            decoration: InputDecoration(
-                              filled: true,
-                              fillColor: Colors.white,
-                              contentPadding: EdgeInsets.only(
-                                  top: 20), // add padding to adjust text
+                          child: Form(
+                            key: _formKey,
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: TextFormField(
+                                onFieldSubmitted: (value) {
+                                  ref
+                                      .read(homeViewModelProvider.notifier)
+                                      .searchQuery(value);
+                                  _navigateToSearchView();
+                                },
+                                decoration: const InputDecoration(
+                                  filled: true,
+                                  fillColor: Colors.white,
+                                  contentPadding: EdgeInsets.only(
+                                      top: 20), // add padding to adjust text
 
-                              labelText: "Search",
-                              prefixIcon: Padding(
-                                padding: EdgeInsets.only(
-                                    top: 1), // add padding to adjust icon
-                                child: Icon(Icons.search),
-                              ),
-                              enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(width: 0, color: Colors.white),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(50),
+                                  labelText: "Search",
+                                  prefixIcon: Padding(
+                                    padding: EdgeInsets.only(
+                                        top: 1), // add padding to adjust icon
+                                    child: Icon(Icons.search),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        width: 0, color: Colors.white),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(50),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),

@@ -28,16 +28,15 @@ class JobViewModel extends StateNotifier<JobState> {
     data.fold((l) => state = state.copyWith(isLoading: false, error: l.error),
         (r) {
       state = state.copyWith(isLoading: false, error: null);
-      showSnackBar(
-          message: 'Profile Updated Successfully',
-          context: context,
-          color: Colors.green);
+      showSnackBar(message: 'Job Added', context: context, color: Colors.green);
     });
   }
 
   getAllJobs() async {
+    print("in getAllJobs, view model");
     state = state.copyWith(isLoading: true);
     var data = await jobUseCase.getAllJobs();
+    print(data);
 
     data.fold(
       (l) => state = state.copyWith(isLoading: false, error: l.error),
@@ -69,10 +68,10 @@ class JobViewModel extends StateNotifier<JobState> {
   Future<void> withdrawJob(BuildContext context, dynamic job) async {
     state.copyWith(isLoading: true);
     Either<Failure, bool> data;
-    if (job.bookmarkId != null) {
-      data = await jobUseCase.withdrawJob(job.bookmarkId);
-    } else {
-      data = await jobUseCase.withdrawJob(job.jobId!);
+    try {
+      data = await jobUseCase.applyJob(job.bookmarkId);
+    } catch (e) {
+      data = await jobUseCase.applyJob(job.jobId);
     }
 
     data.fold(
@@ -114,11 +113,19 @@ class JobViewModel extends StateNotifier<JobState> {
   Future<void> applyJob(BuildContext context, dynamic job) async {
     state.copyWith(isLoading: true);
     Either<Failure, bool> data;
-    if (job.bookmarkId != null) {
+    print("job");
+    // print(job.bookmarkId);
+    try {
       data = await jobUseCase.applyJob(job.bookmarkId);
-    } else {
-      data = await jobUseCase.applyJob(job.jobId!);
+    } catch (e) {
+      data = await jobUseCase.applyJob(job.jobId);
     }
+    // if (job.bookmarkId != null) {
+    //   print("in bokmark");
+    //   data = await jobUseCase.applyJob(job.bookmarkId);
+    // } else {
+    //   data = await jobUseCase.applyJob(job.jobId!);
+    // }
 
     data.fold(
       (l) {

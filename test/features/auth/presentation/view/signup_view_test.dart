@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:the_job_finder/features/auth/domain/entity/student_hive_entity.dart';
+import 'package:the_job_finder/features/auth/domain/entity/user_hive_entity.dart';
 import 'package:the_job_finder/features/auth/domain/use_case/auth_usecase.dart';
 import 'package:the_job_finder/features/auth/presentation/view/signup_view.dart';
 
@@ -14,18 +14,18 @@ import '../../../../unit_test/login_unit_test.mocks.dart';
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   late MockAuthUseCase mockAuthUsecase;
-  late StudentEntity authEntity;
+  late UserEntity authEntity;
 
   setUp(() {
     mockAuthUsecase = MockAuthUseCase();
 
-    authEntity = StudentEntity(
+    authEntity = UserEntity(
       id: null,
       email: 'rk@gmail.com',
       password: 'rk',
     );
 
-    when(mockAuthUsecase.registerStudent(authEntity))
+    when(mockAuthUsecase.registerUser(authEntity))
         .thenAnswer((_) async => const Right(true));
   });
 

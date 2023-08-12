@@ -2,6 +2,8 @@
     package="com.ruchan.jobfinder.the_job_finder">
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.PROXIMITY" />
 
     <application
         android:label="the_job_finder"

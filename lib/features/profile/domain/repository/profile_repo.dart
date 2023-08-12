@@ -30,5 +30,6 @@ final profileRepositoryProvider = Provider<IProfileRepository>(
 abstract class IProfileRepository {
   Future<Either<Failure, bool>> updateProfile(ProfileEntity profile);
   Future<Either<Failure, List<ProfileEntity>>> getUserDetails();
+  Future<Either<Failure, List<ProfileEntity>>> getApplicants(String jobId);
 
 }

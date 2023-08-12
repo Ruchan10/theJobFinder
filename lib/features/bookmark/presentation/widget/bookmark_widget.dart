@@ -25,7 +25,6 @@ class BookmarkWidget extends StatelessWidget {
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1, childAspectRatio: 2.1),
       itemBuilder: (context, index) {
-        print("bookmarkList${bookmarkList[index].company}");
         return Card(
           child: getCompanyCard(
             context: context,
@@ -34,7 +33,7 @@ class BookmarkWidget extends StatelessWidget {
             logo: bookmarkList[index].logo,
             salary: bookmarkList[index].salary,
             location: bookmarkList[index].location,
-            time: bookmarkList[index].desc,
+            time: bookmarkList[index].jobTime,
             ref: ref,
             list: bookmarkList,
             index: index,

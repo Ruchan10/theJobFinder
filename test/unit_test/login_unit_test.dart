@@ -36,12 +36,12 @@ void main() {
     expect(authState.error, isNull);
   });
   test('Login test with valid username and password', () async {
-    when(mockAuthUseCase.loginStudent('rk', 'rk'))
+    when(mockAuthUseCase.loginUser('rk', 'rk'))
         .thenAnswer((_) => Future.value(const Right(false)));
 
     await container
         .read(authViewModelProvider.notifier)
-        .loginStudent(context, 'rk', 'rk');
+        .loginUser(context, 'rk', 'rk');
 
     final authState = container.read(authViewModelProvider);
 
@@ -49,12 +49,12 @@ void main() {
   });
 
   test('Login test with invalid username and password', () async {
-    when(mockAuthUseCase.loginStudent('rk', 'rk')).thenAnswer(
+    when(mockAuthUseCase.loginUser('rk', 'rk')).thenAnswer(
         (_) => Future.value(Left(Failure(error: 'Invalid Credentials'))));
 
     await container
         .read(authViewModelProvider.notifier)
-        .loginStudent(context, 'rk0', 'rk0');
+        .loginUser(context, 'rk0', 'rk0');
 
     final authState = container.read(authViewModelProvider);
 

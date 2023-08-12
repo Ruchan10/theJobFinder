@@ -33,7 +33,7 @@ class GetCreatedWidget extends StatelessWidget {
 
     return GridView.builder(
       // Put this otherwise it will take all the space
-      shrinkWrap: true,
+      // shrinkWrap: true,
       itemCount: jobList.length,
       // physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

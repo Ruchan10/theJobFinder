@@ -13,9 +13,9 @@ class App extends ConsumerWidget {
     final isDarkTheme = ref.watch(isDarkThemeProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Student App',
+      title: 'The Job Finder',
       theme: AppTheme.getApplicationTheme(isDarkTheme),
-      initialRoute: AppRoute.loginRoute,
+      initialRoute: AppRoute.dashboardRoute,
       routes: AppRoute.getAppRoutes(),
     );
   }

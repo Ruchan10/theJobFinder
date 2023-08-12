@@ -27,4 +27,8 @@ class ProfileRemoteRepositoryImpl implements IProfileRepository {
         return profileRemoteDataSource.getUserDetails();
 
   }
+   @override
+  Future<Either<Failure, List<ProfileEntity>>> getApplicants(String jobId) {
+    return profileRemoteDataSource.getApplicants(jobId);
+  }
 }

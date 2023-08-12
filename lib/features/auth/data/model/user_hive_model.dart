@@ -1,20 +1,20 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
-import 'package:the_job_finder/features/auth/domain/entity/student_hive_entity.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../config/constants/hive_table_constant.dart';
+import '../../domain/entity/user_hive_entity.dart';
 
-part 'student_hive_model.g.dart';
+part 'user_hive_model.g.dart';
 
-final studentHiveModelProvider = Provider(
-  (ref) => StudentHiveModel.empty(),
+final userHiveModelProvider = Provider(
+  (ref) => UserHiveModel.empty(),
 );
 
 
-@HiveType(typeId: HiveTableConstant.studentTableId)
+@HiveType(typeId: HiveTableConstant.userTableId)
 
-class StudentHiveModel {
+class UserHiveModel {
   @HiveField(0)
   final String id;
 
@@ -25,14 +25,14 @@ class StudentHiveModel {
   @HiveField(2)
   final String password;
   
-  StudentHiveModel({
+  UserHiveModel({
     String? id,
     required this.email,
     String? cpassword,
     required this.password,
   }) : id = id ?? const Uuid().v4();
 
-  StudentHiveModel.empty()
+  UserHiveModel.empty()
       : this(
           id: '',
           email:'',
@@ -42,22 +42,22 @@ class StudentHiveModel {
 
   @override
   String toString() {
-    return 'studentId: $id, Email: $email';
+    return 'userId: $id, Email: $email';
   }
 
   // convert hive object to entity
-  StudentEntity toEntity() => StudentEntity(
+  UserEntity toEntity() => UserEntity(
         id: id,
         password: password, 
         email: email,
       );
 
   // convert Entity to Hive Object
-  StudentHiveModel toHiveModel(StudentEntity entity) => StudentHiveModel(
+  UserHiveModel toHiveModel(UserEntity entity) => UserHiveModel(
         email: entity.email,
         password: entity.password,
       );
   // COnvert Hive List to Entity List
-  List<StudentEntity> toEntityList(List<StudentHiveModel> models) =>
+  List<UserEntity> toEntityList(List<UserHiveModel> models) =>
       models.map((model) => model.toEntity()).toList();
 }

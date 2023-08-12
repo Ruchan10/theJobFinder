@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:the_job_finder/features/applications/presentation/viewmodel/delete_job_view_model.dart';
-import 'package:the_job_finder/features/home/presentation/view/bottom_view/search_view.dart';
 
+import '../features/applications/presentation/viewmodel/received_view_model.dart';
 import '../features/bookmark/presentation/viewmodel/bookmark_view_model.dart';
 import '../features/search/presentation/viewmodel/job_view_model.dart';
 import 'job_details.dart';
@@ -36,7 +36,6 @@ Widget getCompanyCard({
   }
   return GestureDetector(
     onTap: () {
-      print("IN the GestureDetector");
       showJobModal(context, list[index], ref);
     },
     child: Column(
@@ -51,7 +50,8 @@ Widget getCompanyCard({
                     // radius: 50,
                     backgroundImage: logo.isNotEmpty
                         ? NetworkImage(apiBaseUrl + logo)
-                        : const AssetImage('') as ImageProvider,
+                        : const AssetImage('assets/images/logoPlaceholder.png')
+                            as ImageProvider,
                   ),
                   Text(
                     name,
@@ -61,24 +61,29 @@ Widget getCompanyCard({
               ),
             ),
             IconButton(
-              onPressed: () {
+              onPressed: () async {
                 if (!bookmarked) {
-                  const SearchView();
                   ref
                       .read(jobViewModelProvider.notifier)
                       .addBookmark(context, list[index]);
-                  ref.read(jobViewModelProvider.notifier).getAllJobs();
+                  await ref
+                      .read(bookmarkViewModelProvider.notifier)
+                      .getAllBookmarks();
                 } else {
                   if (fromBookmark) {
                     ref
                         .read(bookmarkViewModelProvider.notifier)
                         .removeBookmark(context, list[index]);
-                    ref.read(jobViewModelProvider.notifier).getAllJobs();
+                    await ref
+                        .read(bookmarkViewModelProvider.notifier)
+                        .getAllBookmarks();
                   } else {
                     ref
                         .read(jobViewModelProvider.notifier)
                         .removeBookmark(context, list[index]);
-                    ref.read(jobViewModelProvider.notifier).getAllJobs();
+                    await ref
+                        .read(bookmarkViewModelProvider.notifier)
+                        .getAllBookmarks();
                   }
                 }
               },
@@ -145,13 +150,13 @@ Widget getCreatedCard({
   required int index,
   required list,
 }) {
-  void _showDeleteModal(BuildContext context) {
+  void showDeleteModal(BuildContext context) {
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
         // return the widget that will be the content of the dialog
-        return FittedBox(
+        return Expanded(
           child: AlertDialog(
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -181,10 +186,11 @@ Widget getCreatedCard({
               ),
               TextButton(
                 onPressed: () {
+                  // Navigator.of(context).pop();
                   ref
                       .read(applicationViewModelProvider.notifier)
                       .deleteJob(context, list[index]);
-                  Navigator.of(context).pop();
+                  ref.watch(createdViewModelProvider);
                 },
                 child: const Text('Yes'),
               ),
@@ -197,8 +203,7 @@ Widget getCreatedCard({
 
   return GestureDetector(
     onTap: () {
-      print("IN the GestureDetector");
-      showJobModal(context, list[index], ref);
+      showCreatedJobModal(context, list[index], ref);
     },
     child: Column(
       children: [
@@ -214,9 +219,14 @@ Widget getCreatedCard({
                         ? NetworkImage(apiBaseUrl + logo)
                         : const AssetImage('') as ImageProvider,
                   ),
+                  const SizedBox(
+                    width: 3,
+                  ),
                   Text(
-                    name,
-                    style: const TextStyle(fontSize: 30),
+                    "  $name",
+                    style: const TextStyle(
+                      fontSize: 30,
+                    ),
                   ),
                 ],
               ),
@@ -227,7 +237,7 @@ Widget getCreatedCard({
           child: Container(
             alignment: Alignment.topLeft,
             child: Text(
-              "   $job",
+              "      $job",
               style: const TextStyle(fontSize: 20),
             ),
           ),
@@ -235,9 +245,9 @@ Widget getCreatedCard({
         Expanded(
           child: Row(
             children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.location_on),
+              const IconButton(
+                onPressed: null,
+                icon: Icon(Icons.location_on),
               ),
               Text(location),
             ],
@@ -246,37 +256,36 @@ Widget getCreatedCard({
         Expanded(
           child: Row(
             children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.timer),
+              const IconButton(
+                onPressed: null,
+                icon: Icon(Icons.timer),
               ),
               Text(time),
             ],
           ),
         ),
-        Expanded(
-          child: Row(
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.attach_money),
-              ),
-              Text(salary),
-            ],
-          ),
-        ),
+        // Expanded(
+        //   child: Row(
+        //     children: [
+        //       IconButton(
+        //         onPressed: () {},
+        //         icon: const Icon(Icons.attach_money),
+        //       ),
+        //       Text(salary),
+        //     ],
+        //   ),
+        // ),
         Expanded(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              IconButton(
+              GFButton(
                 onPressed: () {
-                  _showDeleteModal(context);
+                  showDeleteModal(context);
                 },
-                icon: const Icon(Icons.delete),
+                text: "Delete",
+                color: GFColors.DANGER,
               ),
-              const SizedBox(width: 10),
-              GFButton(onPressed: () {}, text: "View", color: GFColors.SUCCESS),
             ],
           ),
         ),
@@ -311,9 +320,9 @@ Widget getCompanyCardSmall(
             children: [
               Row(
                 children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.apple_outlined),
+                  const IconButton(
+                    onPressed: null,
+                    icon: Icon(Icons.apple_outlined),
                   ),
                   Text(
                     name,
@@ -321,9 +330,9 @@ Widget getCompanyCardSmall(
                   ),
                 ],
               ),
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.bookmark),
+              const IconButton(
+                onPressed: null,
+                icon: Icon(Icons.bookmark),
               ),
             ],
           ),
@@ -333,9 +342,9 @@ Widget getCompanyCardSmall(
           ),
           Row(
             children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.location_on),
+              const IconButton(
+                onPressed: null,
+                icon: Icon(Icons.location_on),
               ),
               Text(location),
             ],

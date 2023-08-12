@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/failure/failure.dart';
-import '../../../../core/network/hive_service.dart';
+import '../../../../core/network/local/hive_service.dart';
 import '../../domain/entity/bookmark_entity.dart';
 import '../model/bookmark_hive_model.dart';
 

@@ -23,4 +23,8 @@ class ProfileUseCase {
   Future<Either<Failure, List<ProfileEntity>>> getUserDetails() {
     return profileRepository.getUserDetails();
   }
+    Future<Either<Failure, List<ProfileEntity>>> getApplicants(String jobId) async {
+    return profileRepository.getApplicants(jobId);
+  }
+
 }

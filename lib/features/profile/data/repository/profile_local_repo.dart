@@ -29,4 +29,10 @@ class ProfileLocalRepositoryImpl implements IProfileRepository {
     // TODO: implement getUserDetails
     throw UnimplementedError();
   }
+
+  @override
+  Future<Either<Failure, List<ProfileEntity>>> getApplicants(String jobId) {
+    // TODO: implement getApplicants
+    throw UnimplementedError();
+  }
 }

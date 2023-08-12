@@ -9,6 +9,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "61.0.0"
+  all_sensors2:
+    dependency: "direct main"
+    description:
+      name: all_sensors2
+      sha256: "84a724e7925e13703b996ed8988088eac14a2b210fdd2e103a2731aa7514f9c9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   analyzer:
     dependency: transitive
     description:
@@ -392,6 +400,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_windowmanager:
+    dependency: "direct main"
+    description:
+      name: flutter_windowmanager
+      sha256: b4d0bc06f6777952b729c0cdb7ce9ad1ecabd8b8b1cb0acb57a36621457dab1b
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.0"
   freezed:
     dependency: "direct main"
     description:

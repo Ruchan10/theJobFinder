@@ -1,10 +1,10 @@
-class StudentEntity {
+class UserEntity {
   final String? id;
   final String email;
 
   final String password;
 
-  StudentEntity({
+  UserEntity({
     this.id,
     required this.email,
     required this.password,

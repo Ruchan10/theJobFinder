@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -12,15 +14,15 @@ class LoginView extends ConsumerStatefulWidget {
 
 class _LoginViewState extends ConsumerState<LoginView> {
   final _formKey = GlobalKey<FormState>();
-  final _emailController = TextEditingController(text: "t");
-  final _passwordController = TextEditingController(text: "t");
+  final _emailController = TextEditingController(text: "ruchan@gmail.com");
+  final _passwordController = TextEditingController(text: "ruchan");
   final _gap = const SizedBox(height: 8);
   bool isObscure = true;
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    print("INSIDE LOGIN PAGE");
 
     return Scaffold(
       body: SafeArea(
@@ -35,14 +37,16 @@ class _LoginViewState extends ConsumerState<LoginView> {
                   child: Column(
                     children: [
                       Container(
-                        height: height * .19,
+                        height: height * .18,
                         alignment: Alignment.topLeft,
                         width: double.infinity,
                         child: IconButton(
                           onPressed: () {
-                            setState(() {});
+                            setState(() {
+                              Navigator.of(context).pop();
+                            });
                           },
-                          icon: const Icon(Icons.arrow_back),
+                          icon: const Icon(Icons.arrow_back_ios_new),
                         ),
                       ),
                       Container(
@@ -114,10 +118,10 @@ class _LoginViewState extends ConsumerState<LoginView> {
                                 top: 20), // add padding to adjust text
                             isDense: true,
                             border: const OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(50),
-                              ),
-                            ),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(50),
+                                ),
+                                borderSide: BorderSide(color: Colors.green)),
 
                             labelText: "Password",
                             prefixIcon: const Padding(
@@ -148,7 +152,7 @@ class _LoginViewState extends ConsumerState<LoginView> {
                             if (_formKey.currentState!.validate()) {
                               bool isLogin = await ref
                                   .read(authViewModelProvider.notifier)
-                                  .loginStudent(
+                                  .loginUser(
                                     context,
                                     _emailController.text,
                                     _passwordController.text,
@@ -156,65 +160,77 @@ class _LoginViewState extends ConsumerState<LoginView> {
                             }
                           },
                           style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.white,
-                            backgroundColor: Colors.green,
-                            elevation: 5,
+                            backgroundColor:
+                                const Color.fromARGB(255, 87, 201, 90),
+                            elevation: 2,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(32.0),
                             ),
-                            side: BorderSide(
-                                color: Colors.green.shade600, width: 1),
                             textStyle: const TextStyle(
-                              color: Colors.black,
                               fontSize: 20,
-                              fontStyle: FontStyle.italic,
                             ),
                           ),
-                          child: const Text("Login"),
+                          child: const Text("LOG IN"),
                         ),
                       ),
                       SizedBox(
                         height: height * .1,
                       ),
-                      const Text(
-                        "OR",
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                      SizedBox(
-                        height: height * .1,
-                        width: width,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconButton(
-                              onPressed: () {
-                                setState(() {});
-                              },
-                              icon: const Icon(Icons.facebook),
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                setState(() {});
-                              },
-                              icon: const Icon(Icons.apple),
-                            ),
-                            IconButton(
-                              onPressed: () {
-                                setState(() {});
-                              },
-                              icon: const Icon(Icons.telegram),
-                            ),
-                          ],
-                        ),
-                      ),
+                      // const Text(
+                      //   "OR",
+                      //   style: TextStyle(
+                      //     fontSize: 20,
+                      //   ),
+                      // ),
+                      // SizedBox(
+                      //   height: height * .1,
+                      //   width: width,
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.center,
+                      //     children: [
+                      //       IconButton(
+                      //         onPressed: () {
+                      //           setState(() {});
+                      //         },
+                      //         icon: const Icon(Icons.facebook),
+                      //       ),
+                      //       IconButton(
+                      //         onPressed: () {
+                      //           setState(() {});
+                      //         },
+                      //         icon: const Icon(Icons.apple),
+                      //       ),
+                      //       IconButton(
+                      //         onPressed: () {
+                      //           setState(() {});
+                      //         },
+                      //         icon: const Icon(Icons.telegram),
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
                       GestureDetector(
                         onTap: () {
                           Navigator.pushNamed(context, "/signupRoute");
                         },
-                        child: const Text(
-                          "Don't have an account? Sign Up",
+                        child: RichText(
+                          text: const TextSpan(
+                            text: "Don't have an account? ",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                            ),
+                            children: [
+                              TextSpan(
+                                text: "Sign Up",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.green,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

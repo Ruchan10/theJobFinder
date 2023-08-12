@@ -19,17 +19,17 @@ class SplashViewModel extends StateNotifier<void> {
 
   init(BuildContext context) async {
     final data = await _userSharedPrefs.getUserToken();
+
     data.fold((l) => null, (token) {
       if (token != null) {
         bool isTokenExpired = isValidToken(token);
-        print(isTokenExpired);
 
         if (isTokenExpired) {
           // We will not do navigation like this,
           // we will use mixin and navigator class for this
           Navigator.popAndPushNamed(context, AppRoute.loginRoute);
         } else {
-          Navigator.popAndPushNamed(context, AppRoute.homeRoute);
+          Navigator.popAndPushNamed(context, AppRoute.dashboardRoute);
         }
       } else {
         Navigator.popAndPushNamed(context, AppRoute.loginRoute);
@@ -39,13 +39,11 @@ class SplashViewModel extends StateNotifier<void> {
 
   bool isValidToken(String token) {
     Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
-
     // 10 digit
     int expirationTimestamp = decodedToken['exp'];
-    // 13
+
     final currentDate = DateTime.now().millisecondsSinceEpoch;
     // If current date is greater than expiration timestamp then token is expired
-    print(currentDate > expirationTimestamp * 1000);
 
     return currentDate > expirationTimestamp * 1000;
   }

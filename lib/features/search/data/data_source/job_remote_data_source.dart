@@ -6,6 +6,7 @@ import '../../../../config/constants/api_endpoint.dart';
 import '../../../../core/failure/failure.dart';
 import '../../../../core/network/remote/http_service.dart';
 import '../../../../core/shared_prefs/user_shared_pref.dart';
+import '../../../profile/data/model/profile_api_model.dart';
 import '../../domain/entity/job_entity.dart';
 import '../dto/get_all_jobs.dart';
 import '../model/job_api_model.dart';
@@ -14,6 +15,7 @@ final jobRemoteDataSourceProvider = Provider(
   (ref) => JobRemoteDataSource(
     dio: ref.read(httpServiceProvider),
     jobApiModel: ref.read(jobApiModelProvider),
+    profileApiModel: ref.read(profileApiModelProvider),
     userSharedPrefs: ref.read(userSharedPrefsProvider),
     // authApiModel: ref.read(authApiModelProvider),
   ),
@@ -22,12 +24,14 @@ final jobRemoteDataSourceProvider = Provider(
 class JobRemoteDataSource {
   final Dio dio;
   final JobApiModel jobApiModel;
+  final ProfileApiModel profileApiModel;
   // final AuthApiModel authApiModel;
   final UserSharedPrefs userSharedPrefs;
 
   JobRemoteDataSource({
     required this.dio,
     required this.jobApiModel,
+    required this.profileApiModel,
     // required this.authApiModel,
     required this.userSharedPrefs,
   });
@@ -83,8 +87,62 @@ class JobRemoteDataSource {
         List<JobEntity> jobs = [];
 
         GetAllJobDTO jobAddDTO = GetAllJobDTO.fromJson(response.data);
+        print("In get all jobs");
+        print(response.data);
         jobs = jobApiModel.toEntityList(jobAddDTO.data);
         return Right(jobs);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          error: e.error.toString(),
+          statusCode: e.response?.statusCode.toString() ?? '0',
+        ),
+      );
+    }
+  }
+
+  Future<Either<Failure, bool>> rejectApplicant(
+      String jobId, String userId) async {
+    try {
+      Response response = await dio.post(
+        '${ApiEndpoints.rejectApplicant}$jobId/$userId',
+      );
+      if (response.statusCode == 200) {
+        return const Right(true);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          error: e.error.toString(),
+          statusCode: e.response?.statusCode.toString() ?? '0',
+        ),
+      );
+    }
+  }
+
+  Future<Either<Failure, bool>> acceptApplicant(
+      String jobId, String userId) async {
+    try {
+      Response response = await dio.post(
+        '${ApiEndpoints.acceptApplicant}$jobId/$userId',
+      );
+      if (response.statusCode == 200) {
+        return const Right(true);
       } else {
         return Left(
           Failure(
@@ -199,6 +257,37 @@ class JobRemoteDataSource {
       );
       if (response.statusCode == 200) {
         return const Right(true);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          error: e.error.toString(),
+          statusCode: e.response?.statusCode.toString() ?? '0',
+        ),
+      );
+    }
+  }
+
+  Future<Either<Failure, List<JobEntity>>> searchQuery(
+      String searchQuery) async {
+    try {
+      // Get the token from shared prefs
+
+      Response response =
+          await dio.post(ApiEndpoints.searchQuery + searchQuery);
+      if (response.statusCode == 200) {
+        List<JobEntity> jobs = [];
+
+        GetAllJobDTO jobAddDTO = GetAllJobDTO.fromJson(response.data);
+        jobs = jobApiModel.toEntityList(jobAddDTO.data);
+        return Right(jobs);
       } else {
         return Left(
           Failure(

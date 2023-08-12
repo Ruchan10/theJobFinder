@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:the_job_finder/config/router/app_route.dart';
 import 'package:the_job_finder/features/auth/domain/entity/change_email_entity.dart';
 
-import '../../../../../core/common/provider/internet_connectivity.dart';
 import '../../../../../widgets/settings_btn.dart';
 import '../../../../auth/domain/entity/change_password_entity.dart';
 import '../../../../auth/presentation/viewmodel/auth_view_model.dart';
@@ -24,6 +23,8 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
   final String apiBaseUrl = 'http://192.168.1.6:3000/';
   String? _userName = "User";
   String? _email;
+  String? _profileImg;
+
   final _getEmail = TextEditingController();
   final _confirmEmail = TextEditingController();
   final _getPw = TextEditingController();
@@ -39,10 +40,15 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
   Widget build(BuildContext context) {
     var userState = ref.watch(profileViewModelProvider);
     profile = userState.profiles;
-    _userName = profile[0].fullName;
-    _email = profile[0].email;
-    final internetStatus = ref.watch(connectivityStatusProvider);
 
+    // Check if profile list is not empty before accessing its elements
+    if (profile.isNotEmpty) {
+      _userName = profile[0].fullName;
+      _profileImg = profile[0].profile;
+      _email = profile[0].email;
+    } else {
+      _userName = "User"; // Default value when profile is empty
+    }
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -55,7 +61,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
               ),
               CircleAvatar(
                 radius: 70,
-                backgroundImage: profile[0].profile != null
+                backgroundImage: _profileImg != null
                     ? NetworkImage(apiBaseUrl + profile[0].profile!)
                     : const AssetImage('assets/images/profile.jpg')
                         as ImageProvider,
@@ -118,14 +124,6 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                 child: getSettingsBtn(
                   text: "Delete Account",
                   icon: const Icon(Icons.delete, size: 40, color: Colors.red),
-                ),
-              ),
-              const SizedBox(height: 15),
-              GestureDetector(
-                onTap: () {},
-                child: getSettingsBtn(
-                  text: "Share App",
-                  icon: const Icon(Icons.share, size: 40, color: Colors.yellow),
                 ),
               ),
               const SizedBox(height: 15),

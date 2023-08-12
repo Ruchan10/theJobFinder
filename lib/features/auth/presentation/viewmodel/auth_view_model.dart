@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:the_job_finder/features/auth/domain/entity/student_hive_entity.dart';
+import 'package:the_job_finder/features/auth/domain/entity/user_hive_entity.dart';
 import 'package:the_job_finder/features/auth/domain/use_case/auth_usecase.dart';
 import 'package:the_job_finder/features/auth/presentation/state/auth_state.dart';
 
@@ -21,9 +21,9 @@ class AuthViewModel extends StateNotifier<AuthState> {
 
   AuthViewModel(this._authUseCase) : super(AuthState(isLoading: false));
 
-  Future<void> registerStudent(StudentEntity student) async {
+  Future<void> registerUser(UserEntity user) async {
     state = state.copyWith(isLoading: true);
-    var data = await _authUseCase.registerStudent(student);
+    var data = await _authUseCase.registerUser(user);
     data.fold(
       (failure) => state = state.copyWith(
         isLoading: false,
@@ -62,26 +62,28 @@ class AuthViewModel extends StateNotifier<AuthState> {
     state = state.copyWith(isLoading: true);
     var data = await _authUseCase.changePassword(pws);
     data.fold(
-        (failure) => state = state.copyWith(
-              isLoading: false,
-              error: failure.error,
-            ),
-        (success) => {
-              state = state.copyWith(
-                isLoading: false,
-                error: null,
-              ),
-              showSnackBar(
-                  message: 'Password Changed Successfully',
-                  context: context,
-                  color: Colors.green)
-            });
+      (failure) => state = state.copyWith(
+        isLoading: false,
+        error: failure.error,
+      ),
+      (success) => {
+        state = state.copyWith(
+          isLoading: false,
+          error: null,
+        ),
+        showSnackBar(
+          message: 'Password Changed Successfully',
+          context: context,
+          color: Colors.green,
+        ),
+      },
+    );
   }
 
-  Future<bool> loginStudent(
+  Future<bool> loginUser(
       BuildContext context, String username, String password) async {
     state = state.copyWith(isLoading: true);
-    var data = await _authUseCase.loginStudent(username, password);
+    var data = await _authUseCase.loginUser(username, password);
     data.fold(
       (failure) {
         state = state.copyWith(isLoading: false, error: failure.error);
@@ -98,4 +100,24 @@ class AuthViewModel extends StateNotifier<AuthState> {
 
     return false;
   }
+
+  Future<void> addNoti(String noti) async {
+    state = state.copyWith(isLoading: true);
+    var data = await _authUseCase.addNoti(noti);
+    data.fold(
+      (failure) => state = state.copyWith(
+        isLoading: false,
+        error: failure.error,
+      ),
+      (success) => {
+        state = state.copyWith(
+          isLoading: false,
+          error: null,
+        ),
+      },
+    );
+  }
+
+
+
 }

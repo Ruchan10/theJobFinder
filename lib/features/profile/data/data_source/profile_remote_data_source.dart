@@ -72,6 +72,52 @@ class ProfileRemoteDataSource {
     }
   }
 
+  Future<Either<Failure, List<ProfileEntity>>> getApplicants(
+      String userId) async {
+    try {
+      // Get the token from shared prefs
+      String? token;
+      var data = await userSharedPrefs.getUserToken();
+      data.fold(
+        (l) => token = null,
+        (r) => token = r!,
+      );
+      
+      var response = await dio.get(
+        ApiEndpoints.getUserDetails + userId,
+        options: Options(
+          headers: {
+            'Authorization': '$token',
+          },
+        ),
+      );
+      if (response.statusCode == 200) {
+        print("in get APPLICANTS");
+        List<ProfileEntity> profile = [];
+
+        GetAllProfileDTO profileAddDTO =
+            GetAllProfileDTO.fromJson(response.data);
+        profile = profileApiModel.toEntityList(profileAddDTO.data);
+        print(profile);
+        return Right(profile);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
+      }
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          error: e.error.toString(),
+          statusCode: e.response?.statusCode.toString() ?? '0',
+        ),
+      );
+    }
+  }
+
   Future<Either<Failure, List<ProfileEntity>>> getUserDetails() async {
     try {
       String? token;

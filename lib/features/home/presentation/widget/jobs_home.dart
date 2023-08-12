@@ -21,8 +21,6 @@ class HomeJobWidget extends ConsumerWidget {
     return currentUserIdAsyncValue.when(
       data: (currentUserId) {
         return ListView.builder(
-          scrollDirection:
-              Axis.horizontal, // Set the scroll direction to horizontal
           itemCount: jobList.length,
           itemBuilder: (context, index) {
             bool isBookmarked = false;

@@ -10,6 +10,7 @@ import '../../features/home/presentation/view/bottom_view/home_view.dart';
 import '../../features/home/presentation/view/bottom_view/profile_view.dart';
 import '../../features/home/presentation/view/bottom_view/search_view.dart';
 import '../../features/profile/presentation/view/edit_profile_view.dart';
+import '../../view/test_login.dart';
 
 class AppRoute {
   AppRoute._();
@@ -27,6 +28,7 @@ class AppRoute {
   static const String testRoute = '/testRoute';
   static const String addJobRoute = '/addJobRoute';
   static const String splashRoute = '/splashRoute';
+  static const String proximityRoute = '/proximityRoute';
 
   static getAppRoutes() {
     return {
@@ -42,6 +44,7 @@ class AppRoute {
       addJobRoute: (context) => const AddJobView(),
       applicationsRoute: (context) => const ApplicationsView(),
       splashRoute: (context) => const SplashView(),
+      testRoute: (context) => const TestView(),
     };
   }
 }

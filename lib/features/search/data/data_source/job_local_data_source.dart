@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/failure/failure.dart';
-import '../../../../core/network/hive_service.dart';
+import '../../../../core/network/local/hive_service.dart';
 import '../../domain/entity/job_entity.dart';
 import '../model/job_hive_model.dart';
 
@@ -37,6 +37,7 @@ class JobLocalDataSource {
 
   Future<Either<Failure, List<JobEntity>>> getAllJobs() async {
     try {
+      print("In hive model");
       // Get all jobes from Hive
       final jobs = await hiveService.getAllJobs();
       // Convert Hive Object to Entity

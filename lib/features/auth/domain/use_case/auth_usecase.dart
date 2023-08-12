@@ -5,7 +5,7 @@ import 'package:the_job_finder/features/auth/domain/repository/auth_repository.d
 
 import '../entity/change_email_entity.dart';
 import '../entity/change_password_entity.dart';
-import '../entity/student_hive_entity.dart';
+import '../entity/user_hive_entity.dart';
 
 final authUseCaseProvider = Provider((ref) {
   return AuthUseCase(
@@ -18,8 +18,8 @@ class AuthUseCase {
 
   AuthUseCase(this._authRepository);
 
-  Future<Either<Failure, bool>> registerStudent(StudentEntity student) async {
-    return await _authRepository.registerStudent(student);
+  Future<Either<Failure, bool>> registerUser(UserEntity user) async {
+    return await _authRepository.registerUser(user);
   }
 
   Future<Either<Failure, bool>> changeEmail(ChangeEmailEntity emails) async {
@@ -29,8 +29,19 @@ class AuthUseCase {
     return await _authRepository.changePassword(pws);
   }
 
-  Future<Either<Failure, bool>> loginStudent(
+  Future<Either<Failure, bool>> loginUser(
       String username, String password) async {
-    return await _authRepository.loginStudent(username, password);
+    return await _authRepository.loginUser(username, password);
+  }
+
+  Future<Either<Failure, bool>> addNoti(String noti) async{
+    return await _authRepository.addNoti(noti);
+  }
+  Future<Either<Failure, List<String>>> getNoti()async {
+    return await _authRepository.getNoti();
+  }
+  
+  Future<Either<Failure, bool>> clearNoti() async{
+    return await _authRepository.clearNoti();
   }
 }

@@ -33,7 +33,7 @@ class ApplicationViewModel extends StateNotifier<JobState> {
         state = state.copyWith(isLoading: false, error: null);
         showSnackBar(
           message: 'Job Deleted',
-          context: context,
+          context: context, color: Colors.red
         );
       },
     );
