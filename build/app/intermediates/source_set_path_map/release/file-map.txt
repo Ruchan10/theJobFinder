@@ -1,0 +1,49 @@
+com.ruchan.jobfinder.app-core-runtime-2.2.0-0 /home/rk10/.gradle/caches/8.11/transforms/02af1873a3b8e879780ef2705bccfd59/transformed/core-runtime-2.2.0/res
+com.ruchan.jobfinder.app-jetified-savedstate-1.2.1-1 /home/rk10/.gradle/caches/8.11/transforms/04b4c92df6fb0ceca458e50d457886da/transformed/jetified-savedstate-1.2.1/res
+com.ruchan.jobfinder.app-jetified-window-java-1.2.0-2 /home/rk10/.gradle/caches/8.11/transforms/075c7121f095ac9f92cd8d36554c0a5b/transformed/jetified-window-java-1.2.0/res
+com.ruchan.jobfinder.app-jetified-profileinstaller-1.3.1-3 /home/rk10/.gradle/caches/8.11/transforms/0b4ae10a863367716e76a46b41198a21/transformed/jetified-profileinstaller-1.3.1/res
+com.ruchan.jobfinder.app-slidingpanelayout-1.2.0-4 /home/rk10/.gradle/caches/8.11/transforms/120790270329d244d94e4affe9bd04e6/transformed/slidingpanelayout-1.2.0/res
+com.ruchan.jobfinder.app-jetified-lifecycle-livedata-core-ktx-2.7.0-5 /home/rk10/.gradle/caches/8.11/transforms/20512961a6bd1204b3b260ca7290bf02/transformed/jetified-lifecycle-livedata-core-ktx-2.7.0/res
+com.ruchan.jobfinder.app-jetified-lifecycle-viewmodel-savedstate-2.7.0-6 /home/rk10/.gradle/caches/8.11/transforms/26ecc41fe56648e0027586454f177110/transformed/jetified-lifecycle-viewmodel-savedstate-2.7.0/res
+com.ruchan.jobfinder.app-lifecycle-runtime-2.7.0-7 /home/rk10/.gradle/caches/8.11/transforms/2a1bb83dff4307c3fb68f0876c658d9f/transformed/lifecycle-runtime-2.7.0/res
+com.ruchan.jobfinder.app-jetified-lifecycle-runtime-ktx-2.7.0-8 /home/rk10/.gradle/caches/8.11/transforms/3e32543c8a0b9fbc1f79d08e8b4ce62b/transformed/jetified-lifecycle-runtime-ktx-2.7.0/res
+com.ruchan.jobfinder.app-lifecycle-livedata-2.7.0-9 /home/rk10/.gradle/caches/8.11/transforms/40f883058472113a7917bf19b86d9d58/transformed/lifecycle-livedata-2.7.0/res
+com.ruchan.jobfinder.app-core-1.13.1-10 /home/rk10/.gradle/caches/8.11/transforms/475d668070958ebcb45e0c023caafb52/transformed/core-1.13.1/res
+com.ruchan.jobfinder.app-jetified-appcompat-resources-1.1.0-11 /home/rk10/.gradle/caches/8.11/transforms/4852ed05c4e434da74074d656a10083a/transformed/jetified-appcompat-resources-1.1.0/res
+com.ruchan.jobfinder.app-jetified-activity-ktx-1.9.3-12 /home/rk10/.gradle/caches/8.11/transforms/4a4cc26e198150a4f441376034b70924/transformed/jetified-activity-ktx-1.9.3/res
+com.ruchan.jobfinder.app-jetified-activity-1.9.3-13 /home/rk10/.gradle/caches/8.11/transforms/4d5ec44a06aeee41259bf8b8f13650a2/transformed/jetified-activity-1.9.3/res
+com.ruchan.jobfinder.app-jetified-annotation-experimental-1.4.0-14 /home/rk10/.gradle/caches/8.11/transforms/5bea3610a9cc629e758182d000e66237/transformed/jetified-annotation-experimental-1.4.0/res
+com.ruchan.jobfinder.app-coordinatorlayout-1.0.0-15 /home/rk10/.gradle/caches/8.11/transforms/5fd2cfd52b261ecdcd7635f520b3da56/transformed/coordinatorlayout-1.0.0/res
+com.ruchan.jobfinder.app-jetified-core-ktx-1.13.1-16 /home/rk10/.gradle/caches/8.11/transforms/775cc2ed03bf416d118973b710b8d947/transformed/jetified-core-ktx-1.13.1/res
+com.ruchan.jobfinder.app-jetified-fragment-ktx-1.7.1-17 /home/rk10/.gradle/caches/8.11/transforms/7adea2cc8f13ef8c6344f0cacb8b4738/transformed/jetified-fragment-ktx-1.7.1/res
+com.ruchan.jobfinder.app-jetified-savedstate-ktx-1.2.1-18 /home/rk10/.gradle/caches/8.11/transforms/7e5c99b61b517c22e4f292041b7da863/transformed/jetified-savedstate-ktx-1.2.1/res
+com.ruchan.jobfinder.app-jetified-startup-runtime-1.1.1-19 /home/rk10/.gradle/caches/8.11/transforms/8bf39b8d89dcf06df863a3068e88413d/transformed/jetified-startup-runtime-1.1.1/res
+com.ruchan.jobfinder.app-preference-1.2.1-20 /home/rk10/.gradle/caches/8.11/transforms/8d50c4c418c4267bafdfb95e98c36937/transformed/preference-1.2.1/res
+com.ruchan.jobfinder.app-jetified-tracing-1.2.0-21 /home/rk10/.gradle/caches/8.11/transforms/8e903b233caef949d365a3e9d546d623/transformed/jetified-tracing-1.2.0/res
+com.ruchan.jobfinder.app-fragment-1.7.1-22 /home/rk10/.gradle/caches/8.11/transforms/918e423b0c56dc68e1cf1afc0eb21858/transformed/fragment-1.7.1/res
+com.ruchan.jobfinder.app-transition-1.4.1-23 /home/rk10/.gradle/caches/8.11/transforms/a8de839535d4f6db2a04b375c5f36108/transformed/transition-1.4.1/res
+com.ruchan.jobfinder.app-lifecycle-viewmodel-2.7.0-24 /home/rk10/.gradle/caches/8.11/transforms/a90d4657faee3a133a05fbba818e092a/transformed/lifecycle-viewmodel-2.7.0/res
+com.ruchan.jobfinder.app-jetified-core-1.0.0-25 /home/rk10/.gradle/caches/8.11/transforms/ac067bd99650caa5908d3989579c7eaf/transformed/jetified-core-1.0.0/res
+com.ruchan.jobfinder.app-appcompat-1.1.0-26 /home/rk10/.gradle/caches/8.11/transforms/ac0bfb459bd58179e657c7e34f5b3312/transformed/appcompat-1.1.0/res
+com.ruchan.jobfinder.app-jetified-datastore-preferences-1.0.0-27 /home/rk10/.gradle/caches/8.11/transforms/b37eec2620f52fc04a15f372f9d1da68/transformed/jetified-datastore-preferences-1.0.0/res
+com.ruchan.jobfinder.app-jetified-lifecycle-viewmodel-ktx-2.7.0-28 /home/rk10/.gradle/caches/8.11/transforms/b7c5ea46a0d580bdf1fcd8e7b9176d28/transformed/jetified-lifecycle-viewmodel-ktx-2.7.0/res
+com.ruchan.jobfinder.app-lifecycle-livedata-core-2.7.0-29 /home/rk10/.gradle/caches/8.11/transforms/dc4e65232b52c915286aea77b7992682/transformed/lifecycle-livedata-core-2.7.0/res
+com.ruchan.jobfinder.app-jetified-window-1.2.0-30 /home/rk10/.gradle/caches/8.11/transforms/dcf95175853294f482115bc95b870768/transformed/jetified-window-1.2.0/res
+com.ruchan.jobfinder.app-jetified-lifecycle-process-2.7.0-31 /home/rk10/.gradle/caches/8.11/transforms/df335257ae12473327f2225676d57843/transformed/jetified-lifecycle-process-2.7.0/res
+com.ruchan.jobfinder.app-jetified-datastore-1.0.0-32 /home/rk10/.gradle/caches/8.11/transforms/e86a15a019101753257586089946aa1f/transformed/jetified-datastore-1.0.0/res
+com.ruchan.jobfinder.app-recyclerview-1.0.0-33 /home/rk10/.gradle/caches/8.11/transforms/fa902fa5b833a7a549359e9a5762d98d/transformed/recyclerview-1.0.0/res
+com.ruchan.jobfinder.app-main-34 /home/rk10/Documents/5th sem/AppDev/the_job_finder/android/app/src/main/res
+com.ruchan.jobfinder.app-release-35 /home/rk10/Documents/5th sem/AppDev/the_job_finder/android/app/src/release/res
+com.ruchan.jobfinder.app-pngs-36 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/app/generated/res/pngs/release
+com.ruchan.jobfinder.app-resValues-37 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/app/generated/res/resValues/release
+com.ruchan.jobfinder.app-packageReleaseResources-38 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/app/intermediates/incremental/release/packageReleaseResources/merged.dir
+com.ruchan.jobfinder.app-packageReleaseResources-39 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/app/intermediates/incremental/release/packageReleaseResources/stripped.dir
+com.ruchan.jobfinder.app-merged-not-compiled-resources-40 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/app/intermediates/merged-not-compiled-resources/release
+com.ruchan.jobfinder.app-merged_res-41 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/app/intermediates/merged_res/release
+com.ruchan.jobfinder.app-packaged_res-42 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/connectivity_plus/intermediates/packaged_res/release
+com.ruchan.jobfinder.app-packaged_res-43 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/file_picker/intermediates/packaged_res/release
+com.ruchan.jobfinder.app-packaged_res-44 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/flutter_plugin_android_lifecycle/intermediates/packaged_res/release
+com.ruchan.jobfinder.app-packaged_res-45 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/image_picker_android/intermediates/packaged_res/release
+com.ruchan.jobfinder.app-packaged_res-46 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/path_provider_android/intermediates/packaged_res/release
+com.ruchan.jobfinder.app-packaged_res-47 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/permission_handler_android/intermediates/packaged_res/release
+com.ruchan.jobfinder.app-packaged_res-48 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/shared_preferences_android/intermediates/packaged_res/release

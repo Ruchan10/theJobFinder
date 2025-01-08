@@ -1,0 +1,1 @@
+ /home/rk10/Documents/5th\ sem/AppDev/the_job_finder/.dart_tool/flutter_build/afd442a50b964254890732a60ce26171/native_assets.yaml: 

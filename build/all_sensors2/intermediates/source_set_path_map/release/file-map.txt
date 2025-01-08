@@ -1,0 +1,28 @@
+com.cindyu.all_sensors2-core-1.13.1-0 /home/rk10/.gradle/caches/transforms-3/051797011b0e46514ae3fa06fdd8823b/transformed/core-1.13.1/res
+com.cindyu.all_sensors2-jetified-core-1.0.0-1 /home/rk10/.gradle/caches/transforms-3/0a13659814bb7f58ff5b793dfd7e3511/transformed/jetified-core-1.0.0/res
+com.cindyu.all_sensors2-jetified-window-1.2.0-2 /home/rk10/.gradle/caches/transforms-3/0b5905d4f23b44b628898be0c1a5b19c/transformed/jetified-window-1.2.0/res
+com.cindyu.all_sensors2-jetified-tracing-1.2.0-3 /home/rk10/.gradle/caches/transforms-3/0d893ca4344b13487e8e79f62606d61a/transformed/jetified-tracing-1.2.0/res
+com.cindyu.all_sensors2-jetified-savedstate-1.2.1-4 /home/rk10/.gradle/caches/transforms-3/168c082484629579331a3d11d2ccaa06/transformed/jetified-savedstate-1.2.1/res
+com.cindyu.all_sensors2-jetified-profileinstaller-1.3.1-5 /home/rk10/.gradle/caches/transforms-3/202af4596798cc808abe9bfa2bd99724/transformed/jetified-profileinstaller-1.3.1/res
+com.cindyu.all_sensors2-jetified-activity-1.8.1-6 /home/rk10/.gradle/caches/transforms-3/3dd9447410d5fd6928e60d9360de2b02/transformed/jetified-activity-1.8.1/res
+com.cindyu.all_sensors2-jetified-lifecycle-process-2.7.0-7 /home/rk10/.gradle/caches/transforms-3/3e8f9504883ed097d98aa4a57cf686fc/transformed/jetified-lifecycle-process-2.7.0/res
+com.cindyu.all_sensors2-jetified-startup-runtime-1.1.1-8 /home/rk10/.gradle/caches/transforms-3/463e181b92ea900fe2db3aaea289dc61/transformed/jetified-startup-runtime-1.1.1/res
+com.cindyu.all_sensors2-jetified-core-ktx-1.13.1-9 /home/rk10/.gradle/caches/transforms-3/611b3c04a8bc5a7c0a54a05dbae6e9c6/transformed/jetified-core-ktx-1.13.1/res
+com.cindyu.all_sensors2-fragment-1.7.1-10 /home/rk10/.gradle/caches/transforms-3/80eb772b22f257853c7b8c6ef3065234/transformed/fragment-1.7.1/res
+com.cindyu.all_sensors2-jetified-lifecycle-viewmodel-savedstate-2.7.0-11 /home/rk10/.gradle/caches/transforms-3/816588f651d1ce8b8367aae6ad573130/transformed/jetified-lifecycle-viewmodel-savedstate-2.7.0/res
+com.cindyu.all_sensors2-lifecycle-livedata-2.7.0-12 /home/rk10/.gradle/caches/transforms-3/97b8ddfe377f3e25200111cfac93a043/transformed/lifecycle-livedata-2.7.0/res
+com.cindyu.all_sensors2-lifecycle-livedata-core-2.7.0-13 /home/rk10/.gradle/caches/transforms-3/9dc2649faa566bb197891d0185f0b15f/transformed/lifecycle-livedata-core-2.7.0/res
+com.cindyu.all_sensors2-jetified-annotation-experimental-1.4.0-14 /home/rk10/.gradle/caches/transforms-3/a7ddb4f457a94aedc051fbff3c1fdffc/transformed/jetified-annotation-experimental-1.4.0/res
+com.cindyu.all_sensors2-lifecycle-viewmodel-2.7.0-15 /home/rk10/.gradle/caches/transforms-3/b2abebad6f41a4f06e7b036997d05fb1/transformed/lifecycle-viewmodel-2.7.0/res
+com.cindyu.all_sensors2-jetified-window-java-1.2.0-16 /home/rk10/.gradle/caches/transforms-3/c350a49d16f12a85361fb7ae8e496b8d/transformed/jetified-window-java-1.2.0/res
+com.cindyu.all_sensors2-core-runtime-2.2.0-17 /home/rk10/.gradle/caches/transforms-3/cfce81521ee077d4af6f67c3d4951e6e/transformed/core-runtime-2.2.0/res
+com.cindyu.all_sensors2-lifecycle-runtime-2.7.0-18 /home/rk10/.gradle/caches/transforms-3/d34ab8d9504d5d009513324c4d53237f/transformed/lifecycle-runtime-2.7.0/res
+com.cindyu.all_sensors2-jetified-lifecycle-livedata-core-ktx-2.7.0-19 /home/rk10/.gradle/caches/transforms-3/e95405969faad1115261830ae3c3541d/transformed/jetified-lifecycle-livedata-core-ktx-2.7.0/res
+com.cindyu.all_sensors2-main-20 /home/rk10/.pub-cache/hosted/pub.dev/all_sensors2-1.0.1/android/src/main/res
+com.cindyu.all_sensors2-release-21 /home/rk10/.pub-cache/hosted/pub.dev/all_sensors2-1.0.1/android/src/release/res
+com.cindyu.all_sensors2-pngs-22 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/all_sensors2/generated/res/pngs/release
+com.cindyu.all_sensors2-resValues-23 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/all_sensors2/generated/res/resValues/release
+com.cindyu.all_sensors2-rs-24 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/all_sensors2/generated/res/rs/release
+com.cindyu.all_sensors2-mergeReleaseResources-25 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/all_sensors2/intermediates/incremental/release/mergeReleaseResources/merged.dir
+com.cindyu.all_sensors2-mergeReleaseResources-26 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/all_sensors2/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+com.cindyu.all_sensors2-merged_res-27 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/all_sensors2/intermediates/merged_res/release

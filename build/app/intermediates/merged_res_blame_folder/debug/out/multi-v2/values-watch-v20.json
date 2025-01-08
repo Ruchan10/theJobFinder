@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.ruchan.jobfinder.app-mergeDebugResources-38:/values-watch-v20/values-watch-v20.xml",
+            "map": [
+                {
+                    "source": "/home/rk10/.gradle/caches/8.11/transforms/ac0bfb459bd58179e657c7e34f5b3312/transformed/appcompat-1.1.0/res/values-watch-v20/values-watch-v20.xml",
+                    "from": {
+                        "startLines": "2,5,8",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,214,385",
+                        "endLines": "4,7,10",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "209,380,553"
+                    }
+                }
+            ]
+        }
+    ]
+}

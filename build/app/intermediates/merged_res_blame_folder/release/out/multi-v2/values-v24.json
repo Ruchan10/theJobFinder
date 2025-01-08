@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.ruchan.jobfinder.app-mergeReleaseResources-38:/values-v24/values-v24.xml",
+            "map": [
+                {
+                    "source": "/home/rk10/.gradle/caches/8.11/transforms/ac0bfb459bd58179e657c7e34f5b3312/transformed/appcompat-1.1.0/res/values-v24/values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
+                    }
+                }
+            ]
+        }
+    ]
+}

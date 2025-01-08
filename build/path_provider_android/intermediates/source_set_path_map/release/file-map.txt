@@ -1,0 +1,27 @@
+io.flutter.plugins.pathprovider.path_provider_android-core-runtime-2.2.0-0 /home/rk10/.gradle/caches/8.11/transforms/02af1873a3b8e879780ef2705bccfd59/transformed/core-runtime-2.2.0/res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-savedstate-1.2.1-1 /home/rk10/.gradle/caches/8.11/transforms/04b4c92df6fb0ceca458e50d457886da/transformed/jetified-savedstate-1.2.1/res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-window-java-1.2.0-2 /home/rk10/.gradle/caches/8.11/transforms/075c7121f095ac9f92cd8d36554c0a5b/transformed/jetified-window-java-1.2.0/res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-profileinstaller-1.3.1-3 /home/rk10/.gradle/caches/8.11/transforms/0b4ae10a863367716e76a46b41198a21/transformed/jetified-profileinstaller-1.3.1/res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-lifecycle-livedata-core-ktx-2.7.0-4 /home/rk10/.gradle/caches/8.11/transforms/20512961a6bd1204b3b260ca7290bf02/transformed/jetified-lifecycle-livedata-core-ktx-2.7.0/res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-lifecycle-viewmodel-savedstate-2.7.0-5 /home/rk10/.gradle/caches/8.11/transforms/26ecc41fe56648e0027586454f177110/transformed/jetified-lifecycle-viewmodel-savedstate-2.7.0/res
+io.flutter.plugins.pathprovider.path_provider_android-lifecycle-runtime-2.7.0-6 /home/rk10/.gradle/caches/8.11/transforms/2a1bb83dff4307c3fb68f0876c658d9f/transformed/lifecycle-runtime-2.7.0/res
+io.flutter.plugins.pathprovider.path_provider_android-lifecycle-livedata-2.7.0-7 /home/rk10/.gradle/caches/8.11/transforms/40f883058472113a7917bf19b86d9d58/transformed/lifecycle-livedata-2.7.0/res
+io.flutter.plugins.pathprovider.path_provider_android-core-1.13.1-8 /home/rk10/.gradle/caches/8.11/transforms/475d668070958ebcb45e0c023caafb52/transformed/core-1.13.1/res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-annotation-experimental-1.4.0-9 /home/rk10/.gradle/caches/8.11/transforms/5bea3610a9cc629e758182d000e66237/transformed/jetified-annotation-experimental-1.4.0/res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-core-ktx-1.13.1-10 /home/rk10/.gradle/caches/8.11/transforms/775cc2ed03bf416d118973b710b8d947/transformed/jetified-core-ktx-1.13.1/res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-startup-runtime-1.1.1-11 /home/rk10/.gradle/caches/8.11/transforms/8bf39b8d89dcf06df863a3068e88413d/transformed/jetified-startup-runtime-1.1.1/res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-tracing-1.2.0-12 /home/rk10/.gradle/caches/8.11/transforms/8e903b233caef949d365a3e9d546d623/transformed/jetified-tracing-1.2.0/res
+io.flutter.plugins.pathprovider.path_provider_android-fragment-1.7.1-13 /home/rk10/.gradle/caches/8.11/transforms/918e423b0c56dc68e1cf1afc0eb21858/transformed/fragment-1.7.1/res
+io.flutter.plugins.pathprovider.path_provider_android-lifecycle-viewmodel-2.7.0-14 /home/rk10/.gradle/caches/8.11/transforms/a90d4657faee3a133a05fbba818e092a/transformed/lifecycle-viewmodel-2.7.0/res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-core-1.0.0-15 /home/rk10/.gradle/caches/8.11/transforms/ac067bd99650caa5908d3989579c7eaf/transformed/jetified-core-1.0.0/res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-activity-1.8.1-16 /home/rk10/.gradle/caches/8.11/transforms/d2b6296067bcf65383a22e7029f9228a/transformed/jetified-activity-1.8.1/res
+io.flutter.plugins.pathprovider.path_provider_android-lifecycle-livedata-core-2.7.0-17 /home/rk10/.gradle/caches/8.11/transforms/dc4e65232b52c915286aea77b7992682/transformed/lifecycle-livedata-core-2.7.0/res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-window-1.2.0-18 /home/rk10/.gradle/caches/8.11/transforms/dcf95175853294f482115bc95b870768/transformed/jetified-window-1.2.0/res
+io.flutter.plugins.pathprovider.path_provider_android-jetified-lifecycle-process-2.7.0-19 /home/rk10/.gradle/caches/8.11/transforms/df335257ae12473327f2225676d57843/transformed/jetified-lifecycle-process-2.7.0/res
+io.flutter.plugins.pathprovider.path_provider_android-main-20 /home/rk10/.pub-cache/hosted/pub.dev/path_provider_android-2.2.15/android/src/main/res
+io.flutter.plugins.pathprovider.path_provider_android-release-21 /home/rk10/.pub-cache/hosted/pub.dev/path_provider_android-2.2.15/android/src/release/res
+io.flutter.plugins.pathprovider.path_provider_android-pngs-22 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/path_provider_android/generated/res/pngs/release
+io.flutter.plugins.pathprovider.path_provider_android-resValues-23 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/path_provider_android/generated/res/resValues/release
+io.flutter.plugins.pathprovider.path_provider_android-mergeReleaseResources-24 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/path_provider_android/intermediates/incremental/release/mergeReleaseResources/merged.dir
+io.flutter.plugins.pathprovider.path_provider_android-mergeReleaseResources-25 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/path_provider_android/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+io.flutter.plugins.pathprovider.path_provider_android-merged_res-26 /home/rk10/Documents/5th sem/AppDev/the_job_finder/build/path_provider_android/intermediates/merged_res/release

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/the_job_finder.iml" filepath="$PROJECT_DIR$/the_job_finder.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/the_job_finder_android.iml" filepath="$PROJECT_DIR$/android/the_job_finder_android.iml" />
+    </modules>
+  </component>
+</project>
