@@ -31,10 +31,12 @@ This project is designed to bridge the gap between job seekers and employers by 
 
 <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; text-align: center;">
 
-  <div style="width: 600px;">
+  <div style="width: 300px;">
     <img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_02.png" alt="Signup Page" width="300" height="600">
     <p><strong>Signup Page</strong></p>
-
+  </div>
+  
+  <div style="width: 300px;">
     <img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_03.png" alt="Login Page" width="300" height="600">
     <p><strong>Login Page</strong></p>
   </div>
