@@ -29,38 +29,39 @@ This project is designed to bridge the gap between job seekers and employers by 
 ---
 ## App Screens
 
-<table>
-  <tr>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_02.png" alt="Signup Page" width="300" height="600">
-      <p><strong>Signup Page</strong></p>
-    </td>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_03.png" alt="Login Page" width="300" height="600">
-      <p><strong>Login Page</strong></p>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_05.png" alt="Discover Page" width="300" height="600">
-      <p><strong>Discover Page</strong></p>
-    </td>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_07.png" alt="Job Details" width="300" height="600">
-      <p><strong>Job Details</strong></p>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_06.png" alt="Bookmark Page" width="300" height="600">
-      <p><strong>Bookmark Page</strong></p>
-    </td>
-    <td align="center">
-      <img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_08.png" alt="Settings Page" width="300" height="600">
-      <p><strong>Settings Page</strong></p>
-    </td>
-  </tr>
-</table>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; text-align: center;">
+
+  <div style="width: 300px;">
+    <img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_02.png" alt="Signup Page" width="300" height="600">
+    <p><strong>Signup Page</strong></p>
+  </div>
+
+  <div style="width: 300px;">
+    <img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_03.png" alt="Login Page" width="300" height="600">
+    <p><strong>Login Page</strong></p>
+  </div>
+  
+  <div style="width: 300px;">
+    <img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_05.png" alt="Discover Page" width="300" height="600">
+    <p><strong>Discover Page</strong></p>
+  </div>
+  
+  <div style="width: 300px;">
+    <img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_07.png" alt="Job Details" width="300" height="600">
+    <p><strong>Job Details</strong></p>
+  </div>
+  
+  <div style="width: 300px;">
+    <img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_06.png" alt="Bookmark Page" width="300" height="600">
+    <p><strong>Bookmark Page</strong></p>
+  </div>
+  
+  <div style="width: 300px;">
+    <img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_08.png" alt="Settings Page" width="300" height="600">
+    <p><strong>Settings Page</strong></p>
+  </div>
+
+</div>
 
 ---
 
