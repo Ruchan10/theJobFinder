@@ -29,14 +29,14 @@ This project is designed to bridge the gap between job seekers and employers by 
 ---
 
 ## App Screens
-| ![Screenshot 1](https://raw.githubusercontent.com/Ruchan10/the_job_finder/master/assets/screenshots/flutter_02.png) | ![Screenshot 2](https://raw.githubusercontent.com/Ruchan10/the_job_finder/master/assets/screenshots/flutter_03.png)  
-| ![Screenshot 3](https://raw.githubusercontent.com/Ruchan10/the_job_finder/master/assets/screenshots/flutter_05.png)
+| ![Screenshot 1](https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_02.png) | ![Screenshot 2](https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_03.png)  
+| ![Screenshot 3](https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_05.png)
 - **Discover Page**: Search and filter jobs.
-| ![Screenshot 4](https://raw.githubusercontent.com/Ruchan10/the_job_finder/master/assets/screenshots/flutter_07.png)
+| ![Screenshot 4](https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_07.png)
 - **Job Details**: View job details and apply.
-| ![Screenshot 5](https://raw.githubusercontent.com/Ruchan10/the_job_finder/master/assets/screenshots/flutter_06.png) 
+| ![Screenshot 5](https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_06.png) 
 - **Bookmark Page**: Manage marked jobs.
-| ![Screenshot 6](https://raw.githubusercontent.com/Ruchan10/the_job_finder/master/assets/screenshots/flutter_08.png)
+| ![Screenshot 6](https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_08.png)
 - **Settings Page**: Page with much more options and customizations.
 
 ---
