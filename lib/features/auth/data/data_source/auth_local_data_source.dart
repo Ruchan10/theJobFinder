@@ -35,12 +35,8 @@ class AuthLocalDataSource {
   ) async {
     try {
       UserHiveModel? users = await _hiveService.login(username, password);
-      if (users == null) {
-        return Left(Failure(error: 'Username or password is wrong'));
-      } else {
-        return const Right(true);
-      }
-    } catch (e) {
+      return const Right(true);
+        } catch (e) {
       return Left(Failure(error: e.toString()));
     }
   }

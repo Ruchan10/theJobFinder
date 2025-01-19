@@ -29,15 +29,44 @@ This project is designed to bridge the gap between job seekers and employers by 
 ---
 
 ## App Screens
-| ![Screenshot 1](https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_02.png) | ![Screenshot 2](https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_03.png)  
-| ![Screenshot 3](https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_05.png)
-- **Discover Page**: Search and filter jobs.
-| ![Screenshot 4](https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_07.png)
-- **Job Details**: View job details and apply.
-| ![Screenshot 5](https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_06.png) 
-- **Bookmark Page**: Manage marked jobs.
-| ![Screenshot 6](https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_08.png)
-- **Settings Page**: Page with much more options and customizations.
+
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+
+<img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_02.png" alt="Screenshot 1" width="300" height="600">
+<img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_03.png" alt="Screenshot 2" width="300" height="600">
+<img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_05.png" alt="Screenshot 3" width="300" height="600">
+
+</div>
+
+### Discover Page
+Search and filter jobs.
+
+<div style="display: flex; justify-content: center;">
+
+<img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_07.png" alt="Screenshot 4" width="300" height="600">
+
+</div>
+
+### Job Details
+View job details and apply.
+
+<div style="display: flex; justify-content: center;">
+
+<img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_06.png" alt="Screenshot 5" width="300" height="600">
+
+</div>
+
+### Bookmark Page
+Manage marked jobs.
+
+<div style="display: flex; justify-content: center;">
+
+<img src="https://raw.githubusercontent.com/Ruchan10/theJobFinder/master/assets/screenshots/flutter_08.png" alt="Screenshot 6" width="300" height="600">
+
+</div>
+
+### Settings Page
+Page with much more options and customizations.
 
 ---
 
