@@ -16,7 +16,6 @@ class BookmarkWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("in bookmark widget");
     return GridView.builder(
       // Put this otherwise it will take all the space
       shrinkWrap: true,

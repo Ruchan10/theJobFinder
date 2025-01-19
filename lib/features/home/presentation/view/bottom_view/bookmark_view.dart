@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:the_job_finder/features/bookmark/domain/entity/bookmark_entity.dart';
 
 import '../../../../bookmark/presentation/viewmodel/bookmark_view_model.dart';
 import '../../../../bookmark/presentation/widget/bookmark_widget.dart';
@@ -15,6 +16,39 @@ class BookmarkView extends ConsumerStatefulWidget {
 class _BookmarkViewState extends ConsumerState<BookmarkView> {
   Future<void> _refreshBookmarks() async {
     await ref.read(bookmarkViewModelProvider.notifier).getAllBookmarks();
+  }
+
+  List<BookmarkEntity> getDummyJobs() {
+    return [
+      const BookmarkEntity(
+        bookmarkId: "2",
+        title: "Data Analyst",
+        desc: "Analyze and interpret data to support decision-making.",
+        company: "Data Solutions",
+        jobTime: "Part Time",
+        location: "New York, NY",
+        logo: "assets/images/ds.webp",
+        salary: "\$60k - \$80k",
+        bookmarkedBy: ["null"],
+        appliedBy: ["user2"],
+        acceptedUser: ["null"],
+        postedBy: 'John Doe',
+      ),
+      const BookmarkEntity(
+        bookmarkId: "3",
+        title: "UI/UX Designer",
+        desc: "Design user-friendly interfaces and experiences.",
+        company: "Creative Studio",
+        jobTime: "Remote",
+        location: "Los Angeles, CA",
+        logo: "assets/images/cs.webp",
+        salary: "\$70k - \$90k",
+        bookmarkedBy: ["null"],
+        appliedBy: ["null"],
+        acceptedUser: [],
+        postedBy: 'Emily Doe',
+      ),
+    ];
   }
 
   @override
@@ -112,10 +146,39 @@ class _BookmarkViewState extends ConsumerState<BookmarkView> {
                                   //     .addNoti("TESTING2.",
                                   //         "64d658a7242b5e9f27d24c3b");
                                   // var notis = await notiState.getNoti();
-                                  print("IN HOME");
-                                  // print(notis[0]);
                                 },
-                                icon: const Icon(Icons.notifications_outlined),
+                                icon: Stack(
+                                  children: [
+                                    const Icon(
+                                      Icons.notifications,
+                                      size: 30,
+                                    ),
+                                    Positioned(
+                                      right: 0,
+                                      top: 0,
+                                      child: Container(
+                                        padding: const EdgeInsets.all(2),
+                                        decoration: const BoxDecoration(
+                                          color: Colors.red,
+                                          shape: BoxShape.circle,
+                                        ),
+                                        constraints: const BoxConstraints(
+                                          minWidth: 14,
+                                          minHeight: 14,
+                                        ),
+                                        child: const Text(
+                                          '5',
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 10,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           )
@@ -151,18 +214,17 @@ class _BookmarkViewState extends ConsumerState<BookmarkView> {
                   ),
                 ),
                 SizedBox(height: height * 0.02),
-                if (bookmarkState.isLoading) ...{
-                  const CircularProgressIndicator(),
-                } else if (bookmarkState.error != null) ...{
-                  Text(bookmarkState.error!),
-                } else if (bookmarkState.bookmarks.isEmpty) ...{
-                  const Center(
-                    child: Text('No Bookmarks Found'),
-                  ),
-                } else ...{
-                  BookmarkWidget(
-                      ref: ref, bookmarkList: bookmarkState.bookmarks),
-                }
+                // if (bookmarkState.isLoading) ...{
+                //   const CircularProgressIndicator(),
+                // } else if (bookmarkState.error != null) ...{
+                //   Text(bookmarkState.error!),
+                // } else if (bookmarkState.bookmarks.isEmpty) ...{
+                //   const Center(
+                //     child: Text('No Bookmarks Found'),
+                //   ),
+                // } else ...{
+                BookmarkWidget(ref: ref, bookmarkList: getDummyJobs()),
+                // }
               ],
             ),
           ),

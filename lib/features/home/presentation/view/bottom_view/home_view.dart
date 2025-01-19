@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:the_job_finder/features/home/presentation/view/bottom_view/search_view.dart';
 import 'package:the_job_finder/features/home/presentation/viewmodel/noti_view_model.dart';
+import 'package:the_job_finder/features/search/domain/entity/job_entity.dart';
 
 import '../../../../../widgets/pill_btns_icons.dart';
 import '../../../../profile/domain/entity/profile_entity.dart';
@@ -29,6 +30,61 @@ class _homeViewState extends ConsumerState<homeView> {
     ));
   }
 
+  List<String> notificationDummy = [
+    "Your application for 'Software Engineer' has been viewed.",
+    "New job match: 'Flutter Developer' at ABC Corp.",
+    "Your interview for 'UI/UX Designer' is scheduled for Jan 10.",
+    "Job recommendation: 'Backend Developer' at XYZ Ltd.",
+    "Application status updated: 'Full Stack Developer' - Shortlisted.",
+  ];
+
+  List<JobEntity> getDummyJobs() {
+    return [
+      const JobEntity(
+        jobId: "1",
+        title: "Software Engineer",
+        desc: """- Develop and maintain software solutions.
+- Collaborate with cross-functional teams to define, design, and ship new features.
+- Identify and fix bugs to ensure optimal application performance.
+- Stay updated with emerging technologies to improve development processes.""",
+        company: "TechCorp",
+        jobTime: "Full Time",
+        location: "San Francisco, CA",
+        logo: "assets/images/techcorp.webp",
+        salary: "\$100k - \$120k",
+        bookmarkedBy: ["user1", "user2"],
+        appliedBy: ["null"],
+        acceptedUser: ["null"],
+      ),
+      const JobEntity(
+        jobId: "2",
+        title: "Data Analyst",
+        desc: "Analyze and interpret data to support decision-making.",
+        company: "Data Solutions",
+        jobTime: "Part Time",
+        location: "New York, NY",
+        logo: "assets/images/ds.webp",
+        salary: "\$60k - \$80k",
+        bookmarkedBy: ["null"],
+        appliedBy: ["user2"],
+        acceptedUser: ["null"],
+      ),
+      const JobEntity(
+        jobId: "3",
+        title: "UI/UX Designer",
+        desc: "Design user-friendly interfaces and experiences.",
+        company: "Creative Studio",
+        jobTime: "Remote",
+        location: "Los Angeles, CA",
+        logo: "assets/images/cs.webp",
+        salary: "\$70k - \$90k",
+        bookmarkedBy: ["null"],
+        appliedBy: ["null"],
+        acceptedUser: [],
+      ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
@@ -40,7 +96,7 @@ class _homeViewState extends ConsumerState<homeView> {
       _userName = profile[0].fullName;
       _profileImg = profile[0].profile;
     } else {
-      _userName = "User"; // Default value when profile is empty
+      _userName = "RK"; // Default value when profile is empty
     }
 
     var jobState = ref.watch(jobViewModelProvider);
@@ -134,16 +190,46 @@ class _homeViewState extends ConsumerState<homeView> {
                               //     .addNoti("TESTING2.",
                               //         "64d658a7242b5e9f27d24c3b");
                               // var notis = await notiState.getNoti();
-                              print("IN HOME");
                               // print(notis[0]);
                             },
-                            icon: const Icon(Icons.notifications),
+                            icon: Stack(
+                              children: [
+                                const Icon(
+                                  Icons.notifications,
+                                  size: 30,
+                                ),
+                                Positioned(
+                                  right: 0,
+                                  top: 0,
+                                  child: Container(
+                                    padding: const EdgeInsets.all(2),
+                                    decoration: const BoxDecoration(
+                                      color: Colors.red,
+                                      shape: BoxShape.circle,
+                                    ),
+                                    constraints: const BoxConstraints(
+                                      minWidth: 14,
+                                      minHeight: 14,
+                                    ),
+                                    child: const Text(
+                                      '5',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 10,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           CircleAvatar(
                             // radius: 50,
                             backgroundImage: _profileImg != null
                                 ? NetworkImage(apiBaseUrl + profile[0].profile!)
-                                : const AssetImage('assets/images/profile.jpg')
+                                : const AssetImage('assets/images/pp.webp')
                                     as ImageProvider,
                           ),
                         ]),
@@ -243,25 +329,25 @@ class _homeViewState extends ConsumerState<homeView> {
                   child: Row(
                     children: [
                       getPillBtnIcon(
-                        "All",
+                        "All ",
                         const Icon(Icons.all_inbox),
                         color: const Color.fromARGB(255, 184, 245, 187),
                       ),
                       SizedBox(width: width * .05),
                       getPillBtnIcon(
-                        "Recents",
+                        "Recents ",
                         const Icon(Icons.recent_actors),
                       ),
                       SizedBox(width: width * .05),
                       getPillBtnIcon(
-                        "Popular",
+                        "Popular ",
                         const Icon(Icons.power_input),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(height: height * .05),
-                JobWidget(ref: ref, jobList: jobState.jobs),
+                JobWidget(ref: ref, jobList: getDummyJobs()),
               ],
             ),
           ),

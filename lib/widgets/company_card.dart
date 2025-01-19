@@ -48,7 +48,8 @@ Widget getCompanyCard({
                   CircleAvatar(
                     // radius: 50,
                     backgroundImage: logo.isNotEmpty
-                        ? NetworkImage(apiBaseUrl + logo)
+                        // ? NetworkImage(apiBaseUrl + logo)
+                        ? AssetImage(logo)
                         : const AssetImage('assets/images/logoPlaceholder.png')
                             as ImageProvider,
                   ),

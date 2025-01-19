@@ -34,7 +34,8 @@ void showJobModal(BuildContext context, dynamic jobData, WidgetRef ref) {
                 child: CircleAvatar(
                   radius: 40,
                   backgroundImage: jobData.logo.isNotEmpty
-                      ? NetworkImage(apiBaseUrl + jobData.logo)
+                      // ? NetworkImage(apiBaseUrl + jobData.logo)
+                      ? AssetImage(jobData.logo)
                       : const AssetImage('') as ImageProvider,
                 ),
               ),

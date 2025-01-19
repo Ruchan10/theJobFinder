@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../viewmodel/auth_view_model.dart';
+import 'package:the_job_finder/config/router/app_route.dart';
 
 class LoginView extends ConsumerStatefulWidget {
   const LoginView({super.key});
@@ -148,15 +147,17 @@ class _LoginViewState extends ConsumerState<LoginView> {
                         width: 300,
                         child: ElevatedButton(
                           onPressed: () async {
-                            if (_formKey.currentState!.validate()) {
-                              bool isLogin = await ref
-                                  .read(authViewModelProvider.notifier)
-                                  .loginUser(
-                                    context,
-                                    _emailController.text,
-                                    _passwordController.text,
-                                  );
-                            }
+                            // if (_formKey.currentState!.validate()) {
+                            //   bool isLogin = await ref
+                            //       .read(authViewModelProvider.notifier)
+                            //       .loginUser(
+                            //         context,
+                            //         _emailController.text,
+                            //         _passwordController.text,
+                            //       );
+                            // }
+                            Navigator.pushNamed(
+                                context, AppRoute.dashboardRoute);
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor:

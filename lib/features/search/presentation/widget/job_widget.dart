@@ -12,8 +12,6 @@ import '../../domain/entity/job_entity.dart';
 final currentUserIdProvider = FutureProvider<String?>((ref) async {
   final userSharedPrefs = ref.read(userSharedPrefsProvider);
   final result = await userSharedPrefs.getUserId();
-  print("result");
-  print(result);
   return result.fold(
     (failure) {
       // Handle failure here (if needed)
@@ -39,18 +37,19 @@ class JobWidget extends StatelessWidget {
     return currentUserIdAsyncValue.when(
       data: (currentUserId) {
         return GridView.builder(
-          // Put this otherwise it will take all the space
           shrinkWrap: true,
           itemCount: jobList.length,
-          // physics: const NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 1,
             childAspectRatio: 2.1,
           ),
           itemBuilder: (context, index) {
             bool isBookmarked = false;
-            if (currentUserId != null &&
-                jobList[index].bookmarkedBy!.contains(currentUserId)) {
+            print(
+                "${jobList[index].bookmarkedBy!.contains(currentUserId.toString)} --------------------------");
+            if (jobList[index]
+                .bookmarkedBy!
+                .contains(currentUserId.toString())) {
               isBookmarked = true;
             }
             return Card(
@@ -75,11 +74,8 @@ class JobWidget extends StatelessWidget {
           },
         );
       },
-      loading: () =>
-          const CircularProgressIndicator(), // You can show a loading indicator
+      loading: () => const CircularProgressIndicator(),
       error: (error, stack) {
-        // You can handle the error state here
-        print('Error fetching currentUserId: $error');
         return const Text('Error fetching data');
       },
     );

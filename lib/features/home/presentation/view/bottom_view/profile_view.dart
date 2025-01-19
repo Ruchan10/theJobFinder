@@ -47,7 +47,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
       _profileImg = profile[0].profile;
       _email = profile[0].email;
     } else {
-      _userName = "User"; // Default value when profile is empty
+      _userName = "RK"; // Default value when profile is empty
     }
     return Scaffold(
       body: SafeArea(
@@ -63,7 +63,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                 radius: 70,
                 backgroundImage: _profileImg != null
                     ? NetworkImage(apiBaseUrl + profile[0].profile!)
-                    : const AssetImage('assets/images/profile.jpg')
+                    : const AssetImage('assets/images/pp.webp')
                         as ImageProvider,
               ),
               Text(
