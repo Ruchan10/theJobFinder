@@ -145,6 +145,13 @@ For state management, **Riverpod** is used to:
 
 ---
 
+## 📥 **Download**
+1. Navigate to the [Releases](https://github.com/Ruchan10/theJobFinder/releases) section of this repository.  
+2. Download the latest demo APK.  
+3. Install the APK on your Android device to explore the app.
+
+---
+
 ## Acknowledgments
 
 - **Figma Design**: Provided .fig file as a blueprint.
