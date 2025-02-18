@@ -31,8 +31,16 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Clean project
+        run: flutter clean
+
+      - name: Remove Pub Cache (Fix build issues)
+        run: rm -rf ~/.pub-cache
+
       - name: Build APK
-        run: flutter build apk --release
+        run: |
+            cd $GITHUB_WORKSPACE
+            flutter build apk --release
 
       - name: Rename APK with Custom Name
         run: mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/jobfinderv1.1.0.apk
@@ -61,6 +69,6 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           tag: v1.1.0
           name: Job Finder v1.1.0
-          body: "Minor readme changes"
+          body: "Automated release of Job Finder"
           draft: false
           prerelease: false
