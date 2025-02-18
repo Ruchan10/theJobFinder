@@ -95,9 +95,9 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="io.flutter:flutter_embedding_release:1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d@jar"
-      jars="/home/rk10/.gradle/caches/modules-2/files-2.1/io.flutter/flutter_embedding_release/1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d/df73e65ae682c635df1524a146b7d0dcb41f1460/flutter_embedding_release-1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d.jar"
-      resolved="io.flutter:flutter_embedding_release:1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d"/>
+      name="io.flutter:flutter_embedding_release:1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b@jar"
+      jars="/home/rk10/.gradle/caches/modules-2/files-2.1/io.flutter/flutter_embedding_release/1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b/4a6c339428856c8ded575a1984235663c7fbf366/flutter_embedding_release-1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b.jar"
+      resolved="io.flutter:flutter_embedding_release:1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b"/>
   <library
       name="androidx.fragment:fragment:1.7.1@aar"
       jars="/home/rk10/.gradle/caches/8.11/transforms/918e423b0c56dc68e1cf1afc0eb21858/transformed/fragment-1.7.1/jars/classes.jar"
@@ -399,17 +399,17 @@
       jars="/home/rk10/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.1.0/85f8b81009cda5890e54ba67d64b5e599c645020/kotlin-stdlib-2.1.0.jar"
       resolved="org.jetbrains.kotlin:kotlin-stdlib:2.1.0"/>
   <library
-      name="io.flutter:armeabi_v7a_release:1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d@jar"
-      jars="/home/rk10/.gradle/caches/modules-2/files-2.1/io.flutter/armeabi_v7a_release/1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d/ab7ef4b361c85d523e9c6afb46c2ac2ed64e4b58/armeabi_v7a_release-1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d.jar"
-      resolved="io.flutter:armeabi_v7a_release:1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d"/>
+      name="io.flutter:armeabi_v7a_release:1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b@jar"
+      jars="/home/rk10/.gradle/caches/modules-2/files-2.1/io.flutter/armeabi_v7a_release/1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b/fddcbb6a557b649a2ab2faffb0a3d47d0c081a8f/armeabi_v7a_release-1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b.jar"
+      resolved="io.flutter:armeabi_v7a_release:1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b"/>
   <library
-      name="io.flutter:arm64_v8a_release:1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d@jar"
-      jars="/home/rk10/.gradle/caches/modules-2/files-2.1/io.flutter/arm64_v8a_release/1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d/b319b608eeb5cb0df717ff54ab0a5d74221d3bd6/arm64_v8a_release-1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d.jar"
-      resolved="io.flutter:arm64_v8a_release:1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d"/>
+      name="io.flutter:arm64_v8a_release:1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b@jar"
+      jars="/home/rk10/.gradle/caches/modules-2/files-2.1/io.flutter/arm64_v8a_release/1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b/e9f6bd737686209d82ef649a0193d10bbd8f5c1e/arm64_v8a_release-1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b.jar"
+      resolved="io.flutter:arm64_v8a_release:1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b"/>
   <library
-      name="io.flutter:x86_64_release:1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d@jar"
-      jars="/home/rk10/.gradle/caches/modules-2/files-2.1/io.flutter/x86_64_release/1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d/13699a09c1d6e9292d615365674ef0967ad9d261/x86_64_release-1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d.jar"
-      resolved="io.flutter:x86_64_release:1.0.0-cb4b5fff73850b2e42bd4de7cb9a4310a78ac40d"/>
+      name="io.flutter:x86_64_release:1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b@jar"
+      jars="/home/rk10/.gradle/caches/modules-2/files-2.1/io.flutter/x86_64_release/1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b/711f7888ef2ae91104b7d9861e6073f72cb118ce/x86_64_release-1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b.jar"
+      resolved="io.flutter:x86_64_release:1.0.0-e672b006cb34c921db85b8e2f482ed3144a4574b"/>
   <library
       name="org.jetbrains:annotations:23.0.0@jar"
       jars="/home/rk10/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/23.0.0/8cc20c07506ec18e0834947b84a864bfc094484e/annotations-23.0.0.jar"

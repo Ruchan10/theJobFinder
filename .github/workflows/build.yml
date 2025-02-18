@@ -1,0 +1,66 @@
+name: Build and Release APK
+
+on:
+  push:
+    branches:
+      - main  
+  workflow_dispatch: 
+
+jobs:
+  build:
+    name: Build APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17' 
+          distribution: temurin
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.4' 
+          channel: 'stable'
+          cache: false
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release
+
+      - name: Rename APK with Custom Name
+        run: mv build/app/outputs/flutter-apk/app-release.apk build/app/outputs/flutter-apk/jobfinderv1.1.0.apk
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-apk
+          path: build/app/outputs/flutter-apk/jobfinderv1.1.0.apk
+
+  release:
+    name: Release APK
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download APK artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: release-apk
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: jobfinderv1.1.0.apk
+          token: ${{ secrets.GH_TOKEN }}
+          tag: v1.1.0
+          name: Job Finder v1.1.0
+          body: "Minor readme changes"
+          draft: false
+          prerelease: false
