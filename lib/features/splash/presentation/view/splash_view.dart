@@ -14,11 +14,9 @@ class SplashView extends ConsumerStatefulWidget {
 
 class _SplashViewState extends ConsumerState<SplashView>
     with WidgetsBindingObserver {
-  final double _proximityValue = 0;
   bool _isScreenOff = false;
   final List<StreamSubscription<dynamic>> _streamSubscriptions =
       <StreamSubscription<dynamic>>[];
-  int _isMounted = 0;
 
   @override
   void initState() {
@@ -28,7 +26,6 @@ class _SplashViewState extends ConsumerState<SplashView>
     });
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    _isMounted++;
 
     // _streamSubscriptions.add(proximityEvents!.listen((ProximityEvent event) {
     //   if (mounted &&

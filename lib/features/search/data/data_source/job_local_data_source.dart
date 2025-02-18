@@ -6,7 +6,6 @@ import '../../../../core/network/local/hive_service.dart';
 import '../../domain/entity/job_entity.dart';
 import '../model/job_hive_model.dart';
 
-// Dependency Injection using Riverpod
 final jobLocalDataSourceProvider = Provider<JobLocalDataSource>((ref) {
   return JobLocalDataSource(
       hiveService: ref.read(hiveServiceProvider),

@@ -15,7 +15,6 @@ class SignupView extends ConsumerStatefulWidget {
 class _SignupViewState extends ConsumerState<SignupView> {
   var isObscure0 = true;
   var isObscure = true;
-  final _gap = const SizedBox(height: 8);
 
   final _key = GlobalKey<FormState>();
   final _emailController = TextEditingController(text: 'ruchan@gmail.com');
@@ -128,7 +127,7 @@ class _SignupViewState extends ConsumerState<SignupView> {
                             labelText: "Enter password",
                             prefixIcon: const Padding(
                               padding: EdgeInsets.only(
-                                  top: 1), // add padding to adjust icon
+                                  top: 1), 
                               child: Icon(Icons.password),
                             ),
                             suffixIcon: IconButton(
@@ -190,7 +189,6 @@ class _SignupViewState extends ConsumerState<SignupView> {
                           onPressed: () {
                             String pass = _passwordController.text;
                             String cpass = _cpasswordController.text;
-                            // print("passwords $pass $cpass");
                             if (pass == cpass) {
                               if (_key.currentState!.validate()) {
                                 var user = UserEntity(
@@ -238,39 +236,7 @@ class _SignupViewState extends ConsumerState<SignupView> {
                       SizedBox(
                         height: height * .1,
                       ),
-                      // const Text(
-                      //   "OR",
-                      //   style: TextStyle(
-                      //     fontSize: 20,
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   height: height * .1,
-                      //   width: width,
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.center,
-                      //     children: [
-                      //       IconButton(
-                      //         onPressed: () {
-                      //           setState(() {});
-                      //         },
-                      //         icon: const Icon(Icons.facebook),
-                      //       ),
-                      //       IconButton(
-                      //         onPressed: () {
-                      //           setState(() {});
-                      //         },
-                      //         icon: const Icon(Icons.apple),
-                      //       ),
-                      //       IconButton(
-                      //         onPressed: () {
-                      //           setState(() {});
-                      //         },
-                      //         icon: const Icon(Icons.telegram),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
+                      
                       GestureDetector(
                         onTap: () {
                           Navigator.pushNamed(context, "/loginRoute");

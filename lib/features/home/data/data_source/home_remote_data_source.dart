@@ -17,7 +17,6 @@ class NotiRemoteDataSource {
 
   NotiRemoteDataSource({required this.dio, required this.userSharedPrefs});
 
-  // Add Notifications
   Future<Either<Failure, bool>> addNoti(String noti, String userId) async {
     try {
       String? token;

@@ -13,7 +13,6 @@ class _LoginViewState extends ConsumerState<LoginView> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController(text: "ruchan@gmail.com");
   final _passwordController = TextEditingController(text: "ruchan");
-  final _gap = const SizedBox(height: 8);
   bool isObscure = true;
 
   @override
@@ -147,15 +146,6 @@ class _LoginViewState extends ConsumerState<LoginView> {
                         width: 300,
                         child: ElevatedButton(
                           onPressed: () async {
-                            // if (_formKey.currentState!.validate()) {
-                            //   bool isLogin = await ref
-                            //       .read(authViewModelProvider.notifier)
-                            //       .loginUser(
-                            //         context,
-                            //         _emailController.text,
-                            //         _passwordController.text,
-                            //       );
-                            // }
                             Navigator.pushNamed(
                                 context, AppRoute.dashboardRoute);
                           },

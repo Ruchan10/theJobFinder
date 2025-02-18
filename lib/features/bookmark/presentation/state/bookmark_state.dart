@@ -4,7 +4,6 @@ import '../../domain/entity/bookmark_entity.dart';
 class BookmarkState {
   final bool isLoading;
   final List<BookmarkEntity> bookmarks;
-  // final List<AuthEntity>? students;
   final String? error;
 
   BookmarkState({

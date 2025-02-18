@@ -37,14 +37,12 @@ class NotiViewModel extends StateNotifier<NotiState> {
   getNoti() async {
     state = state.copyWith(isLoading: true);
     var data = await _notiUseCase.getNoti();
-    print("data");
     data.fold(
       (l) => state = state.copyWith(
         isLoading: false,
         error: l.error,
       ),
       (r) => {
-        print(r),
         state = state.copyWith(
           isLoading: false,
           error: null,

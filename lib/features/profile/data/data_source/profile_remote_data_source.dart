@@ -15,20 +15,17 @@ final profileRemoteDataSourceProvider = Provider(
     dio: ref.read(httpServiceProvider),
     profileApiModel: ref.read(profileApiModelProvider),
     userSharedPrefs: ref.read(userSharedPrefsProvider),
-    // authApiModel: ref.read(authApiModelProvider),
   ),
 );
 
 class ProfileRemoteDataSource {
   final Dio dio;
   final ProfileApiModel profileApiModel;
-  // final AuthApiModel authApiModel;
   final UserSharedPrefs userSharedPrefs;
 
   ProfileRemoteDataSource({
     required this.dio,
     required this.profileApiModel,
-    // required this.authApiModel,
     required this.userSharedPrefs,
   });
 
@@ -75,7 +72,6 @@ class ProfileRemoteDataSource {
   Future<Either<Failure, List<ProfileEntity>>> getApplicants(
       String userId) async {
     try {
-      // Get the token from shared prefs
       String? token;
       var data = await userSharedPrefs.getUserToken();
       data.fold(
@@ -92,7 +88,6 @@ class ProfileRemoteDataSource {
         ),
       );
       if (response.statusCode == 200) {
-        print("in get APPLICANTS");
         List<ProfileEntity> profile = [];
 
         GetAllProfileDTO profileAddDTO =

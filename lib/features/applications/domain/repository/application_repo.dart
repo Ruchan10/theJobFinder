@@ -6,7 +6,6 @@ import '../../data/repository/application_remote_repo.dart';
 
 final applicationRepositoryProvider = Provider<IApplicationRepository>(
   (ref) {
-    // // Check for the internet
     return ref.watch(applicationRemoteRepoProvider);
   },
 );

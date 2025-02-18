@@ -55,7 +55,6 @@ class _BookmarkViewState extends ConsumerState<BookmarkView> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    var bookmarkState = ref.watch(bookmarkViewModelProvider);
 
     return RefreshIndicator(
       onRefresh: _refreshBookmarks,
@@ -70,7 +69,6 @@ class _BookmarkViewState extends ConsumerState<BookmarkView> {
                     children: [
                       Row(
                         children: [
-                          // Centered "Search" Text
                           const Expanded(
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,

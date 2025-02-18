@@ -17,10 +17,8 @@ class BookmarkWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      // Put this otherwise it will take all the space
       shrinkWrap: true,
       itemCount: bookmarkList.length,
-      // physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1, childAspectRatio: 2.1),
       itemBuilder: (context, index) {

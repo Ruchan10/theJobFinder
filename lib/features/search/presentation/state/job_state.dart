@@ -4,7 +4,6 @@ import '../../domain/entity/job_entity.dart';
 class JobState {
   final bool isLoading;
   final List<JobEntity> jobs;
-  // final List<AuthEntity>? students;
   final String? error;
 
   JobState({

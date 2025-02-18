@@ -57,12 +57,10 @@ class _ProximityScreenState extends State<ProximityScreen>
         _turnOnScreen();
         break;
       case AppLifecycleState.inactive:
-        // App is inactive
         dispose();
         break;
       case AppLifecycleState.paused:
-        // App is paused
-        _turnOnScreen(); // Make sure the screen is turned on when the app is paused
+        _turnOnScreen(); 
         dispose();
         break;
       case AppLifecycleState.detached:

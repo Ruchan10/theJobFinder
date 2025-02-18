@@ -10,7 +10,6 @@ final currentUserIdProvider = FutureProvider<String?>((ref) async {
   final result = await userSharedPrefs.getUserId();
   return result.fold(
     (failure) {
-      // Handle failure here (if needed)
       return null;
     },
     (userId) => userId,
@@ -29,13 +28,9 @@ class GetCreatedWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentUserIdAsyncValue = ref.watch(currentUserIdProvider);
 
     return GridView.builder(
-      // Put this otherwise it will take all the space
-      // shrinkWrap: true,
       itemCount: jobList.length,
-      // physics: const NeverScrollableScrollPhysics(),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1, childAspectRatio: 2.1),
       itemBuilder: (context, index) {

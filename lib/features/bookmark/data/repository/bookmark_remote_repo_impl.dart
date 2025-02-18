@@ -30,9 +30,4 @@ class BookmarkRemoteRepositoryImpl implements IBookmarkRepository {
     return bookmarkRemoteDataSource.getAllBookmarks();
   }
 
-  // @override
-  // Future<Either<Failure, List<AuthEntity>>> getAllStudentsByBookmark(
-  //     String bookmarkId) {
-  //   return bookmarkRemoteDataSource.getAllStudentsByBookmark(bookmarkId);
-  // }
 }

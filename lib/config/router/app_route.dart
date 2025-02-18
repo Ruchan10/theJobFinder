@@ -25,7 +25,6 @@ class AppRoute {
   static const String jobRoute = '/jobRoute';
   static const String editProfileRoute = '/editProfileRoute';
   static const String applicationsRoute = '/applicationsRoute';
-  static const String testRoute = '/testRoute';
   static const String addJobRoute = '/addJobRoute';
   static const String splashRoute = '/splashRoute';
   static const String proximityRoute = '/proximityRoute';
@@ -44,7 +43,6 @@ class AppRoute {
       addJobRoute: (context) => const AddJobView(),
       applicationsRoute: (context) => const ApplicationsView(),
       splashRoute: (context) => const SplashView(),
-      testRoute: (context) => const TestView(),
     };
   }
 }

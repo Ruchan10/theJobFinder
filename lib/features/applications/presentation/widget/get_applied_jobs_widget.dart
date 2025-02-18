@@ -10,7 +10,6 @@ final currentUserIdProvider = FutureProvider<String?>((ref) async {
   final result = await userSharedPrefs.getUserId();
   return result.fold(
     (failure) {
-      // Handle failure here (if needed)
       return null;
     },
     (userId) => userId,
@@ -33,10 +32,8 @@ class GetAppliedWidget extends StatelessWidget {
     return currentUserIdAsyncValue.when(
       data: (currentUserId) {
         return GridView.builder(
-          // Put this otherwise it will take all the space
           shrinkWrap: true,
           itemCount: jobList.length,
-          // physics: const NeverScrollableScrollPhysics(),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1, childAspectRatio: 2.1),
           itemBuilder: (context, index) {
@@ -65,10 +62,8 @@ class GetAppliedWidget extends StatelessWidget {
         );
       },
       loading: () =>
-          const CircularProgressIndicator(), // You can show a loading indicator
+          const CircularProgressIndicator(), 
       error: (error, stack) {
-        // You can handle the error state here
-        print('Error fetching currentUserId: $error');
         return const Text('Error fetching data');
       },
     );

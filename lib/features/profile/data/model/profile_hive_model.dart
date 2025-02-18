@@ -58,7 +58,6 @@ class ProfileHiveModel {
     this.appliedJobs,
   }) : profileId = profileId ?? const Uuid().v4();
 
-  // Convert Hive Object to Entity
   ProfileEntity toEntity() => ProfileEntity(
         profileId: profileId,
         fullName: fullName,

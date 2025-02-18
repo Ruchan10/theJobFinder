@@ -34,22 +34,10 @@ class ProfileViewModel extends StateNotifier<ProfileState> {
     });
   }
 
-  // getApplicants(String jobId) async {
-  //   print("in getAllJobs, view model");
-  //   state = state.copyWith(isLoading: true);
-  //   var data = await profileUseCase.getApplicants(jobId);
-  //   print(data);
-  //   data.fold(
-  //     (l) => state = state.copyWith(isLoading: false, error: l.error),
-  //     (r) => state = state.copyWith(isLoading: false, profiles: r),
-  //   );
-  // }
 
   getUserDetails() async {
     state = state.copyWith(isLoading: true);
     var data = await profileUseCase.getUserDetails();
-    print("getUserDetails()");
-    print(data);
     data.fold(
       (l) => state = state.copyWith(isLoading: false, error: l.error),
       (r) => state = state.copyWith(isLoading: false, profiles: r),

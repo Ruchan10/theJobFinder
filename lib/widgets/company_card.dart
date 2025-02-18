@@ -46,7 +46,6 @@ Widget getCompanyCard({
               child: Row(
                 children: [
                   CircleAvatar(
-                    // radius: 50,
                     backgroundImage: logo.isNotEmpty
                         // ? NetworkImage(apiBaseUrl + logo)
                         ? AssetImage(logo)

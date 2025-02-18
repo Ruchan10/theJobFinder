@@ -59,7 +59,6 @@ class JobApiModel extends Equatable {
   factory JobApiModel.fromJson(Map<String, dynamic> json) =>
       _$JobApiModelFromJson(json);
 
-  // Convert API Object to Entity
   JobEntity toEntity() => JobEntity(
         jobId: jobId,
         title: title,

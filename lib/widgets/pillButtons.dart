@@ -46,7 +46,6 @@ Widget getUserPill(
         child: Row(
           children: [
             CircleAvatar(
-              // radius: 50,
               backgroundImage: profile.isNotEmpty
                   ? NetworkImage(apiBaseUrl + profile)
                   : const AssetImage('assets/images/profile.jpg')

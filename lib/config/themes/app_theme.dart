@@ -11,7 +11,6 @@ class AppTheme {
       //   primary: ThemeConstant.primaryColor,
       // ),
 
-      // change the theme according to the user choice
       fontFamily: 'poppins',
       useMaterial3: true,
       colorScheme: isDark
@@ -23,7 +22,6 @@ class AppTheme {
             ),
       brightness: isDark ? Brightness.dark : Brightness.light,
 
-      // Change app bar color
       appBarTheme: const AppBarTheme(
         elevation: 0,
         backgroundColor: ThemeConstant.appBarColor,
@@ -34,7 +32,6 @@ class AppTheme {
         ),
       ),
 
-      // Change elevated button theme
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           elevation: 0,

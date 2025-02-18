@@ -26,11 +26,9 @@ class _AddJobViewState extends ConsumerState<AddJobView> {
 
   Future _browseLogo() async {
     final permissionStatus = await Permission.storage.status;
-    print(permissionStatus);
     if (permissionStatus.isDenied) {
       // Here just ask for the permission for the first time
       await Permission.storage.request();
-      print("DENIED");
 
       // I noticed that sometimes popup won't show after user press deny
       // so I do the check once again but now go straight to appSettings
@@ -40,7 +38,6 @@ class _AddJobViewState extends ConsumerState<AddJobView> {
     } else if (permissionStatus.isPermanentlyDenied) {
       // Here open app settings for user to manually enable permission in case
       // where permission was permanently denied
-      print("PERMANANTLY DENIED");
       await openAppSettings();
     } else {
       try {

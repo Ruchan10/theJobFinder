@@ -26,7 +26,6 @@ class ProfileLocalRepositoryImpl implements IProfileRepository {
 
   @override
   Future<Either<Failure, List<ProfileEntity>>> getUserDetails() {
-    // TODO: implement getUserDetails
     throw UnimplementedError();
   }
 

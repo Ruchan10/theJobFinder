@@ -14,7 +14,6 @@ final currentUserIdProvider = FutureProvider<String?>((ref) async {
   final result = await userSharedPrefs.getUserId();
   return result.fold(
     (failure) {
-      // Handle failure here (if needed)
       return null;
     },
     (userId) => userId,

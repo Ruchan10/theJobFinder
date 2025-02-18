@@ -37,7 +37,7 @@ class JobHiveModel {
   final String salary;
   @HiveField(11)
   final String jobTime;
-  // empty constructor
+
   JobHiveModel.empty()
       : this(
             jobId: '',

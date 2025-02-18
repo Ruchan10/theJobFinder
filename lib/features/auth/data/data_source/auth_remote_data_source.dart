@@ -63,8 +63,6 @@ class AuthRemoteDataSource {
         },
       );
       if (response.statusCode == 200) {
-        print(response);
-        // retrieve token
         String token = response.data["token"];
         String userId = response.data["user"]['_id'];
 

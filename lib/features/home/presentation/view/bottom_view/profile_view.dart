@@ -41,13 +41,12 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
     var userState = ref.watch(profileViewModelProvider);
     profile = userState.profiles;
 
-    // Check if profile list is not empty before accessing its elements
     if (profile.isNotEmpty) {
       _userName = profile[0].fullName;
       _profileImg = profile[0].profile;
       _email = profile[0].email;
     } else {
-      _userName = "RK"; // Default value when profile is empty
+      _userName = "RK"; 
     }
     return Scaffold(
       body: SafeArea(

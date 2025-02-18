@@ -208,7 +208,7 @@ class _UpdateProfileState extends ConsumerState<UpdateProfile> {
                     controller: _fullNameController,
                     decoration: const InputDecoration(
                       contentPadding: EdgeInsets.only(
-                          top: 20), // add padding to adjust text
+                          top: 20), 
                       isDense: true,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(

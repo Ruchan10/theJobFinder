@@ -48,10 +48,8 @@ class HomeJobWidget extends ConsumerWidget {
         );
       },
       loading: () =>
-          const CircularProgressIndicator(), // You can show a loading indicator
+          const CircularProgressIndicator(), 
       error: (error, stack) {
-        // You can handle the error state here
-        print('Error fetching currentUserId: $error');
         return const Text('Error fetching data');
       },
     );

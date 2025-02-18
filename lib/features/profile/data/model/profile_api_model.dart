@@ -50,7 +50,6 @@ class ProfileApiModel extends Equatable {
   factory ProfileApiModel.fromJson(Map<String, dynamic> json) =>
       _$ProfileApiModelFromJson(json);
 
-  // Convert API Object to Entity
   ProfileEntity toEntity() => ProfileEntity(
         profileId: profileId,
         fullName: fullName,

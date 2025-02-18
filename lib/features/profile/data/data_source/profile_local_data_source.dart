@@ -6,7 +6,6 @@ import '../../../../core/network/local/hive_service.dart';
 import '../../domain/entity/profile_entity.dart';
 import '../model/profile_hive_model.dart';
 
-// Dependency Injection using Riverpod
 final profileLocalDataSourceProvider = Provider<ProfileLocalDataSource>((ref) {
   return ProfileLocalDataSource(
       hiveService: ref.read(hiveServiceProvider),
@@ -25,7 +24,6 @@ class ProfileLocalDataSource {
   // Add Profile
   Future<Either<Failure, bool>> updateProfile(ProfileEntity profile) async {
     try {
-      // Convert Entity to Hive Object
       final hiveProfile = profileHiveModel.toHiveModel(profile);
       // Add to Hive
       await hiveService.updateProfile(hiveProfile);

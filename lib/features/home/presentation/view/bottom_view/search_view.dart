@@ -37,17 +37,10 @@ class _SearchViewState extends ConsumerState<SearchView> {
               child: Column(
                 children: [
                   SizedBox(
-                    // height: height * .15,
                     child: Column(
                       children: [
                         Row(
                           children: [
-                            // IconButton(
-                            //   onPressed: () {
-                            //     setState(() {});
-                            //   },
-                            //   icon: const Icon(Icons.arrow_back),
-                            // ),
                             const Spacer(),
                             const Text(
                               "Search",

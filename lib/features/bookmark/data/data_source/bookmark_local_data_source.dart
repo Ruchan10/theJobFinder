@@ -26,9 +26,7 @@ class BookmarkLocalDataSource {
   // Add Bookmark
   Future<Either<Failure, bool>> addBookmark(BookmarkEntity bookmark) async {
     try {
-      // Convert Entity to Hive Object
       final hiveBookmark = bookmarkHiveModel.toHiveModel(bookmark);
-      // Add to Hive
       await hiveService.addBookmark(hiveBookmark);
       return const Right(true);
     } catch (e) {
@@ -38,9 +36,7 @@ class BookmarkLocalDataSource {
 
   Future<Either<Failure, List<BookmarkEntity>>> getAllBookmarks() async {
     try {
-      // Get all bookmarkes from Hive
       final bookmarks = await hiveService.getAllBookmarks();
-      // Convert Hive Object to Entity
       final bookmarkEntities = BookmarkHiveModel.toEntityList(bookmarks);
       return Right(bookmarkEntities);
     } catch (e) {

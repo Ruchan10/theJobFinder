@@ -17,7 +17,6 @@ final jobRemoteDataSourceProvider = Provider(
     jobApiModel: ref.read(jobApiModelProvider),
     profileApiModel: ref.read(profileApiModelProvider),
     userSharedPrefs: ref.read(userSharedPrefsProvider),
-    // authApiModel: ref.read(authApiModelProvider),
   ),
 );
 

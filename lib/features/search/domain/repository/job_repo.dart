@@ -15,13 +15,7 @@ final jobRepositoryProvider = Provider<IJobRepository>(
     // return ref.watch(jobRemoteRepoProvider);
 
     if (true) {
-      print("INTERNET ACCESS");
-      // If internet is available then return remote repo
       return ref.watch(jobRemoteRepoProvider);
-    } else {
-      print("NO INTERNET ACCESS");
-      // If internet is not available then return local repo
-      return ref.watch(jobLocalRepoProvider);
     }
   },
 );

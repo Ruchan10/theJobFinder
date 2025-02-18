@@ -4,7 +4,6 @@ import '../../domain/entity/profile_entity.dart';
 class ProfileState {
   final bool isLoading;
   final List<ProfileEntity> profiles;
-  // final List<AuthEntity>? students;
   final String? error;
 
   ProfileState({

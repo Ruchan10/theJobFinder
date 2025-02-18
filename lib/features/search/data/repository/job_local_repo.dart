@@ -72,7 +72,6 @@ class JobLocalRepositoryImpl implements IJobRepository {
   
   @override
   Future<Either<Failure, List<JobEntity>>> searchQuery(String searchQuery) {
-    // TODO: implement searchQuery
     throw UnimplementedError();
   }
   

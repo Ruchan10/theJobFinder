@@ -47,8 +47,6 @@ class UserSharedPrefs {
     try {
       _sharedPreferences = await SharedPreferences.getInstance();
       await _sharedPreferences.setString('userId', userId);
-      print("Inside setUserToken");
-      print(userId);
       return right(true);
     } catch (e) {
       return left(Failure(error: e.toString()));
@@ -60,8 +58,6 @@ class UserSharedPrefs {
     try {
       _sharedPreferences = await SharedPreferences.getInstance();
       final userId = _sharedPreferences.getString('userId');
-      print("Inside getUser Id");
-      print(userId);
       return right(userId);
     } catch (e) {
       return left(Failure(error: e.toString()));

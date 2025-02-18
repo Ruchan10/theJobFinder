@@ -15,7 +15,7 @@ class dashBoardView extends StatefulWidget {
 }
 
 class _dashBoardViewState extends State<dashBoardView> {
-  int bottomNavIndex = 0; //default index of a first screen
+  int bottomNavIndex = 0; 
   final iconList = <IconData>[
     Icons.home,
     Icons.bookmark,

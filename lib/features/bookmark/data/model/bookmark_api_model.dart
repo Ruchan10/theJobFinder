@@ -60,7 +60,6 @@ class BookmarkApiModel extends Equatable {
   factory BookmarkApiModel.fromJson(Map<String, dynamic> json) =>
       _$BookmarkApiModelFromJson(json);
 
-  // Convert API Object to Entity
   BookmarkEntity toEntity() => BookmarkEntity(
         bookmarkId: bookmarkId,
         title: title,
@@ -76,7 +75,6 @@ class BookmarkApiModel extends Equatable {
         acceptedUser: acceptedUser,
       );
 
-  // Convert Entity to API Object
   BookmarkApiModel fromEntity(BookmarkEntity entity) => BookmarkApiModel(
         bookmarkId: entity.bookmarkId ?? '',
         title: entity.title,

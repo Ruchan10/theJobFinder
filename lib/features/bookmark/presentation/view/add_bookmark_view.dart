@@ -18,8 +18,6 @@ class _AddBookmarkViewState extends ConsumerState<AddBookmarkView> {
   @override
   Widget build(BuildContext context) {
     var bookmarkState = ref.watch(bookmarkViewModelProvider);
-    print("BOOKMARK STATE");
-    print(bookmarkState.bookmarks);
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.all(8.0),

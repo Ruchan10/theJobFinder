@@ -92,7 +92,6 @@ class BookmarkRemoteDataSource {
   }
     Future<Either<Failure, bool>> removeBookmark(String jobId) async {
     try {
-      // Get the token from shared prefs
       String? token;
       var data = await userSharedPrefs.getUserToken();
       data.fold(

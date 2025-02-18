@@ -111,7 +111,7 @@ void showJobModal(BuildContext context, dynamic jobData, WidgetRef ref) {
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
-                    backgroundColor: Colors.green.shade400, // Button text color
+                    backgroundColor: Colors.green.shade400, 
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30), // Rounded button
                     ),

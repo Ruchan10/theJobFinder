@@ -33,7 +33,6 @@ class _ApplicationsViewState extends ConsumerState<ApplicationsView>
   Widget build(BuildContext context) {
     var jobState = ref.watch(appliedViewModelProvider);
     var jobState0 = ref.watch(createdViewModelProvider);
-    print("in application view state");
     return RefreshIndicator(
       onRefresh: _refreshApps,
       child: Scaffold(

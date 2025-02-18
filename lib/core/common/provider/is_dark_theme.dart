@@ -11,7 +11,6 @@ final isDarkThemeProvider = StateNotifierProvider<IsDarkTheme, bool>(
 class IsDarkTheme extends StateNotifier<bool> {
   final AppThemePrefs appThemePrefs;
 
-  // initially it will be light theme
   IsDarkTheme(this.appThemePrefs) : super(false) {
     onInit();
   }

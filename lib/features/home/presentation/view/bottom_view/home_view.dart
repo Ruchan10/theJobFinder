@@ -91,7 +91,6 @@ class _homeViewState extends ConsumerState<homeView> {
     double width = MediaQuery.of(context).size.width;
     var userState = ref.watch(profileViewModelProvider);
     profile = userState.profiles;
-    // Check if profile list is not empty before accessing its elements
     if (profile.isNotEmpty) {
       _userName = profile[0].fullName;
       _profileImg = profile[0].profile;
@@ -99,7 +98,6 @@ class _homeViewState extends ConsumerState<homeView> {
       _userName = "RK"; // Default value when profile is empty
     }
 
-    var jobState = ref.watch(jobViewModelProvider);
 
     return Scaffold(
       body: SafeArea(

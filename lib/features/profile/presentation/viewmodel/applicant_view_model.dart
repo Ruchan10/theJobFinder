@@ -16,10 +16,8 @@ class ApplicantViewModel extends StateNotifier<ProfileState> {
   ApplicantViewModel(this.applicantUseCase) : super(ProfileState.initial());
 
   getApplicants(String userId) async {
-    print("in getAllJobs, view model");
     state = state.copyWith(isLoading: true);
     var data = await applicantUseCase.getApplicants(userId);
-    print(data);
     data.fold(
       (l) => state = state.copyWith(isLoading: false, error: l.error),
       (r) => state = state.copyWith(isLoading: false, profiles: r),

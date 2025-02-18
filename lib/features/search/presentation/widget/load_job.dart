@@ -10,8 +10,6 @@ class LoadJob extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("IN LOAD JOB");
-    print(lstJobs);
     return ListView.builder(
       itemCount: lstJobs.length,
       itemBuilder: ((context, index) => ListTile(

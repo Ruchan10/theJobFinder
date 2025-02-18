@@ -53,7 +53,6 @@ class JobViewModel extends StateNotifier<JobState> {
         state = state.copyWith(isLoading: false, error: l.error);
       },
       (r) {
-        // state.jobs.remove(job);
         state = state.copyWith(isLoading: false, error: null);
         showSnackBar(
           message: 'Bookmark Removed',
